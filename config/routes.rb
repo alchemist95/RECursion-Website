@@ -1,0 +1,29 @@
+Rails.application.routes.draw do
+
+ 	mount Ckeditor::Engine => '/ckeditor'
+	mount RailsAdmin::Engine => '/sapphire', as: 'rails_admin'
+
+
+	root :to => 'home#index'
+	get 'auth/:provider/callback', to: "sessions#create"
+	delete 'sign_out', to:  "sessions#destroy", as: 'sign_out'
+
+	get '/users/update_profile' => 'users#update_profile', as: 'profile_update'
+ 	post '/users/update_profile' => 'users#save_update', as: ''
+    get '/users/profile/:nickname' => 'users#profile', as: 'users'
+    post '/users/checknickname' => 'users#checknickname', as: ''
+
+	get '/askrec' => 'home#forum'
+	get '/recblog' => 'home#blog'
+
+	scope '/recblog' do
+		resources :posts, except: [:index]
+	end
+
+	scope '/askrec' do
+		resources :questions, only: [:show, :new, :create]
+	end
+	
+	get '/team' => 'home#team'
+
+end

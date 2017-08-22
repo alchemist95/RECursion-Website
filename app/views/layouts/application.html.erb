@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RecursionWebsite</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'style', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'font-awesome.min', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'owl.carousel', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'owl.theme', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js", 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'owl.carousel.min', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'wow.min', 'data-turbolinks-track': 'reload' %>
+    
+    
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+
+  <body>
+
+     <% unless flash.empty? %>
+       <script type="text/javascript">
+            <% flash.each do |f| %>
+          <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
+           toastr['<%= type %>']('<%= f[1] %>');
+       <% end %>
+       </script>
+    <% end %>
+ 
+
+    <!-- Dropdown Structure -->
+    <ul id="dropdown1" class="dropdown-content">
+      <% if current_user %>
+          <ul >
+            <% if !current_user.nickname.blank? %>
+            <li><%= link_to 'View Profile', users_path(current_user.nickname) %></li>
+            <% end %>
+            <li class="divider"></li>
+            <li><%= link_to "Sign out", 'sign_out', method: :delete %></li>
+          </ul>
+      <% else %>
+          <ul>
+            <li><%= link_to 'Facebook', '/auth/facebook' %></li>
+            <li><%= link_to 'Github', '/auth/github' %></li>
+          </ul>
+      <% end %>
+    </ul>
+  <div class="navbar-fixed">
+    <nav class="cyan darken-2">
+      <div class="nav-wrapper">
+        <span class="brand-logo" style="margin-left: 20px;">RECursion</span>
+        <ul class="right hide-on-med-and-down">
+
+          <% if @blog_page %>
+          <li><a class="tooltipped" href="/recblog/posts/new" data-tooltip="Write an Article"><i class="material-icons">create</i></a></li>
+          <% end %>
+
+          <li class="<%= " active" if @home_page%>"><a class="tooltipped" href="/" data-tooltip="Home"><i class="material-icons">home</i></a></li>
+          <li class="<%= " active" if @blog_page%>"><a class="tooltipped" href="/recblog" data-tooltip="Blog"><i class="material-icons">view_module</i></a></li>
+          <li class="<%= " active" if @forum_page%>"><a class="tooltipped" href="/askrec" data-tooltip="Forum"><i class="material-icons">public</i></a></li>
+          <li>
+            <a class="dropdown-button" href="#!" data-activates="dropdown1">
+              <% if current_user %>
+              <i class="material-icons">account_circle</i>             
+              <% else %>
+              <i class="material-icons">vpn_key</i>             
+              <% end %>
+            </a>
+          </li>
+
+     </ul>
+      </div>
+    </nav>
+  </div>
+
+  <div style="height:100%;">
+
+    
+    <%= yield %>
+  
+  </div>
+<!-- 
+     <footer class="page-footer cyan darken-2">
+        <div class="container">
+          <span style="font-size: 16px; color: #e3f2fd;letter-spacing: 1px;" class="wow bounceInUp" data-wow-delay="1.5s" >Designed by RECursion | 2016</span>
+        </div>
+      </footer>
+  -->
+  </body>
+
+
+
+
+</html>

@@ -1,0 +1,55 @@
+ html{
+ 	height: 100%;
+ }
+
+ body{
+ 	height: 100%;
+ }
+
+ footer.page-footer {
+    margin-top: 0px !important;
+    padding-bottom: 20px;
+ }
+
+ .card-avatar .waves-effect {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.card-avatar img {
+	margin-top: 10px;
+    height: 150px;
+    width: 150px;
+    border-radius: 75px;
+}
+
+.card-avatar2 img {
+    height: 100px;
+    width: 100px;
+    border-radius: 55px;
+}
+
+.card-avatar .card-content {
+    text-align: center;
+}
+
+.card .card-content p {
+    margin: 15px 0px;
+}
+
+.card-avatar .card-content i {
+   font-size: 1.5rem;
+}
+
+.card-avatar .card-content .card-title {
+    line-height: 30px !important;
+}
+
+#owl-ca .item{
+  margin: 3px;
+}
+#owl-ca .item img{
+  display: block;
+  width: 100%;
+  height: auto;
+}

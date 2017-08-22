@@ -1,0 +1,14 @@
+
+<div class="container">
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <h3><%= @post.title %></h3>
+  <%= @post.description.html_safe %>
+</p>
+
+
+<%= render 'disqus' %>
+
+</div>

@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-offset-2 col-xs-12 col-sm-12 col-md-8">
+      <div class="panel panel-warning">
+        <div class="panel-heading ">
+          <div class="alert-icon">
+            <h3 class="panel-title "><i class="material-icons"></i> Hey, fill the form </h3>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="container">
+            <div class="row">
+              <%= form_tag("/users/update_profile", method: "post") do %>
+              <div class="col-sm-4">
+                <%if @user.first[:nickname].nil? || @user.first[:nickname].blank?%>
+                <div class="form-group label-floating">
+                  <label class="control-label"> Nickname</label>
+                  <input type="text" name="nickname" id="nickname" class="form-control">
+                  <span class="material-input"></span>
+                </div>
+                <span id="status"></span>
+                <%else%>
+                <div class="form-group label-floating">
+                  <label class="control-label"> Nickname</label>
+                  <input type="text" name="nickname" class="form-control" value="<%=@user.first[:nickname]%>" disabled/>
+                  <span class="material-input"></span>
+                </div>
+                <%end%>
+              </div>
+            </div>
+            <div class="row">
+              <div class=" col-sm-4">
+                <div class="form-group label-floating">
+                  <label class="control-label"> Name </label>
+                  <input type="text" name="name" class="form-control" value="<%=@user.first[:name]%>" />
+                  <span class="material-input"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="form-group label-floating ">
+                  <label class="control-label"> Institition </label>
+                  <input type="text" name="college" class="form-control" value="<%=@user.first[:college]%>" />
+                  <span class="material-input"></span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="row">
+                <div class="col-sm-4">
+                  <%=submit_tag "Update",class: " btn btn-success"%>
+                </div>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
