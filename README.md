@@ -1,24 +1,7 @@
-# README
+To start the application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Open your terminal and type
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1) bundle install
+2) rake db:migrate
+3) rails s
