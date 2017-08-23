@@ -54,8 +54,15 @@
         <span class="brand-logo" style="margin-left: 20px;">RECursion</span>
         <ul class="right hide-on-med-and-down">
 
+          <% if current_user && current_user.admin? %>
+            <li><a class="tooltipped" href="/sapphire" data-tooltip="Admin Page"><i class="material-icons">person_outline</i></a></li>       
+          <% end %>
+
           <% if @blog_page %>
           <li><a class="tooltipped" href="/recblog/posts/new" data-tooltip="Write an Article"><i class="material-icons">create</i></a></li>
+          <% end %>
+          <% if @forum_page %>
+          <li><a class="tooltipped" href="/askrec/questions/new" data-tooltip="Ask a question"><i class="material-icons">create</i></a></li>
           <% end %>
 
           <li class="<%= " active" if @home_page%>"><a class="tooltipped" href="/" data-tooltip="Home"><i class="material-icons">home</i></a></li>

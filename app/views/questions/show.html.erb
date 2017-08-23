@@ -1,2 +1,26 @@
-<h1>Questions#show</h1>
-<p>Find me in app/views/questions/show.html.erb</p>
+<div class="container">
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <h3><%= @question.title %></h3>
+  <%= @question.description.html_safe %>
+</p>
+
+
+<h4>Answers</h4>
+
+<div>
+	<% @answers.each do |answer| %>
+		<h4><%= raw(answer.description) %></h4>
+		<p><%= link_to User.find(answer.user_id).nickname, users_path(User.find(answer.user_id).nickname) %>
+		<hr />
+	<% end %>
+</div>
+
+
+<h4>Write an Answer</h4>
+
+<%= render 'answer', answer: @answer %>
+
+</div>

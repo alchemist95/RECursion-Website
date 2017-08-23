@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 	scope '/askrec' do
 		resources :questions, only: [:show, :new, :create]
 	end
+
+	post '/askrec/questions/:id' => 'questions#submit_answer', as: 'answer'
 	
 	get '/team' => 'home#team'
 

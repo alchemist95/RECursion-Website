@@ -1,0 +1,30 @@
+<%= form_for(question) do |f| %>
+  <% if question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+      <% question.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ <div class="input-field col s12">
+    <i class="material-icons prefix">mode_edit</i>
+    <%= f.text_field :title, placeholder: 'Title for your Question', required: ""%>
+  </div>
+
+  <div class="input-field col s12">
+    <%= f.cktext_area :description, :as => :ckeditor, input_html: {:ckeditor => {:toolbar => 'FULL'}}, required: "" %>
+  </div>
+
+  <br />
+
+ <button class="btn waves-effect waves-light" type="submit" name="action"><%= f.submit %>
+    <i class="material-icons right">send</i>
+  </button>
+
+
+<% end %>

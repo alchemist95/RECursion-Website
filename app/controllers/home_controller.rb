@@ -8,7 +8,7 @@ class HomeController < ApplicationController
 
 	def forum
 		@forum_page = true
-		@questions = Question.all
+		@questions = Question.all.paginate(page: params[:page], per_page: 5)
 	end
 
 	def blog

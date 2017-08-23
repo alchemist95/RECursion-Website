@@ -42,6 +42,9 @@ class UsersController  < ApplicationController
 
 	def profile
 		@user = User.where(nickname: params[:nickname]).first
+		@verified_posts = @user.posts.where(status: 1)
+		@pending_posts = @user.posts.where(status: 0)
+		@questions = @user.questions
 	end
 
 
