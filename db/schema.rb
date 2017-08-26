@@ -61,8 +61,6 @@ ActiveRecord::Schema.define(version: 20170823151638) do
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.integer  "likes"
-    t.integer  "status"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
