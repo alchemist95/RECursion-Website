@@ -123,7 +123,7 @@
 			           	<%= link_to image_tag(User.find(@users[x]).image_url, size: "80x80"), users_path(User.find(@users[x]).nickname) %>
 		           	<% end %>            		 
             	<% else %>
-            		<%= "0" %>
+            		<%= "No one" %>
         		<% end %>	
             </div>
           </div>
