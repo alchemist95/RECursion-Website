@@ -20,13 +20,16 @@ class QuestionsController < ApplicationController
   end
 
   def show
+
   	@question = Question.find(params[:id])
-    @answers = @question.answers
     @answer = Answer.new
+    @answers = @question.answers
+    @users = @answers.group(:user_id).pluck(:user_id)  
+
   end
 
   def submit_answer
-    
+
     answer = Answer.new(answer_params)
     answer.user_id = current_user.id
     answer.question_id = params[:id]
@@ -34,7 +37,25 @@ class QuestionsController < ApplicationController
     redirect_to question_path
 
   end
- 
+
+  def upvote
+    question = Question.find(params[:id])
+    if current_user.already_upvoted(question)
+      question.upvotes.where(user_id: current_user.id).destroy_all 
+    else
+      question.upvotes.where(user_id: current_user.id).first_or_create
+    end
+  end
+
+  def follow
+    question = Question.find(params[:id])
+    if current_user.already_followed(question)
+      question.follows.where(user_id: current_user.id).destroy_all 
+    else
+      question.follows.where(user_id: current_user.id).first_or_create
+    end
+  end
+
   private
 
   def question_params

@@ -1,26 +1,235 @@
-<div class="container">
+<% content_for :heading do %>
+	askREC
+<% end %>
 
 <p id="notice"><%= notice %></p>
 
-<p>
-  <h3><%= @question.title %></h3>
-  <%= @question.description.html_safe %>
-</p>
+<div class="container-fluid">
 
+	<div class="col s12 m8 l8">
+	    <div class="card">
+			<div class="text-center" style="padding: 10px">
+			    <h4><%= @question.title %></h4>
+			</div>
+			<hr />
+			<div class="card-content">
+				<div class="text-center" style="padding: 15px;">
+				    <h6><%= @question.description.html_safe %></h6>
+					<hr />
+					<div class="row">
+						<div class="question_id" id='<%= @question.id %>'></div>	
+						<div class="upvote_status" id='<%= current_user.already_upvoted(@question) %>'></div>
+						<div class="follow_status" id='<%= current_user.already_followed(@question) %>'></div>		
+						<div id='upvote_downvote'>
+							<% if current_user && current_user.already_upvoted(@question) %>
 
-<h4>Answers</h4>
+								<a href='#' class='btn waves-effect' style="background-color: #1976d2" id='upvoteButton'>Downvote</a>
 
-<div>
-	<% @answers.each do |answer| %>
-		<h4><%= raw(answer.description) %></h4>
-		<p><%= link_to User.find(answer.user_id).nickname, users_path(User.find(answer.user_id).nickname) %>
+							<% else %>
+
+								<a href='#' class='btn waves-effect' style="background-color: #1976d2" id='upvoteButton'>Upvote</a>
+
+							<% end %>
+							
+							<button class='btn waves-effect' style="background-color: #0d47a1" id='showAnswerForm'>	Answer</button>
+		
+							<% if current_user && current_user.already_followed(@question) %>
+
+								<button class='btn waves-effect waves-light' style="background-color: #1565c0" id='followButton'>Unfollow</button>
+
+							<% else %>
+
+								<button class='btn waves-effect waves-light' style="background-color: #1565c0" id='followButton'>Follow</button>
+
+							<% end %>
+
+						</div>
+					</div>
+				</div>
+
+	        </div>
+		</div>   	
+ 
+			<%= social_share_button_tag(@question.title) %>
+	
+		<div id ='answerForm'>
+
+			<%= form_for(@answer, url: answer_path) do |f| %>
+				  <% if @answer.errors.any? %>
+				    <div id="error_explanation">
+				      <h2><%= pluralize(answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
+
+				      <ul>
+				      <% answer.errors.full_messages.each do |message| %>
+				        <li><%= message %></li>
+				      <% end %>
+				      </ul>
+				    </div>
+				  <% end %>
+
+				  <div class="input-field">
+				    <%= f.cktext_area :description, :as => :ckeditor, input_html: {:ckeditor => {:toolbar => 'mini'}}, required: "" %>
+				  </div>
+				  <br />
+				  <button style="background-color: #0d47a1" class="btn waves-effect right" type="submit" name="action"><%= f.submit "Post" %></button>
+			
+			<% end %>
+
+		</div>
+		<br />
 		<hr />
-	<% end %>
+
+		<% if @answers.any? %>
+			<h4><%= @answers.count %> Answer<% if @answers.count > 1 %>s<% end %></h4>
+
+			<% @answers.each do |answer| %>
+
+			    <div class="card">
+					<div class="card-content" style="padding: 10px">
+						<h6 class='cyan' style="float:right"><%= answer.created_at.strftime('%b %d, %Y') %></h6><br />
+						<h4><%= raw(answer.description) %></h4>
+						<h6 class='cyan' style="display: inline-block; float: left; margin-right: 20px"><%= User.find(answer.user_id).nickname %></h6>
+						<span style="display: inline-block">	
+						<%= link_to image_tag(User.find(answer.user_id).image_url, size: "50x50"), users_path(User.find(answer.user_id).nickname) %>
+						</span>
+						
+					</div>
+				</div>   
+
+			<% end %>
+
+		<% end %>
+
+	</div>
+
+	<div class="col s12 m4 l4">
+
+          <div class="card">
+            <div class="text-center" style="padding: 10px">
+            	<h5>This question was posted by</h5>
+            </div>
+            <div class="card-content text-center">
+            	<%= link_to image_tag(User.find(@question.user_id).image_url, size: "150x150"), users_path(User.find(@question.user_id).nickname) %>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="text-center">
+            	<h5>This question has been answered by</h5>
+            </div>
+            <div class="card-content text-center">
+            	<% if @users.count > 0 %>
+            		<% [@users.count, 5].min.times do |x| %>
+			           	<%= link_to image_tag(User.find(@users[x]).image_url, size: "80x80"), users_path(User.find(@users[x]).nickname) %>
+		           	<% end %>            		 
+            	<% else %>
+            		<%= "0" %>
+        		<% end %>	
+            </div>
+          </div>
+
+          <div class="col s6 m6 l6">
+          <div class="card">
+            <div class="text-center">
+            	<h5>Upvotes</h5>
+            </div>
+            <div class="card-content text-center">
+        		<div class='upvotes_count' style="font-size: 30px;"><%= @question.upvotes.count %></div>
+            </div>
+          </div>
+          </div>
+
+
+			<div class="col s6 m6 l6">
+          <div class="card">
+            <div class="text-center">
+            	<h5>Followed by</h5>
+            </div>
+            <div class="card-content text-center">
+        		<div class='follow_count' style="font-size: 30px;"><%= @question.follows.count %></div>
+            </div>
+          </div>
+          </div>
+
+          
+
+        </div>
+
+	</div>
+
 </div>
 
 
-<h4>Write an Answer</h4>
+<script>
 
-<%= render 'answer', answer: @answer %>
+$(document).ready(function(){
+	$("#answerForm").hide();
 
-</div>
+	$("#showAnswerForm").click(function() {
+		$("#answerForm").show();
+		$("#showAnswerForm").prop('disabled', true);
+	});
+
+	$("#upvoteButton").click(function() {
+		event.preventDefault();
+		var id = $(".question_id").attr("id");
+	 	var count = parseInt($(".upvotes_count").text());
+	 	var status = $(".upvote_status").attr("id");
+	 	
+	 	$.ajax({
+	 		type: 'GET',
+	 		url: '/askrec/questions/'+id+'/upvote',
+	 		dataType: "json",
+	 		success: function(){
+
+	 			if(status === 'false'){
+	 				count++;
+	 				$(".upvote_status").attr('id', 'true');
+	 				$("#upvoteButton").html("Downvote");
+	 			}
+	 			else{
+	 				count--;
+	 				$(".upvote_status").attr('id', 'false');
+	 				$("#upvoteButton").html("Upvote");
+	 			}
+
+				$(".upvotes_count").html(count);
+			},
+	 		error: function(){
+	 			alert("Failure!");
+	 		}
+	 	})
+	});
+
+	$("#followButton").click(function() {
+		event.preventDefault();
+		var id = $(".question_id").attr("id");
+		var count = parseInt($(".follow_count").text());
+		var status = $(".follow_status").attr("id");
+		$.ajax({
+			type: 'GET',
+			url: '/askrec/questions/'+id+'/follow',
+			dataType:  "json",
+			success: function(){
+				if(status === 'false'){
+					$(".follow_status").attr('id', 'true');
+					$("#followButton").html('Unfollow');
+					count++;
+				}
+				else{
+					$(".follow_status").attr('id', 'false');
+					$("#followButton").html('Follow');	
+					count--;
+				}
+				$(".follow_count").html(count);
+			},
+	 		error: function(){
+	 			alert("Failure!");
+	 		}
+		})
+
+	})
+
+});
+
+</script>

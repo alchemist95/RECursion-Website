@@ -3,7 +3,11 @@ class User < ApplicationRecord
 	has_many :identities
 	has_many :posts
 	has_many :questions
+	has_many :likes
 	has_many :answers
+	has_many :upvotes
+	has_many :comments
+	has_many :follows
 
 	enum role: [ :normal, :admin ]
 
@@ -46,6 +50,18 @@ class User < ApplicationRecord
 		user.save!
 		user
 
+	end
+
+	def already_liked(post)
+		post.likes.where(user_id: id).any?
+	end
+
+	def already_upvoted(question)
+		question.upvotes.where(user_id: id).any?
+	end
+
+	def already_followed(question)
+		question.follows.where(user_id: id).any?
 	end
 
 end

@@ -12,10 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require materialize-sprockets
 //= require turbolinks
 //= require_tree .
 //= require ckeditor/init
+//= require social-share-button
 
 $(document).ready(function(){
   $("#owl-ca").owlCarousel({

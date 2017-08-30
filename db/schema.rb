@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170823151638) do
+ActiveRecord::Schema.define(version: 20170830093646) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "description"
@@ -33,12 +33,25 @@ ActiveRecord::Schema.define(version: 20170823151638) do
     t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
-  create_table "events", force: :cascade do |t|
-    t.string   "title"
-    t.integer  "type"
-    t.integer  "interested"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "comments", force: :cascade do |t|
+    t.string   "body"
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.integer  "answer_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["answer_id"], name: "index_comments_on_answer_id"
+    t.index ["question_id"], name: "index_comments_on_question_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["question_id"], name: "index_follows_on_question_id"
+    t.index ["user_id"], name: "index_follows_on_user_id"
   end
 
   create_table "identities", force: :cascade do |t|
@@ -52,16 +65,23 @@ ActiveRecord::Schema.define(version: 20170823151638) do
   create_table "lectures", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.integer  "likes"
     t.date     "held_on"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_likes_on_post_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.integer  "likes"
     t.integer  "status"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -71,10 +91,18 @@ ActiveRecord::Schema.define(version: 20170823151638) do
   create_table "questions", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.integer  "likes"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
+  end
+
+  create_table "upvotes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["question_id"], name: "index_upvotes_on_question_id"
+    t.index ["user_id"], name: "index_upvotes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

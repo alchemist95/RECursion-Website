@@ -11,15 +11,14 @@
     </div>
   <% end %>
 
-  <div class="input-field col s12">
-    <%= f.cktext_area :description, :as => :ckeditor, input_html: {:ckeditor => {:toolbar => 'FULL'}}, required: "" %>
+
+
+  <div class="input-field col s12" style="height: 500px;">
+    <%= f.cktext_area :description, :as => :ckeditor, input_html: {:ckeditor => {:toolbar => 'FULL'}}, required: "", rows: 30 %>
   </div>
 
-  <br />
+  <button class="btn waves-effect waves-light right" type="submit" name="action"><%= f.submit "Post" %></button>
 
- <button class="btn waves-effect waves-light" type="submit" name="action"><%= f.submit %>
-    <i class="material-icons right">send</i>
-  </button>
 
 
 <% end %>

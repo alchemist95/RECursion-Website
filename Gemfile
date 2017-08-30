@@ -9,17 +9,20 @@ end
 gem 'omniauth-facebook'
 # For Github Authentication
 gem 'omniauth-github'
+# For Google Authentication
+gem "omniauth-google-oauth2"
+
 # For bootstrap
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
-# For Materialize
-gem 'materialize-sass'
 
 gem 'cancancan'
 
 gem 'ckeditor'
 
 gem 'will_paginate'
+
+gem 'social-share-button'
 
 # Rails Admin Support
 gem 'rails_admin'

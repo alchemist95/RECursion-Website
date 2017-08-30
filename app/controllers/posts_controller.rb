@@ -55,6 +55,16 @@ class PostsController < ApplicationController
     end
   end
 
+  def like
+    post = Post.find(params[:id])
+    post.likes.where(user_id: current_user.id).first_or_create
+  end
+
+  def unlike
+    post = Post.find(params[:id])    
+    post.likes.where(user_id: current_user.id).destroy_all
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
