@@ -16,6 +16,11 @@ class HomeController < ApplicationController
 		@posts = Post.all.paginate(page: params[:page], per_page: 5)
 	end
 
+	def getstarted
+		@getstarted_page = true
+		
+	end
+
 	def events
 
 	end

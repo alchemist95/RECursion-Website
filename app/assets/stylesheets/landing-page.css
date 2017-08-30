@@ -13,14 +13,16 @@ html {
 .topnav {
     font-size: 14px;
 }
-
+.div-with-bg {
+    background: color url(../icons/15.jpg) ;
+}
 .lead {
     font-size: 18px;
     font-weight: 400;
 }
 
 .intro-header {
-    padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    padding-top: 50px;/*If you're making other pages,make sure there is 50px of padding to make sure the navbar doesn't overlap content!*/
     padding-bottom: 50px;
     text-align: center;
     color: #f8f8f8;
@@ -29,7 +31,15 @@ html {
     background-size: cover;
 }
 
-
+.get-started{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: center;
+    color: #f8f8f8;
+    background: url(../icons/14.jpg) no-repeat center center;
+    opacity: 0.7;
+    background-size: cover;
+}
 .intro-message {
     position: relative;
     padding-top: 5%;
@@ -43,10 +53,29 @@ html {
     color: #80cbc4;
     letter-spacing: 10px;
 }
+.get-message > h1 {
+    margin: 0;
+    text-shadow: 3px 3px 0px #2c2e38, 5px 5px 0px #5c5f72;
+    font-size: 10em;
+    color: #c17d66;
+    letter-spacing: 10px;
+}
+.get-message > p{
+    position: relative;
+    padding-top: 10%;
+    padding-bottom: 20%;
+    color: #111111;
+    font-size: 2em;
+}
 
 .intro-divider {
+    width: 1000px;
+    border-top: 10px solid #f8f8f8;
+    border-bottom: 10px solid rgba(0,0,0,0.2);
+}
+.get-divider {
     width: 500px;
-    border-top: 1px solid #f8f8f8;
+    border-top: 1px solid #a50d0d;
     border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 
@@ -154,23 +183,11 @@ html {
     }
 }
 
-p.copyright {
-    margin: 15px 0 0;
-}
-.text-input{
-    padding-left: 8%;
-    padding-right: 8%;
-}
-.heading{
-    font-size: 15px;
-}
-.content{
-    height: 200px;
-}
-.search-form{
-    padding: 10px 2% 0 2%;
-}
 footer {
     padding: 50px 0;
     background-color: #f8f8f8;
+}
+
+p.copyright {
+    margin: 15px 0 0;
 }

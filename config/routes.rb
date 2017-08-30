@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
 	get '/askrec' => 'home#forum'
 	get '/recblog' => 'home#blog'
+	get '/getstarted' => 'home#getstarted'
 
 	scope '/recblog' do
 		resources :posts, except: [:index]
