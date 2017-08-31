@@ -2,12 +2,20 @@
 	askREC
 <% end %>
 
+<style>
+	
+	a:hover{
+		background-color: navajowhite;
+	}
+
+</style>
+
 <p id="notice"><%= notice %></p>
 
 <div class="container-fluid">
 
 	<div class="col s12 m8 l8">
-	    <div class="card">
+	    <div class="card" style="height:100%">
 			<div class="text-center" style="padding: 10px">
 			    <h4><%= @question.title %></h4>
 			</div>
@@ -15,7 +23,7 @@
 			<div class="card-content">
 				<div class="text-center" style="padding: 15px;">
 				    <h6><%= @question.description.html_safe %></h6>
-					<hr />
+				    <br />
 					<div class="row">
 						<div class="question_id" id='<%= @question.id %>'></div>	
 						<div class="upvote_status" id='<%= current_user.already_upvoted(@question) %>'></div>
@@ -41,24 +49,104 @@
 
 								<button class='btn waves-effect waves-light' style="background-color: #1565c0" id='followButton'>Follow</button>
 
-							<% end %>
-
+							<% end %>					
 						</div>
 					</div>
 				</div>
-
 	        </div>
 		</div>   	
+
+		<div class="row">
+
+		  	<div class="input-field col s11 m11 l11">
+			  		<input placeholder="Add a comment" id="commentForm">
+			</div>
+			<div class="col s1 m1 l1">
+				<button style="background-color: #2196f3; margin-top: 20px;	" class="btn" id="commentButton"><i class="material-icons">send</i></button>
+			</div>					
+
+
+		</div>
+
+		<div id="commentStatus"></div>
  
-			<%= social_share_button_tag(@question.title) %>
-	
+
+	</div>
+
+	<div class="col s12 m4 l4">
+
+		<div class="card" style="overflow: auto; height: 400px">
+			<div class="text-center" style="padding: 10px">
+				<h5>Comments</h5>
+			</div>
+			<hr />
+			<div class="card-content" id="commentSection">
+				
+				<% @comments.each do |comment| %>
+					<div class="row">
+						<div class="col s9 m9 l9">	
+							<p style="word-wrap:break-word; padding: 5px;" class="cyan lighten-5"><%= comment.body %>   <b><%= comment.created_at.strftime('%H:%M, %b %d') %></b></p>
+						</div>
+						<div class="col s3 m3 l3 text-center">
+							<p style="padding: 5px;" class="cyan">
+							<% if current_user.id == comment.user_id %>
+								<%= "You" %>
+							<% else %>
+								<%= link_to User.find(comment.user_id).nickname, users_path(User.find(comment.user_id).nickname) %>
+							<% end %>
+							</p>
+						</div>
+					</div>
+				<% end %>
+			</div>
+
+		</div>
+
+
+		<div class="row">
+
+			<div class="col s6 m6 l6">	
+				<div class="card" >
+					<div class="text-center" style="padding: 10px;">
+						<h6>Upvotes</h6>
+					</div>
+					<hr />
+					<div class="card-content text-center">
+						<span class="upvotes_count" style="font-size: 30px;"><%= @question.upvotes.count %></span>
+					</div>
+				</div>
+			</div>
+
+			<div class="col s6 m6 l6">	
+				<div class="card" >
+					<div class="text-center" style="padding: 10px;"">
+						<h6>Followed by</h6>
+					</div>
+					<hr />
+					<div class="card-content text-center">
+						<span class="follow_count" style="font-size: 30px;"><%= @question.follows.count %></span>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	          
+
+        </div>
+
+	</div>
+
+	<hr />
+
+	<div class="container-fluid">
+
 		<div id ='answerForm'>
 
+			<div class="container">
 			<%= form_for(@answer, url: answer_path) do |f| %>
 				  <% if @answer.errors.any? %>
 				    <div id="error_explanation">
 				      <h2><%= pluralize(answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
-
 				      <ul>
 				      <% answer.errors.full_messages.each do |message| %>
 				        <li><%= message %></li>
@@ -74,10 +162,10 @@
 				  <button style="background-color: #0d47a1" class="btn waves-effect right" type="submit" name="action"><%= f.submit "Post" %></button>
 			
 			<% end %>
-
+			</div>
 		</div>
 		<br />
-		<hr />
+
 
 		<% if @answers.any? %>
 			<h4><%= @answers.count %> Answer<% if @answers.count > 1 %>s<% end %></h4>
@@ -98,72 +186,70 @@
 
 			<% end %>
 
+		<% else %>
+			<h4>No Answer to this question yet</h4>
 		<% end %>
-
-	</div>
-
-	<div class="col s12 m4 l4">
-
-          <div class="card">
-            <div class="text-center" style="padding: 10px">
-            	<h5>This question was posted by</h5>
-            </div>
-            <div class="card-content text-center">
-            	<%= link_to image_tag(User.find(@question.user_id).image_url, size: "150x150"), users_path(User.find(@question.user_id).nickname) %>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="text-center">
-            	<h5>This question has been answered by</h5>
-            </div>
-            <div class="card-content text-center">
-            	<% if @users.count > 0 %>
-            		<% [@users.count, 5].min.times do |x| %>
-			           	<%= link_to image_tag(User.find(@users[x]).image_url, size: "80x80"), users_path(User.find(@users[x]).nickname) %>
-		           	<% end %>            		 
-            	<% else %>
-            		<%= "No one" %>
-        		<% end %>	
-            </div>
-          </div>
-
-          <div class="col s6 m6 l6">
-          <div class="card">
-            <div class="text-center">
-            	<h5>Upvotes</h5>
-            </div>
-            <div class="card-content text-center">
-        		<div class='upvotes_count' style="font-size: 30px;"><%= @question.upvotes.count %></div>
-            </div>
-          </div>
-          </div>
-
-
-			<div class="col s6 m6 l6">
-          <div class="card">
-            <div class="text-center">
-            	<h5>Followed by</h5>
-            </div>
-            <div class="card-content text-center">
-        		<div class='follow_count' style="font-size: 30px;"><%= @question.follows.count %></div>
-            </div>
-          </div>
-          </div>
-
-          
-
-        </div>
 
 	</div>
 
 </div>
 
 
+
+
 <script>
 
 $(document).ready(function(){
 	$("#answerForm").hide();
+	$('#commentButton').prop('disabled', true);
+
+	$("#commentForm").keyup(function() {
+		var comment = $(this).val();
+		var id = $(".question_id").attr("id");
+
+		if( comment.length > 140){
+			$('#commentStatus').hide().html('<p>A comment can be of 140 letters at max</p>').fadeIn("slow");
+			$('#commentButton').prop('disabled', true);
+			return;
+		}
+		else if( comment.length < 1){
+			$('#commentButton').prop('disabled', true);
+			return;
+		}
+		else{
+			$('#commentButton').prop('disabled', false);
+			return;
+		}
+
+	});
+
+
+	$("#commentButton").click(function(){
+		
+		var comment = $("#commentForm").val();
+		console.log(comment);
+		var id = $(".question_id").attr("id");
+
+		$.ajax({
+	 		type: 'POST',
+	 		url: '/askrec/questions/'+id+'/comment',
+			data: {"body": comment},
+	 		success: function(){
+	 			console.log("Done!!");
+
+			 	var newComment = '<div class="row"><div class="col s9 m9 l9"><p style="word-wrap:break-word; padding: 5px;" class="cyan lighten-5">'+comment+'   <b>Now</b></p></div><div class="col s3 m3 l3 text-center"><p style="padding: 5px;" class="cyan">You</p></div></div>';
+			
+			 	var div = document.getElementById('commentSection');
+			 	div.innerHTML = newComment + div.innerHTML;
+			},
+	 		error: function(){
+	 			alert("Failure!");
+	 		}
+	 	});
+	 	$("#commentForm").val("");
+
+	});
+
 
 	$("#showAnswerForm").click(function() {
 		$("#answerForm").show();
@@ -228,7 +314,9 @@ $(document).ready(function(){
 	 		}
 		})
 
-	})
+	});
+
+
 
 });
 

@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-
+  
   def new
   	@question = Question.new
   end
@@ -25,6 +25,7 @@ class QuestionsController < ApplicationController
     @answer = Answer.new
     @answers = @question.answers
     @users = @answers.group(:user_id).pluck(:user_id)  
+    @comments = @question.comments.order(created_at: :desc)
 
   end
 
@@ -37,6 +38,16 @@ class QuestionsController < ApplicationController
     redirect_to question_path
 
   end
+
+  def add_comment
+
+    comment = Comment.new(body: params[:body])
+    comment.user_id = current_user.id
+    comment.question_id = params[:id]
+    comment.save!
+
+  end
+
 
   def upvote
     question = Question.find(params[:id])
