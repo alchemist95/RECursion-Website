@@ -1,4 +1,6 @@
-<% @lectures.each do |lecture| %>
-  <h4><%= link_to lecture.title, lecture_path(lecture.held_on) %></h4>
-  <h5>Held on <%= lecture.held_on %></h5>
+<% content_for :heading do %>
+	RECursion Weekly Lectures
 <% end %>
+
+
+

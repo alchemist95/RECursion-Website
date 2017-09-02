@@ -15,14 +15,13 @@ gem "omniauth-google-oauth2"
 # For bootstrap
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
-
 gem 'cancancan'
-
 gem 'ckeditor'
-
 gem 'will_paginate'
-
 gem 'social-share-button'
+
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 
 # Rails Admin Support
 gem 'rails_admin'

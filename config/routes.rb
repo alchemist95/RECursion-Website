@@ -39,4 +39,6 @@ Rails.application.routes.draw do
 
 	get '/team' => 'home#team'
 
+	resources :events, only: [:show, :index]
+
 end

@@ -28,7 +28,9 @@
             <li><a class="tooltipped" href="/askrec/questions/new" data-tooltip="Ask a question"><i class="material-icons">create</i></a></li>
             <% end %>
 
+
             <li class="<%= " active" if @home_page%>"><a class="tooltipped" href="/" data-tooltip="Home"><i class="material-icons">home</i></a></li>
+            <li class="<%= " active" if @events_page%>"><a class="tooltipped" href="/events" data-tooltip="Event"><i class="material-icons">event</i></a></li>
             <li class="<%= " active" if @blog_page%>"><a class="tooltipped" href="/recblog" data-tooltip="Blog"><i class="material-icons">view_module</i></a></li>
             <li class="<%= " active" if @forum_page%>"><a class="tooltipped" href="/askrec" data-tooltip="Forum"><i class="material-icons">public</i></a></li>
             <% if current_user %>

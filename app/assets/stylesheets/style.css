@@ -8,6 +8,25 @@
   margin: auto;
  }
 
+.fc-left h2{
+  font-size: 36px;
+  color: #066696;
+}
+
+.fc-view-container{
+  color: #1976d2;
+}
+
+.fc-content{
+  white-space: inherit !important; 
+  overflow: auto !important;
+}
+
+.fc-title{
+  color: white !important;
+}
+
+
 .TextWrap{
     float: left;
     margin: 10px;

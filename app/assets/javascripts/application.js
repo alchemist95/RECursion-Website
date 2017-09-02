@@ -16,3 +16,6 @@
 //= require_tree .
 //= require ckeditor/init
 //= require social-share-button
+//= require moment
+//= require fullcalendar
+

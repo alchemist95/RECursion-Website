@@ -1,0 +1,36 @@
+<% content_for :heading do %>
+	Event Calendar
+<% end %>
+<br />
+
+
+
+<div class="container-fluid">
+
+<div class="col s12 m8 l8">
+	<div class="card" style="background-color: #f4f6f7">
+		<div id='calendar' style="padding: 50px"></div>
+	</div>
+</div>
+
+<div class="col s12 m4 l4">
+	<div class="card">
+		<div class="text-center">
+			<h4 style="padding: 10px">Upcoming Events</h4>
+		</div>
+		<hr />
+		<div class="card-content">
+		</div>
+	</div>
+</div>
+
+</div>
+
+<script>
+  
+  $('#calendar').fullCalendar({
+    events: '/events.json'
+  });
+
+</script>
+
