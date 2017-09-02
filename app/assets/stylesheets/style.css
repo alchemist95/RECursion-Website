@@ -5,6 +5,7 @@
  body{
  	height: 100%;
   font-family: 'Ubuntu', serif;
+  margin: auto;
  }
 
 .TextWrap{

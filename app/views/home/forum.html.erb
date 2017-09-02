@@ -12,12 +12,12 @@
 
         <div class="col s12 m12 l12">
           <div class="card">
-            <div class="text-center" style="padding: 10px">
-                <h4><%= question.title %></h4>
+            <div class="text-center" style="padding: 5px">
+                <h5><%= question.title %></h5>
 								<div class="card-content">
                 <h6><%= question.created_at.strftime('%b %d, %Y') %></h6>
                 <h6>Upvoted by <%= question.upvotes.count %></h6>
-            </div>
+                </div>
               <div class="text-center">
                 <%= link_to "DISCUSS", question_path(question), class: 'waves-effect waves-light btn' %>
 							</div>

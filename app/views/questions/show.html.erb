@@ -75,7 +75,7 @@
 
 	<div class="col s12 m4 l4">
 
-		<div class="card" style="overflow: auto; height: 400px">
+		<div class="card" style="overflow: auto; height: 400px;">
 			<div class="text-center" style="padding: 10px">
 				<h5>Comments</h5>
 			</div>
@@ -85,10 +85,10 @@
 				<% @comments.each do |comment| %>
 					<div class="row">
 						<div class="col s9 m9 l9">	
-							<p style="word-wrap:break-word; padding: 5px;" class="cyan lighten-5"><%= comment.body %>   <b><%= comment.created_at.strftime('%H:%M, %b %d') %></b></p>
+							<p style="word-wrap:break-word; padding: 5px;" class="cyan lighten-4"><%= comment.body %>   <b><%= comment.created_at.strftime('%H:%M, %b %d') %></b></p>
 						</div>
 						<div class="col s3 m3 l3 text-center">
-							<p style="padding: 5px;" class="cyan">
+							<p style="padding: 5px;" class="cyan darken-2">
 							<% if current_user.id == comment.user_id %>
 								<%= "You" %>
 							<% else %>
@@ -106,7 +106,7 @@
 		<div class="row">
 
 			<div class="col s6 m6 l6">	
-				<div class="card" >
+				<div class="card" style="background-color: #F8FFF9;">
 					<div class="text-center" style="padding: 10px;">
 						<h6>Upvotes</h6>
 					</div>
@@ -118,7 +118,7 @@
 			</div>
 
 			<div class="col s6 m6 l6">	
-				<div class="card" >
+				<div class="card" style="background-color: #F8FFF9;">
 					<div class="text-center" style="padding: 10px;"">
 						<h6>Followed by</h6>
 					</div>
@@ -138,8 +138,7 @@
 
 	<hr />
 
-	<div class="container-fluid">
-
+	<div class="container-fluid">	
 		<div id ='answerForm'>
 
 			<div class="container">
@@ -166,13 +165,20 @@
 		</div>
 		<br />
 
-
 		<% if @answers.any? %>
 			<h4><%= @answers.count %> Answer<% if @answers.count > 1 %>s<% end %></h4>
+		<% end %>
+	</div>
 
+
+	<div class="container">
+
+
+
+		<% if @answers.any? %>
 			<% @answers.each do |answer| %>
 
-			    <div class="card">
+			    <div class="card" style="background-color: #FCFDFB;">
 					<div class="card-content" style="padding: 10px">
 						<h6 class='cyan' style="float:right"><%= answer.created_at.strftime('%b %d, %Y') %></h6><br />
 						<h4><%= raw(answer.description) %></h4>
@@ -198,7 +204,6 @@
 
 
 <script>
-
 $(document).ready(function(){
 	$("#answerForm").hide();
 	$('#commentButton').prop('disabled', true);

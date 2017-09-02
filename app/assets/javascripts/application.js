@@ -16,14 +16,3 @@
 //= require_tree .
 //= require ckeditor/init
 //= require social-share-button
-
-$(document).ready(function(){
-  $("#owl-ca").owlCarousel({
-      autoPlay: 5000, //Set AutoPlay to 3 seconds
-      items : 3,
-      itemsDesktop : [1199,3],
-      itemsDesktopSmall : [979,3],
-      slideSpeed: 200,
-      responsive: true
-  });
-});

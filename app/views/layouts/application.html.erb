@@ -1,89 +1,55 @@
 <!DOCTYPE html>
 <html>
-  <head>
+  <head>  
     <title>RecursionWebsite</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag    'style', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag    'owl.carousel', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag    'owl.theme', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag    'materialize', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js", 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'owl.carousel.min', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'wow.min', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'materialize.min', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu">
+  
   </head>
-
   <body>
+  <header>
+    <div class="navbar-fixed">
+      <nav class="cyan darken-2">
+        <div class="nav-wrapper">
+          <span class="brand-logo" style="margin-left: 20px;"><%= yield :heading %></span>
+          <ul class="right hide-on-med-and-down">
 
-     <% unless flash.empty? %>
-       <script type="text/javascript">
-            <% flash.each do |f| %>
-          <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
-           toastr['<%= type %>']('<%= f[1] %>');
-       <% end %>
-       </script>
-    <% end %>
+            <% if current_user && current_user.admin? %>
+              <li><a class="tooltipped" href="/sapphire" data-tooltip="Admin Page" target="_blank"><i class="material-icons">person_outline</i></a></li>
+            <% end %>
 
+            <% if @blog_page %>
+            <li><a class="tooltipped" href="/recblog/posts/new" data-tooltip="Write an Article"><i class="material-icons">create</i></a></li>
+            <% end %>
+            <% if @forum_page %>
+            <li><a class="tooltipped" href="/askrec/questions/new" data-tooltip="Ask a question"><i class="material-icons">create</i></a></li>
+            <% end %>
 
-
-    </ul>
-  <div class="navbar-fixed">
-    <nav class="cyan darken-2">
-      <div class="nav-wrapper">
-        <span class="brand-logo" style="margin-left: 20px;"><%= yield :heading %></span>
-        <ul class="right hide-on-med-and-down">
-
-          <% if current_user && current_user.admin? %>
-            <li><a class="tooltipped" href="/sapphire" data-tooltip="Admin Page" target="_blank"><i class="material-icons">person_outline</i></a></li>
-          <% end %>
-
-          <% if @blog_page %>
-          <li><a class="tooltipped" href="/recblog/posts/new" data-tooltip="Write an Article"><i class="material-icons">create</i></a></li>
-          <% end %>
-          <% if @forum_page %>
-          <li><a class="tooltipped" href="/askrec/questions/new" data-tooltip="Ask a question"><i class="material-icons">create</i></a></li>
-          <% end %>
-
-          <li class="<%= " active" if @home_page%>"><a class="tooltipped" href="/" data-tooltip="Home"><i class="material-icons">home</i></a></li>
-          <li class="<%= " active" if @blog_page%>"><a class="tooltipped" href="/recblog" data-tooltip="Blog"><i class="material-icons">view_module</i></a></li>
-          <li class="<%= " active" if @forum_page%>"><a class="tooltipped" href="/askrec" data-tooltip="Forum"><i class="material-icons">public</i></a></li>
-          <% if current_user %>
-              <li><%= link_to "Sign out", sign_out_path, method: :delete%></li>
-          <% else %>
-            <li><a href="/auth/facebook"><i class="material-icons">vpn_key</i></a></li>
-            <li><a href="/auth/google_oauth2"><i class="material-icons">vpn_key</i></a></li>
-            <li><a href="/auth/github"><i class="material-icons">vpn_key</i></a></li>
-          <% end %>
-          </li>
-      </ul>
-      </div>
-    </nav>
-  </div>
-
-
-
+            <li class="<%= " active" if @home_page%>"><a class="tooltipped" href="/" data-tooltip="Home"><i class="material-icons">home</i></a></li>
+            <li class="<%= " active" if @blog_page%>"><a class="tooltipped" href="/recblog" data-tooltip="Blog"><i class="material-icons">view_module</i></a></li>
+            <li class="<%= " active" if @forum_page%>"><a class="tooltipped" href="/askrec" data-tooltip="Forum"><i class="material-icons">public</i></a></li>
+            <% if current_user %>
+                <li><%= link_to "Sign out", sign_out_path, method: :delete%></li>
+            <% else %>
+              <li><a href="/auth/facebook"><i class="material-icons">vpn_key</i></a></li>
+              <li><a href="/auth/google_oauth2"><i class="material-icons">vpn_key</i></a></li>
+              <li><a href="/auth/github"><i class="material-icons">vpn_key</i></a></li>
+            <% end %>
+            </li>
+        </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
 
   <div class="row" style="height:100%;">
-
 
     <%= yield %>
 
   </div>
-<!--
-     <footer class="page-footer cyan darken-2">
-        <div class="container">
-          <span style="font-size: 16px; color: #e3f2fd;letter-spacing: 1px;" class="wow bounceInUp" data-wow-delay="1.5s" >Designed by RECursion | 2016</span>
-        </div>
-      </footer>
-  -->
   </body>
-
-
-
 
 </html>
