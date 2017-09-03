@@ -50,6 +50,65 @@
      </div>
     </div>
 
+<div class="section no-pad-bot white scrollspy" id="event">
+        <div class="container">
+          <h2 class="wow fadeInUp" data-wow-duration="3000ms">Events</h2>
+          <div class="row">
+         <div class="col s12">
+           <ul class="tabs">
+             <li class="tab col s6"><a class="active wow slideInDown" data-wow-duration="3000ms" href="#future">Future</a></li>
+             <li class="tab col s6"><a class="active wow slideInDown" data-wow-duration="3000ms" href="#past">Past </a></li>
+           </ul>
+         </div>
+         <div id="future" class="col s12 wow fadeInUp" data-wow-delay="0.5s" data-wow-duration="500ms">
+           <div class="row" style="padding-top:5%">
+            <% @future_events.each do |event| %>
+             <div class="col-sm-4">
+               <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                  <img class="img-responsive activator" src="icons/7.jpg">
+                </div>
+                <div class="card-content wow fadeInUp" data-wow-delay="1s">
+                  <span style="font-size: 16px" class="card-title activator grey-text text-darken-4"><%= event.title.truncate(22) %><i class="material-icons right" aria-hidden="true">expand_less</i></span>
+                  <p><%= event.start_time.strftime('%b %d, %Y') %></p>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4"><%= event.title %><i class="material-icons right">close</i></span>
+                  <hr />
+                  <p><%= event.description.truncate(150) %></p>
+                </div>
+               </div>
+             </div>
+            <% end %> 
+           </div>
+         </div>
+         <div id="past" class="col s12 wow fadeInUp" data-wow-delay="0.5s" data-wow-duration="500ms">
+           <div class="row" style="padding-top:5%">
+           <% @past_events.each do |event| %>
+             <div class="col-sm-4">
+               <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                  <img class="img-responsive activator" src="icons/7.jpg">
+                </div>
+                <div class="card-content wow fadeInUp" data-wow-delay="1s">
+                  <span style="font-size: 16px" class="card-title activator grey-text text-darken-4"><%= event.title.truncate(22) %><i class="material-icons right" aria-hidden="true">expand_less</i></span>
+                  <p><%= event.start_time.strftime('%b %d, %Y') %></p>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4"><%= event.title %><i class="material-icons right">close</i></span>
+                  <hr />
+                  <p><%= event.description.truncate(150) %></p>
+                </div>
+               </div>
+             </div>
+            <% end %> 
+
+           </div>
+         </div>
+       </div>
+       </div>
+     </div>
+
     <!-- PARALLAX 2 -->
 <div class="parallax-container wow fadeIn" data-wow-duration="5s" data-wow-delay="1s">
   <!-- <div class="parallax"><img src="img/7.jpg" width=100px ></div> -->

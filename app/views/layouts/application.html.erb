@@ -54,7 +54,7 @@
       </nav>
       <% if current_user %>
       <ul id="dropdown1" class="dropdown-content">
-          <li class="<%= " active" if @profile_page%>"><a href="users/profile/<%= current_user.nickname %>">Profile</a></li>
+          <li class="<%= " active" if @profile_page%>"><a href="/users/profile/<%= current_user.nickname %>">Profile</a></li>
           <li>                
            <%= link_to 'Signout', sign_out_path, method: :delete %>
          </li>
