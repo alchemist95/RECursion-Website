@@ -3,10 +3,11 @@
 <% end %>
 
 <div class="container">
-
-<h3>Question #<%= Question.count+1 %></h3>
+<div class="card">
+<div class="text-center"><h4 style="padding: 10px;">Question #<%= Question.count+1 %></h4></div>
 <br />
-
+<div class="card-comtent" style="padding: 10px">
 <%= render 'form', question: @question %>
-
+</div>
+</div>
 </div>

@@ -25,11 +25,12 @@
 				    <h6><%= @question.description.html_safe %></h6>
 				    <br />
 					<div class="row">
-						<div class="question_id" id='<%= @question.id %>'></div>	
-						<div class="upvote_status" id='<%= current_user.already_upvoted(@question) %>'></div>
-						<div class="follow_status" id='<%= current_user.already_followed(@question) %>'></div>		
+						<% if current_user %>
+							<div class="question_id" id='<%= @question.id %>'></div>	
+							<div class="upvote_status" id='<%= current_user.already_upvoted(@question) %>'></div>
+							<div class="follow_status" id='<%= current_user.already_followed(@question) %>'></div>		
 						<div id='upvote_downvote'>
-							<% if current_user && current_user.already_upvoted(@question) %>
+							<% if current_user.already_upvoted(@question) %>
 
 								<a href='#' class='btn waves-effect' style="background-color: #1976d2" id='upvoteButton'>Downvote</a>
 
@@ -41,7 +42,7 @@
 							
 							<button class='btn waves-effect' style="background-color: #0d47a1" id='showAnswerForm'>	Answer</button>
 		
-							<% if current_user && current_user.already_followed(@question) %>
+							<% if current_user.already_followed(@question) %>
 
 								<button class='btn waves-effect waves-light' style="background-color: #1565c0" id='followButton'>Unfollow</button>
 
@@ -51,21 +52,23 @@
 
 							<% end %>					
 						</div>
+						<% else %>
+							<p>Please Log In to Answer</p>
+						<% end %>
 					</div>
 				</div>
 	        </div>
 		</div>   	
 
 		<div class="row">
-
-		  	<div class="input-field col s11 m11 l11">
-			  		<input placeholder="Add a comment" id="commentForm">
-			</div>
-			<div class="col s1 m1 l1">
-				<button style="background-color: #2196f3; margin-top: 20px;	" class="btn" id="commentButton"><i class="material-icons">send</i></button>
-			</div>					
-
-
+			<% if current_user %>
+			  	<div class="input-field col s11 m11 l11">
+				  		<input placeholder="Add a comment" id="commentForm">
+				</div>
+				<div class="col s1 m1 l1">
+					<button style="background-color: #2196f3; margin-top: 20px;	" class="btn" id="commentButton"><i class="material-icons">send</i></button>
+				</div>					
+			<% end %>
 		</div>
 
 		<div id="commentStatus"></div>
@@ -89,7 +92,7 @@
 						</div>
 						<div class="col s3 m3 l3 text-center">
 							<p style="padding: 5px;" class="cyan darken-2">
-							<% if current_user.id == comment.user_id %>
+							<% if current_user and current_user.id == comment.user_id %>
 								<%= "You" %>
 							<% else %>
 								<%= link_to User.find(comment.user_id).nickname, users_path(User.find(comment.user_id).nickname) %>
@@ -138,7 +141,7 @@
 
 	<hr />
 
-	<div class="container-fluid">	
+	<div class="container-fluid">
 		<div id ='answerForm'>
 
 			<div class="container">

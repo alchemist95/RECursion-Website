@@ -3,24 +3,35 @@
   <head>  
     <title>RecursionWebsite</title>
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application'%>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu">
   
   </head>
   <body>
+
+  <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js", 'data-turbolinks-track': 'reload' %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+
+  $('.modal').modal();
+  $('.modal-trigger').modal();
+
+  $('.modal-trigger').click(function(){
+    event.preventDefault();
+    $('.modal').modal('open');      
+  });
+
+})
+
+  </script>
   <header>
     <div class="navbar-fixed">
       <nav class="cyan darken-2">
         <div class="nav-wrapper">
           <span class="brand-logo" style="margin-left: 20px;"><%= yield :heading %></span>
           <ul class="right hide-on-med-and-down">
-
-            <% if current_user && current_user.admin? %>
-              <li><a class="tooltipped" href="/sapphire" data-tooltip="Admin Page" target="_blank"><i class="material-icons">person_outline</i></a></li>
-            <% end %>
-
             <% if @blog_page %>
             <li><a class="tooltipped" href="/recblog/posts/new" data-tooltip="Write an Article"><i class="material-icons">create</i></a></li>
             <% end %>
@@ -28,24 +39,41 @@
             <li><a class="tooltipped" href="/askrec/questions/new" data-tooltip="Ask a question"><i class="material-icons">create</i></a></li>
             <% end %>
 
-
             <li class="<%= " active" if @home_page%>"><a class="tooltipped" href="/" data-tooltip="Home"><i class="material-icons">home</i></a></li>
-            <li class="<%= " active" if @events_page%>"><a class="tooltipped" href="/events" data-tooltip="Event"><i class="material-icons">event</i></a></li>
-            <li class="<%= " active" if @blog_page%>"><a class="tooltipped" href="/recblog" data-tooltip="Blog"><i class="material-icons">view_module</i></a></li>
-            <li class="<%= " active" if @forum_page%>"><a class="tooltipped" href="/askrec" data-tooltip="Forum"><i class="material-icons">public</i></a></li>
+            <li class="<%= " active" if @events_page%>"><a class="tooltipped" href="/events" data-tooltip="Events"><i class="material-icons">event</i></a></li>
+            <li class="<%= " active" if @blog_page%>"><a class="tooltipped" href="/recblog" data-tooltip="RECblog"><i class="material-icons">view_module</i></a></li>
+            <li class="<%= " active" if @forum_page%>"><a class="tooltipped" href="/askrec" data-tooltip="AskREC"><i class="material-icons">public</i></a></li>
             <% if current_user %>
-                <li><%= link_to "Sign out", sign_out_path, method: :delete%></li>
+                <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><%= current_user.nickname %><i class="material-icons right">arrow_drop_down</i></a></li>
             <% else %>
-              <li><a href="/auth/facebook"><i class="material-icons">vpn_key</i></a></li>
-              <li><a href="/auth/google_oauth2"><i class="material-icons">vpn_key</i></a></li>
-              <li><a href="/auth/github"><i class="material-icons">vpn_key</i></a></li>
+               <li><a class="modal-trigger" data-toggle="modal" href="#modal1" ><i class="material-icons">vpn_key</i></a></li>             
             <% end %>
             </li>
         </ul>
         </div>
       </nav>
+      <% if current_user %>
+      <ul id="dropdown1" class="dropdown-content">
+          <li class="<%= " active" if @profile_page%>"><a href="users/profile/<%= current_user.nickname %>">Profile</a></li>
+          <li>                
+           <%= link_to 'Signout', sign_out_path, method: :delete %>
+         </li>
+      </ul>
+      <% end %>
     </div>
   </header>
+
+  <!-- Modal Structure -->
+<div id="modal1" class="modal card">
+    <div class="text-center">
+        <h4 style="padding: 10px">Log in</h4>
+        <h5>
+          <a href='/auth/facebook'>Fb</a>
+          <a href='/auth/google_oauth2'>G+</a>
+          <a href='/auth/github'>Github</a>
+        </h5>
+    </div>
+</div>
 
   <div class="row" style="height:100%;">
 

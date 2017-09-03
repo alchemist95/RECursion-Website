@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  before_action :authenticate, only: [:new]
   
   def new
   	@question = Question.new
