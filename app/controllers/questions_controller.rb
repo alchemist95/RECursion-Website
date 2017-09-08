@@ -76,6 +76,19 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def search
+    keyword = params[:keyword]
+    tags = Tag.starts_with(keyword)
+    data = {}
+    data[:tags] = []
+    tags.each do |tag|
+      data[:tags].push([tag.name, tag.questions.count])
+    end
+    respond_to do |format|
+      format.json { render json: data }
+    end 
+  end
+
   private
 
   def question_params

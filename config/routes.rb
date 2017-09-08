@@ -41,6 +41,8 @@ Rails.application.routes.draw do
 
 	get '/team' => 'home#team'
 
+	post '/find_questions' => 'questions#search'
+
 	resources :events, only: [:show, :index]
 
 end

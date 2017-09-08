@@ -5,8 +5,15 @@
 <div class="container-fluid" style="height: 100%">
 
 <p id="notice"><%= notice %></p>
+<div class="col s6 m2 l2">
+<div class="search_card">
+  <input id="search">
+  <div class="search_results"></div>
+</div>
+</div>
 
-  <div class="col s12 m6 l6">
+
+  <div class="col s12 m5 l5">
     
      <ul class="collection with-header">
         <li class="text-center collection-header" style="background-color: #fcfdff"><h5 style="color: #066696">Most Followed Questions</h5></li>
@@ -18,8 +25,6 @@
           <% question.tags.each do |tag| %>
             <span style="padding: 3px; background-color: azure; border-radius: 5px; color: white"><a href='/askrec/questions/tags/<%= tag.name %>' ><%= tag.name %></a></span>
           <% end %>
-          
-          <span class="secondary-content"><h6><%= question.created_at.strftime('%b %d, %Y') %></h6></span>
         </li>
       <% end %>
     </ul>         
@@ -33,8 +38,9 @@
         <li class="collection-item avatar">
           <img src="<%= User.find(question.user_id).image_url %>" alt="" class="circle">
           <span class="title"><%= link_to question.title.truncate(140), question_path(question) %></span>
-
-          <span class="secondary-content"><h6><%= question.created_at.strftime('%b %d, %Y') %></h6></span>
+          <% question.tags.each do |tag| %>
+            <span style="padding: 3px; background-color: azure; border-radius: 5px; color: white"><a href='/askrec/questions/tags/<%= tag.name %>' ><%= tag.name %></a></span>
+          <% end %>       
         </li>
       <% end %>
     </ul>         
@@ -43,7 +49,7 @@
 
   </div>
 
-<div class="col s12 m6 l6">
+<div class="col s12 m5 l5">
     
  <ul class="collection with-header">
         <li class="text-center collection-header" style="background-color: #fcfdff"><h5 style="color: #066696">Recent Questions</h5></li>
@@ -51,8 +57,11 @@
         <li class="collection-item avatar">
           <img src="<%= User.find(question.user_id).image_url %>" alt="" class="circle">
           <span class="title"><%= link_to question.title.truncate(140), question_path(question) %></span>
-
-          <span class="secondary-content"><h6><%= question.created_at.strftime('%b %d, %Y') %></h6></span>
+          <% question.tags.each do |tag| %>
+            <span style="padding: 3px; background-color: azure; border-radius: 5px; color: white"><a href='/askrec/questions/tags/<%= tag.name %>' ><%= tag.name %></a></span>
+          <% end %>
+         
+          <span class="secondary-content"><h6><%= question.created_at.strftime('%b %d') %></h6></span>
         </li>
       <% end %>
     </ul>
@@ -61,8 +70,36 @@
 
   </div>
 
-
-
  <%= will_paginate @questions %>
 
 </div>
+
+<script>
+  
+$(document).ready(function(){
+
+    $("#search").keyup(function(){
+      keyword = $(this).val();
+
+      if( keyword.length < 1 || /^[\s]*$/.test(keyword) == true){
+        $('.search_results').html("");
+        return;
+      }
+
+      $.ajax({
+        type: "POST",
+        url: "/find_questions",
+        data: {"keyword": keyword},
+        success: function(result){
+          var newHTML = [];
+          for (var i = 0; i < result.tags.length; i++) {
+            newHTML.push('<h6><a href="/askrec/questions/tags/' + result.tags[i][0] + '">' + result.tags[i][0] + '</a><span class="new badge" data-badge-caption="">' + result.tags[i][1] + '</span></h6><br />');
+          }
+          $('.search_results').html(newHTML);
+        },
+      });
+    });
+
+});
+
+</script>
