@@ -1,5 +1,16 @@
 $(document).ready(function() {
 
+	$('.datepicker').pickadate({
+	selectMonths: true, // Creates a dropdown to control month
+	selectYears: 30, // Creates a dropdown of 15 years to control year,
+	today: 'Today',
+	clear: 'Clear',
+	close: 'Ok',
+	closeOnSelect: false, // Close upon selecting a date,
+	min: new Date('01/01/1990'), 
+	max: new Date('01/01/2005')
+	});
+
 	$("#nickname").keyup(function(){
 			nickname = $(this).val();
 			if(/^[a-zA-Z0-9_]*$/.test(nickname) == false || nickname.length < 4) {

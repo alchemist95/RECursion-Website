@@ -6,8 +6,8 @@
 
 <p id="notice"><%= notice %></p>
 <div class="col s6 m2 l2">
-<div class="search_card">
-  <input id="search">
+<div class="search_wrapper">
+  <input id="search" placeholder="Search for Tags">
   <div class="search_results"></div>
 </div>
 </div>
@@ -20,8 +20,8 @@
       <% @followed_questions.each do |question| %>
         <li class="collection-item avatar">
           <img src="<%= User.find(question.user_id).image_url %>" alt="" class="circle">
-          <span class="title"><%= link_to question.title.truncate(140), question_path(question) %></span>
-          
+          <span class="title"><%= link_to question.title.truncate(50), question_path(question) %></span>
+          <br />
           <% question.tags.each do |tag| %>
             <span style="padding: 3px; background-color: azure; border-radius: 5px; color: white"><a href='/askrec/questions/tags/<%= tag.name %>' ><%= tag.name %></a></span>
           <% end %>
@@ -37,7 +37,8 @@
       <% @upvoted_questions.each do |question| %>
         <li class="collection-item avatar">
           <img src="<%= User.find(question.user_id).image_url %>" alt="" class="circle">
-          <span class="title"><%= link_to question.title.truncate(140), question_path(question) %></span>
+          <span class="title"><%= link_to question.title.truncate(50), question_path(question) %></span>
+          <br />
           <% question.tags.each do |tag| %>
             <span style="padding: 3px; background-color: azure; border-radius: 5px; color: white"><a href='/askrec/questions/tags/<%= tag.name %>' ><%= tag.name %></a></span>
           <% end %>       
@@ -56,7 +57,8 @@
       <% @questions.each do |question| %>
         <li class="collection-item avatar">
           <img src="<%= User.find(question.user_id).image_url %>" alt="" class="circle">
-          <span class="title"><%= link_to question.title.truncate(140), question_path(question) %></span>
+          <span class="title"><%= link_to question.title.truncate(50), question_path(question) %></span>
+          <br />
           <% question.tags.each do |tag| %>
             <span style="padding: 3px; background-color: azure; border-radius: 5px; color: white"><a href='/askrec/questions/tags/<%= tag.name %>' ><%= tag.name %></a></span>
           <% end %>

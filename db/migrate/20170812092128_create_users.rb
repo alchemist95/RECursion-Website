@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :email
       t.string :college
       t.integer :role
-      t.integer :year
+      t.string :batch
       t.string :dept
       t.string :image_url
       t.string :nickname
