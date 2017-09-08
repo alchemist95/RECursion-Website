@@ -18,6 +18,9 @@
 	    <div class="card" style="height:100%">
 			<div class="text-center" style="padding: 10px">
 			    <h4><%= @question.title %></h4>
+			    <% @tags.each do |tag| %>
+			    	<span class="new badge" data-badge-caption=""><%= tag.name %></span>
+		    	<% end %>
 			</div>
 			<hr />
 			<div class="card-content">

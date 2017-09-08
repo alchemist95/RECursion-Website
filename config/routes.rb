@@ -37,6 +37,8 @@ Rails.application.routes.draw do
 	get '/askrec/questions/:id/follow' => 'questions#follow'
 	post '/askrec/questions/:id/comment' => 'questions#add_comment'
 
+	get '/askrec/questions/tags/:tag' => 'questions#tagged_questions', as: 'tagged'
+
 	get '/team' => 'home#team'
 
 	resources :events, only: [:show, :index]

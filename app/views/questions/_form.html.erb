@@ -21,6 +21,10 @@
     <%= f.cktext_area :description, :as => :ckeditor, input_html: {:ckeditor => {:toolbar => 'FULL'}}, required: "" %>
   </div>
 
+    <div class="input-field col s12">
+      <%= f.text_field :all_tags, placeholder: "Tags separated with comma" %>
+    </div>
+
   <br />
 
  <button class="btn waves-effect waves-light" type="submit" name="action"><%= f.submit 'Ask' %></button>

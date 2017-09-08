@@ -23,11 +23,19 @@ class QuestionsController < ApplicationController
   def show
 
   	@question = Question.find(params[:id])
+    @tags = @question.tags
     @answer = Answer.new
     @answers = @question.answers
     @users = @answers.group(:user_id).pluck(:user_id)  
     @comments = @question.comments.order(created_at: :desc)
 
+  end
+
+  def tagged_questions
+    @tag = params[:tag]
+    @questions = Question.tagged_with(@tag).all.paginate(page: params[:page], per_page: 15)
+    @followed_questions = Question.tagged_with(@tag).sort_by(&:follow_count).reverse[0,5]
+    @upvoted_questions = Question.tagged_with(@tag).sort_by(&:upvote_count).reverse[0,5]
   end
 
   def submit_answer
@@ -71,7 +79,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-  	params.require(:question).permit(:description, :title)
+  	params.require(:question).permit(:description, :title, :all_tags)
   end
 
   def answer_params
