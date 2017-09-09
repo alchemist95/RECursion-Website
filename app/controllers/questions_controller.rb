@@ -33,7 +33,7 @@ class QuestionsController < ApplicationController
 
   def tagged_questions
     @tag = params[:tag]
-    @questions = Question.tagged_with(@tag).all.paginate(page: params[:page], per_page: 15)
+    @questions = Question.tagged_with(@tag).order(created_at: :desc).paginate(page: params[:page], per_page: 15)
     @followed_questions = Question.tagged_with(@tag).sort_by(&:follow_count).reverse[0,5]
     @upvoted_questions = Question.tagged_with(@tag).sort_by(&:upvote_count).reverse[0,5]
   end
@@ -78,7 +78,7 @@ class QuestionsController < ApplicationController
 
   def search
     keyword = params[:keyword]
-    tags = Tag.starts_with(keyword)
+    tags = Tag.starts_with(keyword).sort_by(&:question_count).reverse
     data = {}
     data[:tags] = []
     tags.each do |tag|

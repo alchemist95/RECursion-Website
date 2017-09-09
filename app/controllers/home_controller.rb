@@ -8,7 +8,7 @@ class HomeController < ApplicationController
 
 	def forum
 		@forum_page = true
-		@questions = Question.all.paginate(page: params[:page], per_page: 15)
+		@questions = Question.order(created_at: :desc).paginate(page: params[:page], per_page: 15)
 		@followed_questions = Question.all.sort_by(&:follow_count).reverse[0,5]
 		@upvoted_questions = Question.all.sort_by(&:upvote_count).reverse[0,5]
 	end
