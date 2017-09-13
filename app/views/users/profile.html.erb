@@ -2,34 +2,45 @@
 	RECursion
 <% end %>
 
-<div class="container-fluid">
+<div class="container2">
+	<div class="row">
+		<div class="col s12 m2">
+			<div class="sidenav">
+				<%= image_tag(User.find(current_user.id).image_url, size: '125x125', class:'circle',)%>
+				<h4><%= @user.nickname %></h4>
+				<h6><%= @user.name %></h6>
+				<h6><%= @user.college %></h6>
+				<hr \>
+				<h6>Posts<span class="badge"><%= @verified_posts.count %></span></h6>
+				<h6>Pending Posts <span class="badge"><%= @pending_posts.count %></span></h6>
+				<h6>Questions<span class="badge"><%= @questions.count %></span></h6>
+			</div>
+		</div>
+		<div class="col s12 m10">
+			<% if @verified_posts.any? %>
+			<h4>Your Verified Articles</h4>
+			<% @verified_posts.each do |post| %>
+				<h5><%= link_to post.title, post_path(post) %></h5>
+				<h6><%= post.created_at.strftime('%b %d, %Y') %></h6>
+			<% end %>
+			<% end %>
 
-<h4><%= @user.nickname %></h4>
+
+			<% if @pending_posts.any? %>
+			<h4>Your Pending Articles</h4>
+			<% @pending_posts.each do |post| %>
+				<h5><%= post.title %></h5>
+				<h6><%= post.created_at.strftime('%b %d, %Y') %></h6>
+			<% end %>
+			<% end %>
 
 
-<% if @verified_posts.any? %>
-<h4>Your Verified Articles</h4>
-<% @verified_posts.each do |post| %>
-	<h5><%= link_to post.title, post_path(post) %></h5>
-	<h6><%= post.created_at.strftime('%b %d, %Y') %></h6>
-<% end %>
-<% end %>
-
-
-<% if @pending_posts.any? %>
-<h4>Your Pending Articles</h4>
-<% @pending_posts.each do |post| %>
-	<h5><%= post.title %></h5>
-	<h6><%= post.created_at.strftime('%b %d, %Y') %></h6>
-<% end %>
-<% end %>
-
-
-<% if @questions.any? %>
-<h4>Your Questions</h4>
-<% @questions.each do |question| %>
-	<h5><%= link_to question.title, question_path(question) %></h5>
-<% end %>
-<% end %>
-
+			<% if @questions.any? %>
+			<h4>Your Questions</h4>
+			<% @questions.each do |question| %>
+				<h5><%= link_to question.title, question_path(question) %></h5>
+			<% end %>
+			<% end %>
+		</div>
+	</div>
 </div>
