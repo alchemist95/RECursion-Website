@@ -12,6 +12,26 @@
   line-height: 64px;
  }
 
+.sidenav {
+  padding-top: 40px;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+}
+span.badge {
+  min-width: 2.5rem;
+  max-height: 1.3rem;
+  float: right;
+  text-align: center;
+  font-size: 1.0rem;
+  color: #ffffff;
+} 
+.text_h {
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: 100;
+  color: #fff;
+}
 .fc-left h2{
   font-size: 36px;
   color: #066696;
@@ -97,8 +117,12 @@
     position: relative;
 }
  footer.page-footer {
-    margin-top: 0px !important;
-    padding-bottom: 20px;
+    width: 100%;
+    margin-top: 1px !important;
+    padding-bottom: 26px;
+    font-size: 17px;
+    color: #e3f2fd;
+    letter-spacing: 1px;
  }
 
 .card-content a {color: white;}
@@ -122,7 +146,6 @@
     width: 100px;
     border-radius: 55px;
 }
-
 .card-avatar .card-content {
     text-align: center;
 }
@@ -139,7 +162,30 @@
 .card-avatar .card-content .card-title {
     line-height: 30px !important;
 }
-
+.horizontal img {
+  margin: 20px 10px;
+    height: 150px;
+    width: 150px;
+    border-radius: 75px;
+    float: left;
+}
+.text {
+  width: 70%;
+  float: right;
+  text-align: left;
+  margin-top: 20px;
+  margin-left: 20px;
+  font-size: 1.0rem;
+  line-height: 1.2rem;
+}
+.text p {
+  font-size: 0.83rem;
+  margin-top: 2px;
+  margin-left: 10px;
+}
+.text a {
+  align-items: center;
+}
 .parallax-container {
     max-height: 400px;
 }
