@@ -19,7 +19,7 @@
 			<div class="text-center" style="padding: 10px">
 			    <h4><%= @question.title %></h4>
 			    <% @tags.each do |tag| %>
-			    	<span class="new badge" data-badge-caption=""><%= tag.name %></span>
+			    	<span class="new badge" data-badge-caption=""><a href='/askrec/questions/tags/<%= tag.name %>' ><%= tag.name %></a></span>
 		    	<% end %>
 			</div>
 			<hr />
@@ -33,6 +33,7 @@
 							<div class="upvote_status" id='<%= current_user.already_upvoted(@question) %>'></div>
 							<div class="follow_status" id='<%= current_user.already_followed(@question) %>'></div>		
 						<div id='upvote_downvote'>
+						<span class="upvotes_count" style="font-size: 30px;"><%= @question.upvotes.count %></span>
 							<% if current_user.already_upvoted(@question) %>
 
 								<a href='#' class='btn waves-effect' style="background-color: #1976d2" id='upvoteButton'>Downvote</a>
@@ -44,7 +45,7 @@
 							<% end %>
 							
 							<button class='btn waves-effect' style="background-color: #0d47a1" id='showAnswerForm'>	Answer</button>
-		
+		<span class="follow_count" style="font-size: 30px;"><%= @question.follows.count %></span>
 							<% if current_user.already_followed(@question) %>
 
 								<button class='btn waves-effect waves-light' style="background-color: #1565c0" id='followButton'>Unfollow</button>
@@ -62,86 +63,54 @@
 				</div>
 	        </div>
 		</div>   	
-
-		<div class="row">
-			<% if current_user %>
-			  	<div class="input-field col s11 m11 l11">
-				  		<input placeholder="Add a comment" id="commentForm">
-				</div>
-				<div class="col s1 m1 l1">
-					<button style="background-color: #2196f3; margin-top: 20px;	" class="btn" id="commentButton"><i class="material-icons">send</i></button>
-				</div>					
-			<% end %>
-		</div>
-
-		<div id="commentStatus"></div>
- 
-
 	</div>
 
 	<div class="col s12 m4 l4">
 
-		<div class="card" style="overflow: auto; height: 400px;">
-			<div class="text-center" style="padding: 10px">
+		<div class="card" style="overflow: auto; min-height: 300px;">
+			<div class="text-center">
 				<h5>Comments</h5>
 			</div>
-			<hr />
-			<div class="card-content" id="commentSection">
-				
-				<% @comments.each do |comment| %>
-					<div class="row">
-						<div class="col s9 m9 l9">	
-							<p style="word-wrap:break-word; padding: 5px;" class="cyan lighten-4"><%= comment.body %>   <b><%= comment.created_at.strftime('%H:%M, %b %d') %></b></p>
-						</div>
-						<div class="col s3 m3 l3 text-center">
-							<p style="padding: 5px;" class="cyan darken-2">
-							<% if current_user and current_user.id == comment.user_id %>
-								<%= "You" %>
-							<% else %>
-								<%= link_to User.find(comment.user_id).nickname, users_path(User.find(comment.user_id).nickname) %>
-							<% end %>
-							</p>
-						</div>
+			<% if current_user %>
+				<div class="row">
+				  	<div class="input-field col s11">
+					  	<textarea placeholder="Add a comment" id="commentForm" class="material-textarea"></textarea>
 					</div>
+					<div id="commentStatus"></div>
+					<div class="col s1 offset-s6 m1 offset-m8 l1 offset-l9">
+						<button style="background-color: #2196f3;" class="btn" id="commentButton"><i class="material-icons">send</i></button>
+					</div>	
+				</div>		
+			<% end %>
+
+			<div id="commentSection">
+				<% if @comments.any? %>
+					<% @comments.each do |comment| %>
+						<div class="comment">
+							<div class="row">
+								<div class="col s12">
+									<% if current_user and current_user.id == comment.user_id %>
+										<b><%= "You" %></b>
+									<% else %>
+										<b><%= link_to User.find(comment.user_id).name, users_path(User.find(comment.user_id).nickname) %></b>
+										<i>(<%= User.find(comment.user_id).nickname%>)</i>
+									<% end %>
+									<b style="float: right;"><%= comment.created_at.strftime('%H:%M, %b %d') %></b>
+								</div>
+								<div class="col s12">
+									<p> <%= comment.body %> </p>
+								</div>
+							</div>
+							<div class="divider"></div>
+						</div>
+					<% end %>
+				<% else %>
+					<h5 style="text-align: center; color: #d1d1d1;">No Comments yet</h5>
 				<% end %>
 			</div>
-
 		</div>
-
-
-		<div class="row">
-
-			<div class="col s6 m6 l6">	
-				<div class="card" style="background-color: #F8FFF9;">
-					<div class="text-center" style="padding: 10px;">
-						<h6>Upvotes</h6>
-					</div>
-					<hr />
-					<div class="card-content text-center">
-						<span class="upvotes_count" style="font-size: 30px;"><%= @question.upvotes.count %></span>
-					</div>
-				</div>
-			</div>
-
-			<div class="col s6 m6 l6">	
-				<div class="card" style="background-color: #F8FFF9;">
-					<div class="text-center" style="padding: 10px;"">
-						<h6>Followed by</h6>
-					</div>
-					<hr />
-					<div class="card-content text-center">
-						<span class="follow_count" style="font-size: 30px;"><%= @question.follows.count %></span>
-					</div>
-				</div>
-			</div>
-
-		</div>
-	       
-
 	</div>
-
-	<hr />
-
+	
 	<div class="container-fluid">
 		<div id ='answerForm'>
 
@@ -246,7 +215,7 @@ $(document).ready(function(){
 	 		success: function(){
 	 			console.log("Done!!");
 
-			 	var newComment = '<div class="row"><div class="col s9 m9 l9"><p style="word-wrap:break-word; padding: 5px;" class="cyan lighten-5">'+comment+'   <b>Now</b></p></div><div class="col s3 m3 l3 text-center"><p style="padding: 5px;" class="cyan">You</p></div></div>';
+			 	var newComment = '<div class="comment"><div class="row"><div class="col s12"><b>You</b><b style="float: right;">Now</b></div><div class="col s12"><p>'+comment+'</p></div></div><div class="divider"></div></div></div>';
 			
 			 	var div = document.getElementById('commentSection');
 			 	div.innerHTML = newComment + div.innerHTML;
