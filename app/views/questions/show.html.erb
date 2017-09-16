@@ -15,54 +15,89 @@
 <div class="container-fluid">
 
 	<div class="col s12 m8 l8">
-	    <div class="card" style="height:100%">
-			<div class="text-center" style="padding: 10px">
-			    <h4><%= @question.title %></h4>
-			    <% @tags.each do |tag| %>
-			    	<span class="new badge" data-badge-caption=""><a href='/askrec/questions/tags/<%= tag.name %>' ><%= tag.name %></a></span>
-		    	<% end %>
+	    <h4><%= @question.title %></h4>
+	    <span class="new badge" data-badge-caption=""><span class="upvotes_count"><%= @question.upvotes.count %> Upvotes</span></span>
+	    <span class="new badge" data-badge-caption=""><span class="follow_count"><%= @question.follows.count %> Followers</span></span>
+	    <% @tags.each do |tag| %>
+	    	<span class="new badge" data-badge-caption=""><a href='/askrec/questions/tags/<%= tag.name %>' ><%= tag.name %></a></span>
+    	<% end %>
+		<br><hr />
+	    <h6 class="text-left"><%= @question.description.html_safe %></h6>
+		<div class="row">
+			<% if current_user %>
+				<div class="question_id" id='<%= @question.id %>'></div>	
+				<div class="upvote_status" id='<%= current_user.already_upvoted(@question) %>'></div>
+				<div class="follow_status" id='<%= current_user.already_followed(@question) %>'></div>		
+			<div id='upvote_downvote'>
+				<% if current_user.already_upvoted(@question) %>
+					<a href='#' class='btn waves-effect' style="background-color: #0097a7" id='upvoteButton'>Downvote</a>
+				<% else %>
+					<a href='#' class='btn waves-effect' style="background-color: #0097a7" id='upvoteButton'>Upvote</span></a>
+				<% end %>
+			
+				<button class='btn waves-effect' style="background-color: #0097a7; float: right;" id='showAnswerForm'>Answer</button>
+				<% if current_user.already_followed(@question) %>
+
+					<button class='btn waves-effect waves-light' style="background-color: #0097a7" id='followButton'>Unfollow</button>
+
+				<% else %>
+
+					<button class='btn waves-effect waves-light' style="background-color: #0097a7" id='followButton'>Follow</button>
+
+				<% end %>					
 			</div>
-			<hr />
-			<div class="card-content">
-				<div class="text-center" style="padding: 15px;">
-				    <h6 class="text-left"><%= @question.description.html_safe %></h6>
-				    <br />
-					<div class="row">
-						<% if current_user %>
-							<div class="question_id" id='<%= @question.id %>'></div>	
-							<div class="upvote_status" id='<%= current_user.already_upvoted(@question) %>'></div>
-							<div class="follow_status" id='<%= current_user.already_followed(@question) %>'></div>		
-						<div id='upvote_downvote'>
-						<span class="upvotes_count" style="font-size: 30px;"><%= @question.upvotes.count %></span>
-							<% if current_user.already_upvoted(@question) %>
+			<% else %>
+				<p>Please Log In to Answer</p>
+			<% end %>
+		</div>
 
-								<a href='#' class='btn waves-effect' style="background-color: #1976d2" id='upvoteButton'>Downvote</a>
-
-							<% else %>
-
-								<a href='#' class='btn waves-effect' style="background-color: #1976d2" id='upvoteButton'>Upvote</a>
-
+		<div id ='answerForm'>
+			<%= form_for(@answer, url: answer_path) do |f| %>
+				<% if @answer.errors.any? %>
+					<div id="error_explanation">
+						<h2><%= pluralize(answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
+						<ul>
+							<% answer.errors.full_messages.each do |message| %>
+								<li><%= message %></li>
 							<% end %>
-							
-							<button class='btn waves-effect' style="background-color: #0d47a1" id='showAnswerForm'>	Answer</button>
-		<span class="follow_count" style="font-size: 30px;"><%= @question.follows.count %></span>
-							<% if current_user.already_followed(@question) %>
-
-								<button class='btn waves-effect waves-light' style="background-color: #1565c0" id='followButton'>Unfollow</button>
-
-							<% else %>
-
-								<button class='btn waves-effect waves-light' style="background-color: #1565c0" id='followButton'>Follow</button>
-
-							<% end %>					
-						</div>
-						<% else %>
-							<p>Please Log In to Answer</p>
-						<% end %>
+						</ul>
 					</div>
+				<% end %>
+				<div class="input-field">
+					<%= f.cktext_area :description, :as => :ckeditor, input_html: {:ckeditor => {:toolbar => 'mini'}}, required: "" %>
 				</div>
-	        </div>
-		</div>   	
+				<br />
+				<button style="background-color: #0097a7" class="btn waves-effect right" type="submit" name="action"><%= f.submit "Post" %></button>
+			<% end %>
+		</div>
+		<br />
+
+		<% if @answers.any? %>
+			<h4><%= @answers.count %> Answer<% if @answers.count > 1 %>s<% end %></h4>
+		<% end %>
+		<div class="divider"></div>
+		<% if @answers.any? %>
+			<% @answers.each do |answer| %>
+				<div class="comment">
+					<div class="row">
+						<div class="col s1">
+							<%= link_to image_tag(User.find(answer.user_id).image_url, size: "50x50", class: 'circle'), users_path(User.find(answer.user_id).nickname) %>
+						</div>
+						<div class="col s11">
+							<b><%= link_to User.find(answer.user_id).name, users_path(User.find(answer.user_id).nickname) %></b>
+							<b style="float: right;"><%= answer.created_at.strftime('%H:%M, %b %d') %></b><br>
+							<i><%= User.find(answer.user_id).nickname %></i>
+						</div>
+						<div class="col s12">
+							<h4><%= raw(answer.description) %></h4>
+						</div>
+					</div>
+					<div class="divider"></div>
+				</div>
+			<% end %>
+		<% else %>
+			<h4 style="text-align: center; color: #d1d1d1; margin: 100px 0px;">No Answer to this question yet</h4>
+		<% end %>
 	</div>
 
 	<div class="col s12 m4 l4">
@@ -78,7 +113,7 @@
 					</div>
 					<div id="commentStatus"></div>
 					<div class="col s1 offset-s6 m1 offset-m8 l1 offset-l9">
-						<button style="background-color: #2196f3;" class="btn" id="commentButton"><i class="material-icons">send</i></button>
+						<button style="background-color: #0097a7;" class="btn" id="commentButton"><i class="material-icons">send</i></button>
 					</div>	
 				</div>		
 			<% end %>
@@ -110,67 +145,6 @@
 			</div>
 		</div>
 	</div>
-	
-	<div class="container-fluid">
-		<div id ='answerForm'>
-
-			<div class="container">
-			<%= form_for(@answer, url: answer_path) do |f| %>
-				  <% if @answer.errors.any? %>
-				    <div id="error_explanation">
-				      <h2><%= pluralize(answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
-				      <ul>
-				      <% answer.errors.full_messages.each do |message| %>
-				        <li><%= message %></li>
-				      <% end %>
-				      </ul>
-				    </div>
-				  <% end %>
-
-				  <div class="input-field">
-				    <%= f.cktext_area :description, :as => :ckeditor, input_html: {:ckeditor => {:toolbar => 'mini'}}, required: "" %>
-				  </div>
-				  <br />
-				  <button style="background-color: #0d47a1" class="btn waves-effect right" type="submit" name="action"><%= f.submit "Post" %></button>
-			
-			<% end %>
-			</div>
-		</div>
-		<br />
-
-		<% if @answers.any? %>
-			<h4><%= @answers.count %> Answer<% if @answers.count > 1 %>s<% end %></h4>
-		<% end %>
-	</div>
-
-
-	<div class="container">
-
-
-
-		<% if @answers.any? %>
-			<% @answers.each do |answer| %>
-
-			    <div class="card" style="background-color: #FCFDFB;">
-					<div class="card-content" style="padding: 10px">
-						<h6 class='cyan' style="float:right"><%= answer.created_at.strftime('%b %d, %Y') %></h6><br />
-						<h4><%= raw(answer.description) %></h4>
-						<h6 class='cyan' style="display: inline-block; float: left; margin-right: 20px"><%= User.find(answer.user_id).nickname %></h6>
-						<span style="display: inline-block">	
-						<%= link_to image_tag(User.find(answer.user_id).image_url, size: "50x50"), users_path(User.find(answer.user_id).nickname) %>
-						</span>
-						
-					</div>
-				</div>   
-
-			<% end %>
-
-		<% else %>
-			<h4>No Answer to this question yet</h4>
-		<% end %>
-
-	</div>
-
 </div>
 
 
