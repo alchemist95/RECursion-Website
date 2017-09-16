@@ -2,40 +2,36 @@
 	askREC
 <% end %>
 
-<div class="container-fluid" style="height: 100%">
+<div class="container-fluid">
 
 <p id="notice"><%= notice %></p>
-<div class="col s6 m2 l2">
+<div class="col s6 offset-s2">
 <div class="search_wrapper">
   <input id="search" placeholder="Search for Tags">
   <div class="search_results"></div>
 </div>
 </div>
-
-<table style="width:100%">
-  <tr>
-    <th>Title</th>
-    <th><%= sortable "Answers" %></th>
-    <th><%= sortable "Follows" %></th>
-    <th><%= sortable "Upvotes" %></th>
-
-  </tr>
-   <% @questions.each do |question| %>
-  <tr>
-    <td><%= link_to question.title.truncate(75), question_path(question) %></td>
-    <td><%= question.answer_count %></td> 
-    <td><%= question.follow_count %></td>
-    <td><%= question.upvote_count %></td>
-  </tr>
-  <% end %>
-</table>
-
-
-
+<br></div>
+<div class="container2" style="height: 100%;">
+  <table class="highlight" style="width:100%">
+    <thead>
+      <tr>
+      <th>Title</th>
+      <th style="text-align: center;"><%= sortable "Answers" %></th>
+      <th style="text-align: center;"><%= sortable "Follows" %></th>
+      <th style="text-align: center;"><%= sortable "Upvotes" %></th>
+      </tr>
+    </thead>
+    <% @questions.each do |question| %>
+      <tr>
+        <td><%= link_to question.title.truncate(75), question_path(question) %></td>
+        <td style="text-align: center;"><%= question.answer_count %></td> 
+        <td style="text-align: center;"><%= question.follow_count %></td>
+        <td style="text-align: center;"><%= question.upvote_count %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>
-
-
-
 
 
 
