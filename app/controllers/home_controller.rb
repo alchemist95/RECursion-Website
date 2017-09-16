@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+	helper_method :sort_column, :sort_direction
 
 	def index
 		@home_page = true
@@ -8,9 +9,17 @@ class HomeController < ApplicationController
 
 	def forum
 		@forum_page = true
-		@questions = Question.order(created_at: :desc).paginate(page: params[:page], per_page: 15)
-		@followed_questions = Question.all.sort_by(&:follow_count).reverse[0,5]
-		@upvoted_questions = Question.all.sort_by(&:upvote_count).reverse[0,5]
+		if sort_column == 'Upvotes'
+			@questions = Question.all.sort_by(&:upvote_count)
+		elsif sort_column == 'Answers'
+			@questions = Question.all.sort_by(&:answer_count)
+		else
+			@questions = Question.all.sort_by(&:follow_count)
+		end	
+
+		if sort_direction == 'desc'
+			@questions = @questions.reverse
+		end
 	end
 
 	def blog
@@ -28,6 +37,16 @@ class HomeController < ApplicationController
 
 	def team
 
+	end
+
+	private
+
+	def sort_column
+		params[:sort] || 'follows'
+	end
+
+	def sort_direction
+		params[:direction] || 'desc'
 	end
 
 end

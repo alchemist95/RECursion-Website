@@ -12,69 +12,32 @@
 </div>
 </div>
 
+<table style="width:100%">
+  <tr>
+    <th>Title</th>
+    <th><%= sortable "Answers" %></th>
+    <th><%= sortable "Follows" %></th>
+    <th><%= sortable "Upvotes" %></th>
 
-  <div class="col s12 m5 l5">
-    
-     <ul class="collection with-header">
-        <li class="text-center collection-header" style="background-color: #fcfdff"><h5 style="color: #066696">Most Followed Questions</h5></li>
-      <% @followed_questions.each do |question| %>
-        <li class="collection-item avatar">
-          <img src="<%= User.find(question.user_id).image_url %>" alt="" class="circle">
-          <span class="title"><%= link_to question.title.truncate(50), question_path(question) %></span>
-          <br />
-          <% question.tags.each do |tag| %>
-            <span style="padding: 3px; background-color: azure; border-radius: 5px; color: white"><a href='/askrec/questions/tags/<%= tag.name %>' ><%= tag.name %></a></span>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>         
-    
-    <br />    
-
-
-     <ul class="collection with-header">
-        <li class="text-center collection-header" style="background-color: #fcfdff"><h5 style="color: #066696">Most Upvoted Questions</h5></li>
-      <% @upvoted_questions.each do |question| %>
-        <li class="collection-item avatar">
-          <img src="<%= User.find(question.user_id).image_url %>" alt="" class="circle">
-          <span class="title"><%= link_to question.title.truncate(50), question_path(question) %></span>
-          <br />
-          <% question.tags.each do |tag| %>
-            <span style="padding: 3px; background-color: azure; border-radius: 5px; color: white"><a href='/askrec/questions/tags/<%= tag.name %>' ><%= tag.name %></a></span>
-          <% end %>       
-        </li>
-      <% end %>
-    </ul>         
-    
+  </tr>
+   <% @questions.each do |question| %>
+  <tr>
+    <td><%= link_to question.title.truncate(75), question_path(question) %></td>
+    <td><%= question.answer_count %></td> 
+    <td><%= question.follow_count %></td>
+    <td><%= question.upvote_count %></td>
+  </tr>
+  <% end %>
+</table>
 
 
-  </div>
-
-<div class="col s12 m5 l5">
-    
- <ul class="collection with-header">
-        <li class="text-center collection-header" style="background-color: #fcfdff"><h5 style="color: #066696">Recent Questions</h5></li>
-      <% @questions.each do |question| %>
-        <li class="collection-item avatar">
-          <img src="<%= User.find(question.user_id).image_url %>" alt="" class="circle">
-          <span class="title"><%= link_to question.title.truncate(50), question_path(question) %></span>
-          <br />
-          <% question.tags.each do |tag| %>
-            <span style="padding: 3px; background-color: azure; border-radius: 5px; color: white"><a href='/askrec/questions/tags/<%= tag.name %>' ><%= tag.name %></a></span>
-          <% end %>
-         
-          <span class="secondary-content"><h6><%= question.created_at.strftime('%b %d') %></h6></span>
-        </li>
-      <% end %>
-    </ul>
-
-
-
-  </div>
-
- <%= will_paginate @questions %>
 
 </div>
+
+
+
+
+
 
 <script>
   
