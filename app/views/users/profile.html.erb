@@ -11,9 +11,9 @@
 				<h6><%= @user.name %></h6>
 				<h6><%= @user.college %></h6>
 				<hr \>
-				<h6>Posts<span class="badge"><%= @verified_posts.count %></span></h6>
-				<h6>Pending Posts <span class="badge"><%= @pending_posts.count %></span></h6>
-				<h6>Questions<span class="badge"><%= @questions.count %></span></h6>
+				<h6>Posts<span class="new badge" data-badge-caption=""><%= @verified_posts.count %></span></h6>
+				<h6>Pending Posts <span class="new badge" data-badge-caption=""><%= @pending_posts.count %></span></h6>
+				<h6>Questions<span class="new badge" data-badge-caption=""><%= @questions.count %></span></h6>
 			</div>
 		</div>
 		<div class="col s12 m10">
