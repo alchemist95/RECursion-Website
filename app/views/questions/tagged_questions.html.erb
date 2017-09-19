@@ -12,16 +12,21 @@
     <thead>
       <tr>
       <th>Title</th>
+      <th style="text-align: center;"><%= 'Posted by' %></th>
       <th style="text-align: center;"><%= sortable "Answers" %></th>
       <th style="text-align: center;"><%= sortable "Follows" %></th>
+      <th style="text-align: center;"><%= sortable "Date", "Posted On" %></th>
       </tr>
     </thead>
     <% @questions.each do |question| %>
       <tr>
-        <td><%= link_to question.title.truncate(75), question_path(question) %></td>
+         <td ><%= link_to question.title.truncate(75), question_path(question) %></td>
+        <td style="text-align: center;""><%= link_to link_to image_tag(User.find(question.user_id).image_url, size: "40x40", class: 'circle'), users_path(User.find(question.user_id).nickname) %></td>
         <td style="text-align: center;"><%= question.answer_count %></td> 
         <td style="text-align: center;"><%= question.follow_count %></td>
+        <td style="text-align: center;"><%= question.created_at.strftime('%b %d') %></td>
       </tr>
     <% end %>
   </table>
+  <%= will_paginate @questions %>
 </div>

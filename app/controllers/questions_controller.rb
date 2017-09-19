@@ -33,18 +33,22 @@ class QuestionsController < ApplicationController
   end
 
   def tagged_questions
+
     @tag = params[:tag]
-    @questions = Question.tagged_with(@tag).order(created_at: :desc)
 
     if sort_column == 'Answers'
-      @questions = @questions.sort_by(&:answer_count)
+      @questions = Question.tagged_with(@tag).sort_by(&:answer_count)
+    elsif sort_column == 'Date'
+      @questions = Question.tagged_with(@tag).order('created_at')     
     else
-      @questions = @questions.sort_by(&:follow_count)
+      @questions = Question.tagged_with(@tag).sort_by(&:follow_count)
     end 
 
     if sort_direction == 'desc'
       @questions = @questions.reverse
     end
+
+    @questions = @questions.paginate(page: params[:page], per_page: 15)
 
   end
 
@@ -64,7 +68,7 @@ class QuestionsController < ApplicationController
     comment.user_id = current_user.id
     comment.question_id = params[:id]
     comment.save!
-
+ 
   end
 
   def upvote

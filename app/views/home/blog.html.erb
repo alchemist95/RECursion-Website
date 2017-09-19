@@ -6,48 +6,7 @@
 
 <p id="notice"><%= notice %></p>
 
-  <div class="col s12 m6 l6">
-    
-     <ul class="collection with-header">
-        <li class="text-center collection-header" style="background-color: #fcfdff"><h5 style="color: #066696">Most Followed Articles</h5></li>
-      <% @liked_posts.each do |post| %>
-        <% if post.verified? %>
-        <li class="collection-item avatar">
-          <img src="<%= User.find(post.user_id).image_url %>" alt="" class="circle">
-          <span class="title"><%= link_to post.title.truncate(140), post_path(post) %></span>
-
-          <span class="secondary-content"><h6><%= post.created_at.strftime('%b %d, %Y') %></h6></span>
-        </li>
-        <% end %>
-      <% end %>
-    </ul>         
-    
-    <br />    
-
-  </div>
-
-<div class="col s12 m6 l6">
-    
-   <ul class="collection with-header">
-          <li class="text-center collection-header" style="background-color: #fcfdff"><h5 style="color: #066696">Recent Articles</h5></li>
-        <% @posts.each do |post| %>
-          <% if post.verified? %>
-          <li class="collection-item avatar">
-            <img src="<%= User.find(post.user_id).image_url %>" alt="" class="circle">
-            <span class="title"><%= link_to post.title.truncate(140), post_path(post) %></span>
-
-            <span class="secondary-content"><h6><%= post.created_at.strftime('%b %d, %Y') %></h6></span>
-          </li>
-        <% end %>
-        <% end %>
-      </ul>
-
-
-
-  </div>
-
-
- <%= will_paginate @posts %>
+ 
 
 </div>
 

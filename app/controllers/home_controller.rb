@@ -8,9 +8,12 @@ class HomeController < ApplicationController
 	end
 
 	def forum
+		
 		@forum_page = true
 		if sort_column == 'Answers'
 			@questions = Question.all.sort_by(&:answer_count)
+		elsif sort_column == 'Date'
+			@questions = Question.order('created_at')			
 		else
 			@questions = Question.all.sort_by(&:follow_count)
 		end	
@@ -18,6 +21,9 @@ class HomeController < ApplicationController
 		if sort_direction == 'desc'
 			@questions = @questions.reverse
 		end
+
+		@questions = @questions.paginate(page: params[:page], per_page: 15)
+
 	end
 
 	def blog

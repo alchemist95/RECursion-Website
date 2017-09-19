@@ -33,7 +33,6 @@ Rails.application.routes.draw do
 	get '/recblog/posts/:id/like' => 'posts#like'
 	get '/recblog/posts/:id/unlike' => 'posts#unlike'
 
-	post '/upvoteAnswer' => 'questions#upvote'
 	get '/askrec/questions/:id/follow' => 'questions#follow'
 	post '/askrec/questions/:id/comment' => 'questions#add_comment'
 
@@ -42,6 +41,8 @@ Rails.application.routes.draw do
 	get '/team' => 'home#team'
 
 	post '/find_questions' => 'questions#search'
+
+	post '/upvoteAnswer' => 'questions#upvote'
 
 	resources :events, only: [:show, :index]
 
