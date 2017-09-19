@@ -18,6 +18,9 @@
   width: 100%;
   align-items: center;
 }
+.sidenav i {
+  color: #929292;
+}
 span.badge {
   min-width: 2.5rem;
   max-height: 1.3rem;
