@@ -43,9 +43,17 @@ class UsersController  < ApplicationController
 	def profile
 		@profile_page = true
 		@user = User.where(nickname: params[:nickname]).first
-		@verified_posts = @user.posts.where(status: 1)
-		@pending_posts = @user.posts.where(status: 0)
-		@questions = @user.questions
+		@followed_question_ids = @user.follows.pluck(:question_id)
+		@answered_question_ids = @user.answers.pluck(:question_id)
+		total_follows = 0
+		@user.questions.each do |question|
+			total_follows += question.follows.count
+		end 
+		total_upvotes = 0
+		@user.answers.each do |answer|
+			total_upvotes += answer.upvotes.count
+		end
+		@rep = (total_follows+total_upvotes)*0.25
 	end
 
 

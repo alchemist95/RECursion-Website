@@ -23,23 +23,29 @@
 		<br><hr />
 	    <h6 class="text-left"><%= @question.description.html_safe %></h6>
 		<div class="row">
+
 			<% if current_user %>
-				<div class="question_id" id='<%= @question.id %>'></div>	
-				<div class="follow_status" id='<%= current_user.already_followed(@question) %>'></div>	
-			<div id='upvote_downvote'>
-				<button class='btn waves-effect' style="background-color: #0097a7;" id='showAnswerForm'>Answer</button>	
+					<div class="question_id" id='<%= @question.id %>'></div>	
+					<div class="follow_status" id='<%= current_user.already_followed(@question) %>'></div>	
+					<div id='upvote_downvote'>
+						<button class='btn waves-effect' style="background-color: #0097a7;" id='showAnswerForm'>Answer</button>	
 
-				<% if current_user.already_followed(@question) %>
+						<% if current_user != @question.user %>
+				
+						<% if current_user.already_followed(@question) %>
 
-					<button class='btn waves-effect waves-light' style="background-color: #0097a7" id='followButton'>Unfollow</button>
+							<button class='btn waves-effect waves-light' style="background-color: #0097a7" id='followButton'>Unfollow</button>
 
-				<% else %>
+						<% else %>
 
-					<button class='btn waves-effect waves-light' style="background-color: #0097a7" id='followButton'>Follow</button>
+							<button class='btn waves-effect waves-light' style="background-color: #0097a7" id='followButton'>Follow</button>
 
-				<% end %>		
-				<span class="new badge" data-badge-caption="" style="float: right; margin-top: 15px;"><span class="follow_count"><%= @question.follows.count %> Followers</span></span>			
-			</div>
+						<% end %>		
+
+					
+						<% end %>
+						<span class="new badge" data-badge-caption="" style="float: right; margin-top: 15px;"><span class="follow_count"><%= @question.follows.count %> Followers</span></span>			
+					</div>
 			<% else %>
 				<p>Please Log In to Answer</p>
 			<% end %>
@@ -86,7 +92,7 @@
 							<h4><%= raw(answer.description) %></h4>
 						</div>
 
-						<% if answer.user != current_user %>
+						<% if current_user and answer.user != current_user %>
 						<div class="upvote_status-answer-<%= answer.id %>" id='<%= current_user.already_upvoted(answer) %>'></div>
 						<div class="upvote_count-answer-<%= answer.id %>"><%= answer.upvotes.count %></div>
 		
