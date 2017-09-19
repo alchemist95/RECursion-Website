@@ -86,7 +86,7 @@
 							<h4><%= raw(answer.description) %></h4>
 						</div>
 
-						<% if @question.user != current_user %>
+						<% if answer.user != current_user %>
 						<div class="upvote_status-answer-<%= answer.id %>" id='<%= current_user.already_upvoted(answer) %>'></div>
 						<div class="upvote_count-answer-<%= answer.id %>"><%= answer.upvotes.count %></div>
 		
