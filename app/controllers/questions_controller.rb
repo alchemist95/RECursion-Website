@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :authenticate, only: [:new]
-  
+  helper_method :sort_column, :sort_direction
+
   def new
   	@question = Question.new
   end
@@ -33,9 +34,18 @@ class QuestionsController < ApplicationController
 
   def tagged_questions
     @tag = params[:tag]
-    @questions = Question.tagged_with(@tag).order(created_at: :desc).paginate(page: params[:page], per_page: 15)
-    @followed_questions = Question.tagged_with(@tag).sort_by(&:follow_count).reverse[0,5]
-    @upvoted_questions = Question.tagged_with(@tag).sort_by(&:upvote_count).reverse[0,5]
+    @questions = Question.tagged_with(@tag).order(created_at: :desc)
+
+    if sort_column == 'Answers'
+      @questions = @questions.sort_by(&:answer_count)
+    else
+      @questions = @questions.sort_by(&:follow_count)
+    end 
+
+    if sort_direction == 'desc'
+      @questions = @questions.reverse
+    end
+
   end
 
   def submit_answer
@@ -57,13 +67,12 @@ class QuestionsController < ApplicationController
 
   end
 
-
   def upvote
-    question = Question.find(params[:id])
-    if current_user.already_upvoted(question)
-      question.upvotes.where(user_id: current_user.id).destroy_all 
+    answer = Answer.find(params[:id])
+    if current_user.already_upvoted(answer)
+      answer.upvotes.where(user_id: current_user.id).destroy_all 
     else
-      question.upvotes.where(user_id: current_user.id).first_or_create
+      answer.upvotes.where(user_id: current_user.id).first_or_create
     end
   end
 
@@ -97,6 +106,14 @@ class QuestionsController < ApplicationController
 
   def answer_params
     params.require(:answer).permit(:description)
+  end
+
+  def sort_column
+    params[:sort] || 'follows'
+  end
+
+  def sort_direction
+    params[:direction] || 'desc'
   end
 
 end

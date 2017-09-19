@@ -19,7 +19,6 @@
       <th>Title</th>
       <th style="text-align: center;"><%= sortable "Answers" %></th>
       <th style="text-align: center;"><%= sortable "Follows" %></th>
-      <th style="text-align: center;"><%= sortable "Upvotes" %></th>
       </tr>
     </thead>
     <% @questions.each do |question| %>
@@ -27,7 +26,6 @@
         <td><%= link_to question.title.truncate(75), question_path(question) %></td>
         <td style="text-align: center;"><%= question.answer_count %></td> 
         <td style="text-align: center;"><%= question.follow_count %></td>
-        <td style="text-align: center;"><%= question.upvote_count %></td>
       </tr>
     <% end %>
   </table>

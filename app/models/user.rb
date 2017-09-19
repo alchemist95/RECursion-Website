@@ -46,7 +46,6 @@ class User < ApplicationRecord
 		user.email = info.email
 		user.image_url = info.image
 		user.role = 0
-		user.year = 0
 		user.save!
 		user
 
@@ -56,8 +55,8 @@ class User < ApplicationRecord
 		post.likes.where(user_id: id).any?
 	end
 
-	def already_upvoted(question)
-		question.upvotes.where(user_id: id).any?
+	def already_upvoted(answer)
+		answer.upvotes.where(user_id: id).any?
 	end
 
 	def already_followed(question)

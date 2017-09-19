@@ -25,17 +25,10 @@
 		<div class="row">
 			<% if current_user %>
 				<div class="question_id" id='<%= @question.id %>'></div>	
-				<div class="upvote_status" id='<%= current_user.already_upvoted(@question) %>'></div>
 				<div class="follow_status" id='<%= current_user.already_followed(@question) %>'></div>	
 			<div id='upvote_downvote'>
 				<button class='btn waves-effect' style="background-color: #0097a7;" id='showAnswerForm'>Answer</button>	
 
-				<% if current_user.already_upvoted(@question) %>
-					<a href='#' class='btn waves-effect' style="background-color: #0097a7" id='upvoteButton'>Downvote</a>
-				<% else %>
-					<a href='#' class='btn waves-effect' style="background-color: #0097a7" id='upvoteButton'>Upvote</span></a>
-				<% end %>
-			
 				<% if current_user.already_followed(@question) %>
 
 					<button class='btn waves-effect waves-light' style="background-color: #0097a7" id='followButton'>Unfollow</button>
@@ -45,7 +38,6 @@
 					<button class='btn waves-effect waves-light' style="background-color: #0097a7" id='followButton'>Follow</button>
 
 				<% end %>		
-				<span class="new badge" data-badge-caption="" style="float: right; margin-top: 15px;"><span class="upvotes_count"><%= @question.upvotes.count %> Upvotes</span></span>
 				<span class="new badge" data-badge-caption="" style="float: right; margin-top: 15px;"><span class="follow_count"><%= @question.follows.count %> Followers</span></span>			
 			</div>
 			<% else %>
@@ -93,6 +85,20 @@
 						<div class="col s12">
 							<h4><%= raw(answer.description) %></h4>
 						</div>
+
+						<% if @question.user != current_user %>
+						<div class="upvote_status-answer-<%= answer.id %>" id='<%= current_user.already_upvoted(answer) %>'></div>
+						<div class="upvote_count-answer-<%= answer.id %>"><%= answer.upvotes.count %></div>
+		
+						<% if current_user and current_user.already_upvoted(answer) %>
+							<a href='#' class='btn waves-effect upvoteAnswer' style="background-color: #0097a7" id='answer-<%= answer.id %>'>Downvote</a>
+						<% else %>
+							<a href='#' class='btn waves-effect upvoteAnswer' style="background-color: #0097a7" id='answer-<%= answer.id %>'>Upvote</span></a>
+						<% end %>
+						<% end %>
+
+		
+
 					</div>
 					<div class="divider"></div>
 				</div>
@@ -210,37 +216,7 @@ $(document).ready(function(){
 		$("#showAnswerForm").prop('disabled', true);
 	});
 
-	$("#upvoteButton").click(function() {
-		event.preventDefault();
-		var id = $(".question_id").attr("id");
-	 	var count = parseInt($(".upvotes_count").text());
-	 	var status = $(".upvote_status").attr("id");
-	 	
-	 	$.ajax({
-	 		type: 'GET',
-	 		url: '/askrec/questions/'+id+'/upvote',
-	 		dataType: "json",
-	 		success: function(){
-
-	 			if(status === 'false'){
-	 				count++;
-	 				$(".upvote_status").attr('id', 'true');
-	 				$("#upvoteButton").html("Downvote");
-	 			}
-	 			else{
-	 				count--;
-	 				$(".upvote_status").attr('id', 'false');
-	 				$("#upvoteButton").html("Upvote");
-	 			}
-
-				$(".upvotes_count").html(count+' Upvotes');
-			},
-	 		error: function(){
-	 			alert("Failure!");
-	 		}
-	 	})
-	});
-
+	
 	$("#followButton").click(function() {
 		event.preventDefault();
 		var id = $(".question_id").attr("id");
@@ -270,7 +246,45 @@ $(document).ready(function(){
 
 	});
 
+	$(".upvoteAnswer").click(function() {
+		event.preventDefault();
+		var id = $(this).attr("id");
+		console.log(id);
+		var answerId = parseInt(id.match(/\d+/)[0]);
+		console.log(answerId);
+	 	var status = $(".upvote_status-"+id).attr("id");
+		console.log(status);
 
+		var count = parseInt($(".upvote_count-"+id).text())
+		console.log(count);
+
+	 	$.ajax({
+	 		type: 'POST',
+	 		url: '/upvoteAnswer',
+	 		data: {"id": answerId},
+	 		success: function(){
+
+	 			if(status === 'false'){
+	 				count++;
+	 				console.log("Hello");
+	 				$(".upvote_status-"+id).attr('id', 'true');
+	 				$("#"+id).html('Downvote');
+	 			}
+	 			else{
+	 				count--;
+	 				console.log("Bol");
+	 				$(".upvote_status-"+id).attr('id', 'false');
+	 				$("#"+id).html('Upvote');
+	 			}
+
+				$(".upvote_count-"+id).html(count);
+			},
+	 		error: function(){
+	 			alert("Failure!");
+	 		}
+	 	})
+
+	});
 
 });
 

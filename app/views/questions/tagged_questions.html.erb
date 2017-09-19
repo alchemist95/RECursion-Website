@@ -2,63 +2,26 @@
 	askREC > <%= @tag %>
 <% end %>
 
-<div class="container-fluid" style="height: 100%">
+<div class="container-fluid">
 
 <p id="notice"><%= notice %></p>
 
-  <div class="col s12 m6 l6">
-    
-     <ul class="collection with-header">
-        <li class="text-center collection-header" style="background-color: #fcfdff"><h5 style="color: #066696">Most Followed Questions</h5></li>
-      <% @followed_questions.each do |question| %>
-        <li class="collection-item avatar">
-          <img src="<%= User.find(question.user_id).image_url %>" alt="" class="circle">
-          <span class="title"><%= link_to question.title.truncate(140), question_path(question) %></span>
-
-          <span class="secondary-content"><h6><%= question.created_at.strftime('%b %d, %Y') %></h6></span>
-        </li>
-      <% end %>
-    </ul>         
-    
-    <br />    
-
-
-     <ul class="collection with-header">
-        <li class="text-center collection-header" style="background-color: #fcfdff"><h5 style="color: #066696">Most Upvoted Questions</h5></li>
-      <% @upvoted_questions.each do |question| %>
-        <li class="collection-item avatar">
-          <img src="<%= User.find(question.user_id).image_url %>" alt="" class="circle">
-          <span class="title"><%= link_to question.title.truncate(140), question_path(question) %></span>
-
-          <span class="secondary-content"><h6><%= question.created_at.strftime('%b %d, %Y') %></h6></span>
-        </li>
-      <% end %>
-    </ul>         
-    
-
-
-  </div>
-
-<div class="col s12 m6 l6">
-    
- <ul class="collection with-header">
-        <li class="text-center collection-header" style="background-color: #fcfdff"><h5 style="color: #066696">Recent Questions</h5></li>
-      <% @questions.each do |question| %>
-        <li class="collection-item avatar">
-          <img src="<%= User.find(question.user_id).image_url %>" alt="" class="circle">
-          <span class="title"><%= link_to question.title.truncate(140), question_path(question) %></span>
-
-          <span class="secondary-content"><h6><%= question.created_at.strftime('%b %d, %Y') %></h6></span>
-        </li>
-      <% end %>
-    </ul>
-
-
-
-  </div>
-
-
-
- <%= will_paginate @questions %>
-
+<br></div>
+<div class="container2" style="height: 100%;">
+  <table class="highlight" style="width:100%">
+    <thead>
+      <tr>
+      <th>Title</th>
+      <th style="text-align: center;"><%= sortable "Answers" %></th>
+      <th style="text-align: center;"><%= sortable "Follows" %></th>
+      </tr>
+    </thead>
+    <% @questions.each do |question| %>
+      <tr>
+        <td><%= link_to question.title.truncate(75), question_path(question) %></td>
+        <td style="text-align: center;"><%= question.answer_count %></td> 
+        <td style="text-align: center;"><%= question.follow_count %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>

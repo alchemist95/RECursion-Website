@@ -9,9 +9,7 @@ class HomeController < ApplicationController
 
 	def forum
 		@forum_page = true
-		if sort_column == 'Upvotes'
-			@questions = Question.all.sort_by(&:upvote_count)
-		elsif sort_column == 'Answers'
+		if sort_column == 'Answers'
 			@questions = Question.all.sort_by(&:answer_count)
 		else
 			@questions = Question.all.sort_by(&:follow_count)

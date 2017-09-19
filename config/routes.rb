@@ -33,7 +33,7 @@ Rails.application.routes.draw do
 	get '/recblog/posts/:id/like' => 'posts#like'
 	get '/recblog/posts/:id/unlike' => 'posts#unlike'
 
-	get '/askrec/questions/:id/upvote' => 'questions#upvote'
+	post '/upvoteAnswer' => 'questions#upvote'
 	get '/askrec/questions/:id/follow' => 'questions#follow'
 	post '/askrec/questions/:id/comment' => 'questions#add_comment'
 
