@@ -5,35 +5,48 @@
 <div class="container-fluid">
 
 <p id="notice"><%= notice %></p>
-<div class="col s6 offset-s2">
-  <div class="search_wrapper">
-    <input id="search" placeholder="Search for Tags">
-    <div class="search_results"></div>
-  </div>
 </div>
-<br></div>
-<div class="container2" style="height: 100%;">
-  <table class="highlight" style="width:100%">
-    <thead>
-      <tr>
-      <th>Title</th>
-      <th style="text-align: center;"><%= 'Posted by' %></th>
-      <th style="text-align: center;"><%= sortable "Answers" %></th>
-      <th style="text-align: center;"><%= sortable "Follows" %></th>
-      <th style="text-align: center;"><%= sortable "Date", "Posted On" %></th>
-      </tr>
-    </thead>
-    <% @questions.each do |question| %>
-      <tr>
-        <td ><%= link_to question.title.truncate(75), question_path(question) %></td>
-        <td style="text-align: center;""><%= link_to link_to image_tag(User.find(question.user_id).image_url, size: "40x40", class: 'circle'), users_path(User.find(question.user_id).nickname) %></td>
-        <td style="text-align: center;"><%= question.answer_count %></td> 
-        <td style="text-align: center;"><%= question.follow_count %></td>
-        <td style="text-align: center;"><%= question.created_at.strftime('%b %d') %></td>
-      </tr>
-    <% end %>
-  </table>
-  <%= will_paginate @questions %>
+<div class="container-fluid" style="min-height: 100%;">
+  <div class="row">
+    <div class="col s12 m10 offset-m1 l3 push-l9">
+      <div class="search_wrapper">
+        <input id="search" placeholder="Search for Tags">
+        <div class="search_results"></div>
+      </div>
+      <div class="card">
+        <div class="container2">
+          <div class="text-center" style="padding-top: 10px;"><h5>Popular Tags</h5><hr></div>
+          <p style="word-wrap: break-word; margin: 0px;"> link to tag1
+          <span class="new badge" data-badge-caption="" style="float: right; margin-top: 0px;" >10 questions</span></p><hr>
+          <p style="word-wrap: break-word; margin: 0px;">tag2
+          <span class="new badge" data-badge-caption="" style="float: right; margin-top: 0px;" >5</span></p><hr>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 m10 offset-m1 l9 pull-l3">
+      <table class="highlight" style="width:100%">
+        <thead>
+          <tr>
+          <th>Title</th>
+          <th style="text-align: center;"><%= 'Posted by' %></th>
+          <th style="text-align: center;"><%= sortable "Answers" %></th>
+          <th style="text-align: center;"><%= sortable "Follows" %></th>
+          <th style="text-align: center;"><%= sortable "Date", "Posted On" %></th>
+          </tr>
+        </thead>
+        <% @questions.each do |question| %>
+          <tr>
+            <td ><%= link_to question.title.truncate(75), question_path(question) %></td>
+            <td style="text-align: center;""><%= link_to link_to image_tag(User.find(question.user_id).image_url, size: "40x40", class: 'circle'), users_path(User.find(question.user_id).nickname) %></td>
+            <td style="text-align: center;"><%= question.answer_count %></td> 
+            <td style="text-align: center;"><%= question.follow_count %></td>
+            <td style="text-align: center;"><%= question.created_at.strftime('%b %d') %></td>
+          </tr>
+        <% end %>
+      </table>
+      <%= will_paginate @questions %>
+    </div>
+  </div>
 </div>
 
 

@@ -2,9 +2,9 @@
 	RECursion
 <% end %>
 
-<div class="container2">
+<div class="container2" style="min-height: 100%;">
 	<div class="row">
-		<div class="col s12 m3">
+		<div class="col s12 m3 hide-on-small-and-down">
 			<div class="sidenav">
 				<%= image_tag(User.find(@user.id).image_url, size: '150x150', class:'circle',)%>
 				<h4><%= @user.nickname %></h4>
@@ -12,14 +12,26 @@
 				<h6><i>Studies at: </i><%= @user.college %></h6>
 				<h6><i>Specialization:</i> <%= @user.dept %></h6>
 				<h6><i>Reputation:</i> <%= @rep %></h6>
-				<hr \>
+				<br>
 				<h6><a href="#qfollow"><em>Questions Following</em></a></h6>
 				<h6><a href="#qposted"><em>Questions Posted</em></a></h6>
 				<h6><a href="#qanswered"><em>Questions Answered</em></a></h6>
 			</div>
 		</div>
+		<div class="col s12 hide-on-med-and-up">
+			<%= image_tag(User.find(@user.id).image_url, size: '150x150', class:'circle',)%>
+			<h4><%= @user.nickname %></h4>
+			<h6><i>Name:</i> <%= @user.name %></h6>
+			<h6><i>Studies at: </i><%= @user.college %></h6>
+			<h6><i>Specialization:</i> <%= @user.dept %></h6>
+			<h6><i>Reputation:</i> <%= @rep %></h6>
+			<br>
+			<h6><a href="#qfollow"><em>Questions Following</em></a></h6>
+			<h6><a href="#qposted"><em>Questions Posted</em></a></h6>
+			<h6><a href="#qanswered"><em>Questions Answered</em></a></h6>
+		</div>
 		<div class="col s12 m9">
-			<div id="qfollow">
+			<div id="qfollow" class="section scrollspy">
 				<h5>Questions Following</h5><hr>
 				<% @followed_question_ids.each do |q_id| %>
 					<table class="highlight">
@@ -28,7 +40,7 @@
 				<% end %>
 			</div>
 
-			<div id="qposted">
+			<div id="qposted" class="section scrollspy">
 				<h5>Questions Posted</h5><hr>
 				<% @user.questions.each do |question| %>
 					<table class="highlight">
@@ -37,7 +49,7 @@
 				<% end %>
 			</div>
 
-			<div id="qanswered">
+			<div id="qanswered" class="section scrollspy">
 				<h5>Questions Answered</h5><hr>
 				<% @answered_question_ids.each do |q_id| %>
 					<table class="highlight">
@@ -49,3 +61,8 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.scrollspy').scrollSpy();
+	});
+</script>
