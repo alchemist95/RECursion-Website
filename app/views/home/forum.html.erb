@@ -13,7 +13,7 @@
           <div class="text-center" style="padding-top: 10px;"><h5>Popular Tags</h5><hr></div>
           <p style="word-wrap: break-word; margin: 0px;">
           <% @tags.each do |tag| %>
-          <h6><%= tag.name %>
+          <h6><a href='/askrec/questions/tags/<%= tag.name %>' ><%= tag.name %></a>
           <span class="new badge" data-badge-caption="" style="float: right;" ><%= tag.questions.count %></span></p>
           </h6>
           <% end %>
@@ -37,7 +37,10 @@
           <tr>
             <td ><%= link_to question.title.truncate(75), question_path(question) %></td>
             <td style="text-align: center;"><%= link_to link_to image_tag(User.find(question.user_id).image_url, size: "40x40", class: 'circle'), users_path(User.find(question.user_id).nickname) %></td>
-            <td style="text-align: center;"><% if !question.tags[0].nil? %><span class="new badge" data-badge-caption=""><%= question.tags[0].name %></span><% end %><% if !question.tags[1].nil? %><span class="new badge" data-badge-caption=""><%= question.tags[1].name %></span><% end %></td>
+            <td style="text-align: center;">
+              <% if !question.tags[0].nil? %><span class="new badge" data-badge-caption=""><a href='/askrec/questions/tags/<%= question.tags[0].name %>' ><%= question.tags[0].name %></a></span><% end %>
+              <% if !question.tags[1].nil? %><span class="new badge" data-badge-caption=""><a href='/askrec/questions/tags/<%= question.tags[1].name %>' ><%= question.tags[1].name %></a></span><% end %>
+            </td>
             <td style="text-align: center;"><%= question.answer_count %></td> 
             <td style="text-align: center;"><%= question.follow_count %></td>
             <td style="text-align: center;"><%= question.created_at.strftime('%b %d') %></td>
