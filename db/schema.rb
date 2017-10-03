@@ -68,32 +68,6 @@ ActiveRecord::Schema.define(version: 20170907053602) do
     t.integer  "user_id"
   end
 
-  create_table "lectures", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
-    t.date     "held_on"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  create_table "likes", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_likes_on_post_id"
-    t.index ["user_id"], name: "index_likes_on_user_id"
-  end
-
-  create_table "posts", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
-    t.integer  "status"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "user_id"
-  end
-
   create_table "questions", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
