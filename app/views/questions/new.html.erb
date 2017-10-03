@@ -1,12 +1,23 @@
 <% content_for :heading do %>
 	askREC
 <% end %>
+<% if @question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+      <% @question.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
 <div class="container">
 <div class="card">
 <div class="text-center"><h4 style="padding: 10px;">Question #<%= Question.count+1 %></h4></div>
 <br />
-<div class="card-comtent" style="padding: 10px">
+<div class="card-content" style="padding: 10px">
 <%= render 'form', question: @question %>
 </div>
 </div>

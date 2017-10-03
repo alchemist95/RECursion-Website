@@ -1,28 +1,17 @@
 <%= form_for(question) do |f| %>
-  <% if question.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
-
-      <ul>
-      <% question.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+  
  <div class="input-field col s12">
     <i class="material-icons prefix">mode_edit</i>
     <%= f.text_field :title, placeholder: 'Title for your Question', required: ""%>
   </div>
   <br />
 
-  <div class="input-field col s12" style="height:30em;">
-    <%= f.cktext_area :description, :as => :ckeditor, input_html: {:ckeditor => {:toolbar => 'FULL'}}, required: "" %>
+  <div class="input-field col s12" style="height:30em;" >
+    <%= f.cktext_area :description, :as => :ckeditor, input_html: {:ckeditor => {:toolbar => 'FULL'}}, required: true, rows: 50%>
   </div>
 
     <div class="input-field col s12">
-      <%= f.text_field :all_tags, placeholder: "Tags separated with comma" %>
+      <%= f.text_field :all_tags, placeholder: "Tags separated with comma", required: ""%>
     </div>
 
   <br />

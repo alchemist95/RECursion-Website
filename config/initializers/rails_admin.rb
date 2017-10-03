@@ -43,13 +43,4 @@ RailsAdmin.config do |config|
     # history_show
   end
 
-  config.model Lecture do
-    edit do
-      field :description, :ck_editor
-      field :title
-      field :held_on
-    end
-  end
-
-
 end

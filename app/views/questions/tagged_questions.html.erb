@@ -8,25 +8,27 @@
 
 <br></div>
 <div class="container2" style="height: 100%;">
-  <table class="highlight" style="width:100%">
-    <thead>
-      <tr>
-      <th>Title</th>
-      <th style="text-align: center;"><%= 'Posted by' %></th>
-      <th style="text-align: center;"><%= sortable "Answers" %></th>
-      <th style="text-align: center;"><%= sortable "Follows" %></th>
-      <th style="text-align: center;"><%= sortable "Date", "Posted On" %></th>
-      </tr>
-    </thead>
-    <% @questions.each do |question| %>
-      <tr>
-         <td ><%= link_to question.title.truncate(75), question_path(question) %></td>
-        <td style="text-align: center;""><%= link_to link_to image_tag(User.find(question.user_id).image_url, size: "40x40", class: 'circle'), users_path(User.find(question.user_id).nickname) %></td>
-        <td style="text-align: center;"><%= question.answer_count %></td> 
-        <td style="text-align: center;"><%= question.follow_count %></td>
-        <td style="text-align: center;"><%= question.created_at.strftime('%b %d') %></td>
-      </tr>
-    <% end %>
-  </table>
+ <table class="highlight" style="width:100%">
+      <thead>
+        <tr>
+        <th>Title</th>
+        <th style="text-align: center;"><%= 'Posted by' %></th>
+        <th style="text-align:center;">Category</th>
+        <th style="text-align: center;"><%= sortable "Answers" %></th>
+        <th style="text-align: center;"><%= sortable "Follows" %></th>
+        <th style="text-align: center;"><%= sortable "Date", "Posted On" %></th>
+        </tr>
+      </thead>
+      <% @questions.each do |question| %>
+        <tr>
+          <td ><%= link_to question.title.truncate(75), question_path(question) %></td>
+          <td style="text-align: center;"><%= link_to link_to image_tag(User.find(question.user_id).image_url, size: "40x40", class: 'circle'), users_path(User.find(question.user_id).nickname) %></td>
+          <td class="center"><% if !question.tags[0].nil? %><span class="new badge" data-badge-caption=""><%= question.tags[0].name %></span><% end %><% if !question.tags[1].nil? %><span class="new badge" data-badge-caption=""><%= question.tags[1].name %></span><% end %></td>
+          <td style="text-align: center;"><%= question.answer_count %></td> 
+          <td style="text-align: center;"><%= question.follow_count %></td>
+          <td style="text-align: center;"><%= question.created_at.strftime('%b %d') %></td>
+        </tr>
+      <% end %>
+    </table>
   <%= will_paginate @questions %>
 </div>

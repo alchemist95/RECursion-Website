@@ -24,23 +24,18 @@ class HomeController < ApplicationController
 
 		@questions = @questions.paginate(page: params[:page], per_page: 15)
 
+		@tags = Tag.all.sort_by(&:question_count).reverse[0,10]
+
 	end
 
-	def blog
-		@blog_page = true
-		@posts = Post.all.paginate(page: params[:page], per_page: 15)
-		@liked_posts = Post.all.sort_by(&:like_count).reverse[0,5]
-	end
-
+	
 	def getstarted		
 	end
 
 	def events
-
 	end
 
 	def team
-
 	end
 
 	private
