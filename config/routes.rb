@@ -36,6 +36,6 @@ Rails.application.routes.draw do
 
 	post '/upvoteAnswer' => 'questions#upvote'
 
-	resources :events, only: [:show, :index]
+	resources :events, only: [:index]
 
 end
