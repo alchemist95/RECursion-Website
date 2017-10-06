@@ -2,7 +2,7 @@
   RECursion
 <% end %>
 
-          <div class="container">
+          <div class="container" style="min-height: 100%;">
 
             <div class="row">
               <%= form_tag("/users/update_profile", method: "post") do %>
@@ -29,6 +29,11 @@
                   <div class="input-field">
                     <label class="control-label"> Institition </label>
                     <input type="text" name="college" class="form-control" value="<%=@user.first[:college]%>" />
+                  </div>
+
+                  <div class="input-field">
+                    <label class="control-label"> Specialisation/Department </label>
+                    <input type="text" name="college" class="form-control" value="<%=@user.first[:dept]%>" />
                   </div>
               
                   <div class="input-field">
