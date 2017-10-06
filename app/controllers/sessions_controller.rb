@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 	    user = User.sign_in_from_omniauth auth
 	
 	    session[:user_id] = user.id
-    	flash[:success] = "Successfully logged in"
+    	flash[:success] = "Successfully logged in !!"
     	redirect_to profile_update_path
  	
  	end
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 
 	   	session[:user_id] = nil
 	    session[:omniauth] = nil
-   		redirect_to root_url, notice: "SIGNED OUT"
+   		redirect_to root_url, notice: "Successfully logged out !!"
    		
 	end
 

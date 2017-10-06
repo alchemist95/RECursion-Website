@@ -59,10 +59,6 @@ span.badge {
   overflow: auto !important;
 }
 
-.fc-title{
-  color: white !important;
-}
-
 .fc-state-hover{
   background-color: inherit !important; 
 }

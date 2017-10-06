@@ -29,10 +29,8 @@ class HomeController < ApplicationController
 	end
 
 	
-	def getstarted		
-	end
-
-	def events
+	def getstarted	
+		@get_started_page = true	
 	end
 
 	def team
