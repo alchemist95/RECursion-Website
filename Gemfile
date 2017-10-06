@@ -22,6 +22,7 @@ gem 'social-share-button'
 
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+gem "gritter", "1.2.0"
 
 # Rails Admin Support
 gem 'rails_admin'

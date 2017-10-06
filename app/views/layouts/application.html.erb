@@ -11,20 +11,30 @@
   </head>
   <body>
 
-
-  <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js", 'data-turbolinks-track': 'reload' %>
-   <script type="text/javascript">
+  <script type="text/javascript">
     $(document).ready(function(){
-  $('.modal').modal();
-  $('.modal-trigger').modal();
-  $('.modal-trigger').click(function(){
-    event.preventDefault();
-    $('.modal').modal('open');      
-  });
-})
+      $('.modal').modal();
+      $('.modal-trigger').modal();
+      $('.modal-trigger').click(function(){
+        event.preventDefault();
+        $('.modal').modal('open');      
+      });
+    })
+
+    $.extend($.gritter.options, { 
+        time: 1000
+    });
+
+    $("#gritter").css('top',"120px");
+  
   </script>
 
-<%= custom_bootstrap_flash %>
+  <style type="text/css">
+    #gritter-notice-wrapper{
+      top: 70px;
+    }
+
+  </style>
 
   <header>
     <div class="navbar-fixed">
@@ -65,6 +75,9 @@
       <% end %>
     </div>
   </header>
+
+<%= render 'layouts/alerts' %>
+
 
   <!-- Modal Structure -->
 <div id="modal1" class="modal card" style="height: 250px;">
