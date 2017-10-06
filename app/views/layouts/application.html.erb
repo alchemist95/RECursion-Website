@@ -84,9 +84,15 @@
     <div class="text-center">
         <h4 style="padding: 10px;">Log in</h4>
           <h5>
-          <a href='/auth/facebook'><img src="/icons/facebook.png" style="width: 45px; height: 45px;" alt="Facebook"></a>
-          <a href='/auth/google_oauth2'><img src="/icons/gplus.png" style="width: 35px; height: 35px;" alt="Google+"></a>
-          <a href='/auth/github'><img src="/icons/githubicon.png" style="width: 40px; height: 40px;" alt="Github"></a>
+          <a href='/auth/facebook' class="waves-effect waves-light btn social facebook">
+            <i class="fa fa-facebook"></i> Sign in with facebook
+          </a><br><br>
+          <a href='/auth/google_oauth2'class="waves-effect waves-light btn social google">
+            <i class="fa fa-google"></i> Sign in with google
+          </a><br><br>
+          <a href='/auth/github' class="waves-effect waves-light btn social github">
+            <i class="fa fa-github"></i> Sign in with github
+          </a><br><br>
           </h5>
     </div>
 </div>
@@ -95,7 +101,6 @@
 
     <%= yield %>
 
-  
     <footer class="page-footer cyan darken-2 ">
       <div class="container">
         <span class="wow bounceInUp" data-wow-delay="1.5s" >Designed by RECursion | 2017</span>

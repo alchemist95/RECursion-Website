@@ -28,7 +28,7 @@ span.badge.new a:hover{
 .sidenav {
   padding-top: 40px;
   height: 100%;
-  width: 100%;
+  word-wrap: break-word;
   align-items: center;
   position: fixed;
 }
