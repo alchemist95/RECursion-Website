@@ -59,10 +59,13 @@ span.badge {
   overflow: auto !important;
 }
 
+.fc-event:hover {
+  background-color: #3a87ad; /* default BACKGROUND color */
+}
+
 .fc-state-hover{
   background-color: inherit !important; 
 }
-
 
 .TextWrap{
     float: left;
@@ -187,14 +190,25 @@ span.badge {
   align-content: flex-start;
 }
 .horizontal img {
-  margin: 20px 10px;
-    height: 150px;
-    width: 150px;
+  margin: 12px 10px;
+    height: 125px;
+    width: 125px;
     border-radius: 75px;
     float: left;
     justify-content: center;
     flex: 1;
 }
+
+.links {
+  text-align: center;
+  margin-bottom: 0.7vh;
+}
+
+.links a{
+  font-size: 1.5em;
+  padding-right: 10px;
+}
+
 .text {
   float: right;
   text-align: left;
@@ -216,7 +230,8 @@ span.badge {
 }
 
 .modal{
-  height: 10em;
+  height: 20em;
+  max-width: 30em;
 }
 
 #owl-ca .item{
