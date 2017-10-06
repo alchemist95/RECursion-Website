@@ -216,7 +216,8 @@ span.badge {
 }
 
 .modal{
-  height: 10em;
+  height: 20em;
+  max-width: 30em;
 }
 
 #owl-ca .item{
