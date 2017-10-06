@@ -11,7 +11,12 @@
   </div>
 
     <div class="input-field col s12">
-      <%= f.text_field :all_tags, placeholder: "Tags separated with comma", required: ""%>
+      <%= f.text_field :all_tags, placeholder: "Tags separated with comma", required: "", class: "autocomplete", autocomplete: "off"%>
+    </div>
+
+    <div class="search_results">
+    
+
     </div>
 
   <br />
@@ -20,3 +25,39 @@
 
 
 <% end %>
+<script>
+$(document).ready(function(){
+  $("#question_all_tags").keyup(function(){
+    list = $(this).val().split(",");
+    keyword = list.pop().trim();
+
+    if( keyword.length < 1 || /^[\s]*$/.test(keyword) == true){
+      $('.search_results').html("");
+      return;
+    }
+
+    $.ajax({
+      type: "POST",
+      url: "/find_questions",
+      data: {"keyword": keyword},
+      success: function(result){
+        //console.log(result);
+        var newHTML = [];
+        for (var i = 0; i < result.tags.length; i++) {
+          var flag = 0;
+          for(var j = 0; j < list.length; j++){
+            if(list[j].trim() == result.tags[i][0])
+              flag = 1;
+          }
+
+          if(flag == 0){
+            newHTML.push('<div class="chip">' + result.tags[i][0] + ' ' + result.tags[i][1] + '</div>');
+          }
+        }
+        $('.search_results').html(newHTML);
+      },
+    });
+
+  });
+});
+</script>
