@@ -1,0 +1,9 @@
+<% if flash[:alert] %>
+  <%= js add_gritter(flash[:alert], title: "RECursion", sticky: false) %>
+<% elsif flash[:error] %>
+  <%= js add_gritter(flash[:error], title: "RECursion", sticky: false) %>
+<% elsif flash[:success] %>
+  <%= js add_gritter(flash[:success], title: "RECursion", sticky: true) %>
+<% else %>
+  <%= js add_gritter(flash[:notice], title: "RECursion", sticky: true) %>
+<% end %>

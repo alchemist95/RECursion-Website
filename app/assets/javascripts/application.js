@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require gritter
 //= require jquery_ujs
 //= require_tree .
 //= require ckeditor/init

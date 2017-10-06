@@ -10,8 +10,6 @@
 
 </style>
 
-<p id="notice"><%= notice %></p>
-
 <div class="container-fluid">
 
 	<div class="col s12 m8 l8">
@@ -160,7 +158,7 @@
 						</div>
 					<% end %>
 				<% else %>
-					<h5 style="text-align: center; color: #d1d1d1;">No Comments yet</h5>
+					<h5 style="text-align: center; color: #d1d1d1;" id='no-comment-message'>No Comments yet</h5>
 				<% end %>
 			</div>
 		</div>
@@ -213,6 +211,7 @@ $(document).ready(function(){
 			
 			 	var div = document.getElementById('commentSection');
 			 	div.innerHTML = newComment + div.innerHTML;
+			 	$('#no-comment-message').html("");
 			},
 	 		error: function(){
 	 			alert("Failure!");
