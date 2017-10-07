@@ -9,33 +9,12 @@
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu">
   
   </head>
+    <style>
+      #gritter-notice-wrapper{
+        top: 70px;
+      }
+    </style>
   <body>
-
-  <script type="text/javascript">
-    $(document).ready(function(){
-      $('.modal').modal();
-      $('.modal-trigger').modal();
-      $('.modal-trigger').click(function(){
-        event.preventDefault();
-        $('.modal').modal('open');      
-      });
-    })
-
-    $.extend($.gritter.options, { 
-        time: 1000
-    });
-
-    $("#gritter").css('top',"120px");
-  
-  </script>
-
-  <style type="text/css">
-    #gritter-notice-wrapper{
-      top: 70px;
-    }
-
-  </style>
-
   <header>
     <div class="navbar-fixed">
       <nav class="cyan darken-2">
@@ -78,28 +57,43 @@
   </header>
 
 <%= render 'layouts/alerts' %>
-
-
   <!-- Modal Structure -->
 <div id="modal1" class="modal card">
-    <div class="text-center">
-        <h4 style="padding: 10px;">Log in</h4>
-          <h5>
-          <a href='/auth/facebook' class="waves-effect waves-light btn social facebook">
-            <i class="fa fa-facebook"></i> Sign in with facebook
-          </a>
-          </h5>
-          <h5>
-          <a href='/auth/google_oauth2'class="waves-effect waves-light btn social google">
-            <i class="fa fa-google"></i> Sign in with google+
-          </a>
-          </h5>
-          <h5>
-          <a href='/auth/github' class="waves-effect waves-light btn social github">
-            <i class="fa fa-github"></i> Sign in with github
-          </a>
-          </h5>
+    <div class="row" style="padding-top: 10 10 10 0; margin-bottom: 0px">
+      
+        <div class="col s6 m6">
+        <div class="text center">
+           <img style="width:100%; margin-top: 2em" src="../icons/log.png">
+        </div>
+        </div>
+
+        <div class="col s6 m6">
+
+          <ul id="social_button">
+            
+            <li>
+            <a href='/auth/google_oauth2' class="waves-effect waves-light btn red tooltipped" data-tooltip="Google" data-position="right" style="width: 5em; background-color: #dd4b39 !important">
+              <i class="fa fa-google-plus"></i>
+            </a>
+            </li>
+            <br />
+            <li>
+            <a href='/auth/github' class="waves-effect waves-light btn tooltipped" data-tooltip="Github" data-position="right" style="width: 5em; background-color: #444444 !important">
+              <i class="fa fa-github"></i>
+            </a>
+            </li>
+            <br />
+            <li>
+            <a href='/auth/facebook' class="waves-effect waves-light btn tooltipped" data-tooltip="Facebook" data-position="right" style="width: 5em; background-color: #3b5998 !important">
+              <i class="fa fa-facebook"></i>
+            </a>
+            </li>
+            <br />
+          </ul>
+        </div>
+
     </div>
+    <h6 class="center"><i>Sign in and contribute to ASKRecursion</i></h6>
 </div>
 
   <div class="row" style="height:100%;">

@@ -7,9 +7,9 @@ class HomeController < ApplicationController
 		@past_events = Event.order(:start_time).where('start_time < ?', DateTime.now).limit(3)		
 	end
 
-	def forum
-		
+	def forum		
 		@forum_page = true
+
 		if sort_column == 'Answers'
 			@questions = Question.all.sort_by(&:answer_count)
 		elsif sort_column == 'Date'
@@ -23,9 +23,7 @@ class HomeController < ApplicationController
 		end
 
 		@questions = @questions.paginate(page: params[:page], per_page: 15)
-
 		@tags = Tag.all.sort_by(&:question_count).reverse[0,10]
-
 	end
 
 	
