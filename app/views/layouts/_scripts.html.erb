@@ -1,0 +1,14 @@
+
+<%= javascript_include_tag 'materialize'%>
+<%= javascript_include_tag 'materialize.min'%>
+<%= javascript_include_tag 'owl.carousel.min'%>
+
+<% if @forum_page %>
+	<%= javascript_include_tag "forum" %>
+	<%= javascript_include_tag "forumShow" %>
+<% end %>
+
+<% if @user_page %>
+	<%= javascript_include_tag "users" %>
+<% end %>
+ 

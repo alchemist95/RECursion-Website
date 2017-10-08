@@ -1,19 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>  
-    <title>RecursionWebsite</title>
+    <title>Recursion</title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application'%>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu">
-  
   </head>
-    <style>
-      #gritter-notice-wrapper{
-        top: 70px;
-      }
-    </style>
+   
   <body>
   <header>
     <div class="navbar-fixed">
@@ -108,6 +103,29 @@
 
   </div>
   
+    <style>
+      #gritter-notice-wrapper{
+        top: 70px;
+      }
+    </style>
+    <script>
+      $(document).ready(function(){
+        $('.modal').modal();
+        $('.modal-trigger').modal();
+        $('.modal-trigger').click(function(){
+          event.preventDefault();
+          $('.modal').modal('open');      
+        });
+      })
+
+      $.extend($.gritter.options, { 
+          time: 1000
+      });
+
+      $("#gritter").css('top',"120px");
+    </script>
+    <%= render 'layouts/scripts' %>
+
   </body>
 
 </html>

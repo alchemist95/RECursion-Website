@@ -3,6 +3,7 @@ class UsersController  < ApplicationController
 	def update_profile
 		if current_user
 			if current_user.nickname.blank? || current_user.college.blank? || current_user.name.blank?
+				@user_page = true
 				@user = []
 		        @user << { name: current_user.name, nickname: current_user.nickname, college: current_user.college }
 			else
