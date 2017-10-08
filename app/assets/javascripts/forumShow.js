@@ -1,4 +1,7 @@
 $(document).ready(function(){
+
+	//console.log("Hi from forumShow.js");
+
 	$("#answerForm").hide();
 	$('#commentButton').prop('disabled', true);
 

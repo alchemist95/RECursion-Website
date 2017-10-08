@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    //console.log("Hi from forum.js");
 
     $("#search").keyup(function(){
       keyword = $(this).val();
