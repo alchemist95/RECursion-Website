@@ -14,7 +14,7 @@
                 <h5>Update Your Profile</h5>
                 <div class="row">
                   <%= form_tag("/users/update_profile", method: "post") do %>
-                  <div class="col s6 m6 l6">
+                  <div class="col s12 m6">
                     <%if @user.first[:nickname].nil? || @user.first[:nickname].blank?%>
                     <div class="input-field">
                       <label class="control-label"> Nickname</label>

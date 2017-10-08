@@ -202,7 +202,7 @@ span.badge {
 .vr {
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
-  height: 100vh;
+  min-height: 100%;
 }
 
 .update-profile {
@@ -212,22 +212,40 @@ span.badge {
   margin-bottom: 5px;
 }
 .update-profile h1 {
-  font-size: 30vh;
+  font-size: calc(4vw + 30vh);
   display: inline;
   padding: 11px;
   vertical-align: middle;
+}
+@media only screen and (max-width: 601px){
+  .update-profile h1 {
+    font-size: calc(12vw + 5vh);
+    padding: 3px;
+  }
 }
 .update-profile h2 {
-  font-size: 23vh;
+  font-size: calc(3vw + 23vh);
   display: inline;
   padding: 11px;
   vertical-align: middle;
 }
+@media only screen and (max-width: 601px){
+  .update-profile h2 {
+    font-size: calc(10vw + 3vh);
+    padding: 3px;
+  }
+}
 .update-profile h3 {
-  font-size: 17vh;
+  font-size: calc(2vw + 17vh);
   display: inline;
   padding: 11px;
   vertical-align: middle;
+}
+@media only screen and (max-width: 601px){
+  .update-profile h3 {
+    font-size: calc(8vw + 1vh);
+    padding: 3px;
+  }
 }
 .update-profile img {
   margin-top: 2.5vh;
@@ -237,6 +255,12 @@ span.badge {
   font-size: 10vh;
   text-align: center;
   letter-spacing: 10px;
+}
+@media only screen and (max-width: 601px){
+  .update-profile p {
+    font-size: calc(4vw + 5vh);
+    letter-spacing: 3px;
+  }
 }
 .links {
   text-align: center;
