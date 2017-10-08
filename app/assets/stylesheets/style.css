@@ -199,6 +199,45 @@ span.badge {
     flex: 1;
 }
 
+.vr {
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  height: 100vh;
+}
+
+.update-profile {
+  width: 100%;
+  background-color: #eeeeee;
+  text-align: center;
+  margin-bottom: 5px;
+}
+.update-profile h1 {
+  font-size: 30vh;
+  display: inline;
+  padding: 11px;
+  vertical-align: middle;
+}
+.update-profile h2 {
+  font-size: 23vh;
+  display: inline;
+  padding: 11px;
+  vertical-align: middle;
+}
+.update-profile h3 {
+  font-size: 17vh;
+  display: inline;
+  padding: 11px;
+  vertical-align: middle;
+}
+.update-profile img {
+  margin-top: 2.5vh;
+  vertical-align: middle;
+}
+.update-profile p {
+  font-size: 10vh;
+  text-align: center;
+  letter-spacing: 10px;
+}
 .links {
   text-align: center;
   margin-bottom: 0.7vh;

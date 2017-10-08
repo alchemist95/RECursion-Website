@@ -3,38 +3,58 @@
 <% end %>
 
           <div class="container" style="min-height: 100%;">
-
-            <div class="row">
-              <%= form_tag("/users/update_profile", method: "post") do %>
-              <div class="col s12 m6 offset-m3 l6 offset-l3">
-                <div class="card" style="padding: 20px;">            
-                  <%if @user.first[:nickname].nil? || @user.first[:nickname].blank?%>
-                  <div class="input-field">
-                    <label class="control-label"> Nickname</label>
-                    <input type="text" name="nickname" id="nickname" class="form-control">
+            <div class="vr">
+              <div class="update-profile">
+                <h1>{</h1><h2>{</h2><h3>{</h3>
+                <img><%= image_tag(User.find(current_user.id).image_url, size: '100x100', class:'circle', alt:current_user.nickname)%></img>
+                <h3>}</h3><h2>}</h2><h1>}</h1><br><br><br>
+                <p>RECursion</p><hr>
+              </div>
+              <div class="container2">
+                <h5>Update Your Profile</h5>
+                <div class="row">
+                  <%= form_tag("/users/update_profile", method: "post") do %>
+                  <div class="col s6 m6 l6">
+                    <%if @user.first[:nickname].nil? || @user.first[:nickname].blank?%>
+                    <div class="input-field">
+                      <label class="control-label"> Nickname</label>
+                      <input type="text" name="nickname" id="nickname" class="form-control">
+                    </div>
+                    <span id="status"></span>
+                    <%else%>
+                    <div class="input-field">
+                      <label class="control-label"> Nickname</label>
+                      <input type="text" name="nickname" class="form-control" value="<%=@user.first[:nickname]%>" disabled/>
+                    </div>
+                    <%end%>
                   </div>
-                  <span id="status"></span>
-                  <%else%>
-                  <div class="input-field">
-                    <label class="control-label"> Nickname</label>
-                    <input type="text" name="nickname" class="form-control" value="<%=@user.first[:nickname]%>" disabled/>
+                  <div class="col s12 m6">
+                    <div class="input-field">
+                      <label class="control-label"> Name </label>
+                      <input type="text" name="name" class="form-control" value="<%=@user.first[:name]%>" />
+                    </div>
                   </div>
+                  <div class="col s12 m6">
+                    <div class="input-field">
+                      <label class="control-label"> Institition </label>
+                      <input type="text" name="college" class="form-control" value="<%=@user.first[:college]%>" />
+                    </div>
+                  </div>
+                  <div class="col s12 m6">
+                    <div class="input-field">
+                      <label class="control-label"> Specilization </label>
+                      <input type="text" name="dept" class="form-control" value="<%=@user.first[:dept]%>" />
+                    </div>
+                  </div>
+                  <div class="col s12 m6">
+                    <div class="input-field">
+                      <label class="control-label"> Date Of Birth </label>
+                      <input type="date" name="dateofbirth" class="datepicker" value="<%=@user.first[:dob]%>" />
+                    </div>
+                  </div>
+                  <span style="float: right; padding-top: 3.5vh;"><%=submit_tag "Update",class: "btn btn-success"%></span>
                   <%end%>
-              
-                  <div class="input-field">
-                    <label class="control-label"> Name </label>
-                    <input type="text" name="name" class="form-control" value="<%=@user.first[:name]%>" />
-                  </div>
-              
-                  <div class="input-field">
-                    <label class="control-label"> Date Of Birth </label>
-                    <input type="date" name="dateofbirth" class="datepicker" value="<%=@user.first[:dob]%>" />
-                  </div>
-
-                    <%=submit_tag "Update",class: "btn btn-success"%>
                 </div>
               </div>
-              <% end %>
             </div>
           </div>
-        
