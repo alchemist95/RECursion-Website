@@ -44,7 +44,7 @@ class UsersController  < ApplicationController
 		@profile_page = true
 		@user = User.where(nickname: params[:nickname]).first
 		@followed_question_ids = @user.follows.pluck(:question_id)
-		@answered_question_ids = @user.answers.pluck(:question_id)
+		@answered_question_ids = @user.answers.pluck(:question_id, :id)
 		total_follows = 0
 		@user.questions.each do |question|
 			total_follows += question.follows.count

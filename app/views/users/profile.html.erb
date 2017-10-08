@@ -60,8 +60,8 @@
 				<% @answered_question_ids.each do |q_id| %>
 					<table class="highlight">
 					<td>
-					<h6><%= link_to Question.find(q_id).title, question_path(q_id) %>
-					<span style="float: right;"><small>Add Upvotes Count</small></span></h6>
+					<h6><%= link_to Question.find(q_id[0]).title, question_path(q_id[0]) %>
+					<span style="float: right;"><small><%= Answer.find(q_id[1]).upvotes.count %> Upvotes</small></span></h6>
 					</td>
 					</table>
 				<% end %>
