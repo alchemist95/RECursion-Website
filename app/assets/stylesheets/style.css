@@ -24,7 +24,6 @@ span.badge.new a:hover{
 .navbar-fixed a:hover {
   color: #fff;
 }
-
 .sidenav {
   padding-top: 40px;
   height: 100%;
@@ -34,6 +33,9 @@ span.badge.new a:hover{
 }
 .sidenav i {
   color: #929292;
+}
+.side-nav a:hover {
+  color: #0097a7;
 }
 span.badge {
   min-width: 2.5rem;

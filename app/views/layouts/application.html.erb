@@ -35,10 +35,37 @@
             <% if current_user %>
                 <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><%= image_tag(User.find(current_user.id).image_url, size: '40x40', class:'circle', alt:current_user.nickname)%><i class="material-icons right">arrow_drop_down</i></a></li>
             <% else %>
-               <li><a class="modal-trigger" data-toggle="modal" href="#modal1" ><i class="material-icons">vpn_key</i></a></li>             
+               <li><a class="modal-trigger" data-toggle="modal" href="#modal1" ><i class="material-icons">vpn_key</i></a></li>
             <% end %>
             </li>
-        </ul>
+          </ul>
+          <ul id="slide-out" class="side-nav">
+            <% if @forum_page %>
+            <li><a href="/askrec/questions/new"><i class="material-icons">create</i>Ask a Question</a></li>
+            <% end %>
+
+            <% if current_user and current_user.admin? %>
+            <li><a href="/sapphire" target="_blank"><i class="material-icons">person_outline</i>Admin</a></li>
+            <% end %>
+            <li class="<%= " active" if @home_page%>"><a href="/"><i class="material-icons">home</i>Home</a></li>
+            <li class="<%= " active" if @events_page%>"><a href="/events"><i class="material-icons">event</i>Events</a></li>
+            <li class="<%= " active" if @forum_page%>"><a href="/askrec"><i class="material-icons">forum</i>AskREC</a></li>
+            <li class="<%= " active" if @get_started_page%>"><a href="/getstarted"><i class="material-icons">flight_takeoff</i>Getting Started</a></li>
+            <% if current_user %>
+                <% if current_user.nickname.nil? %>
+                <li class="<%= " active" if @profile_page%>"><%= image_tag(User.find(current_user.id).image_url, size: '30x30', class:'circle', alt:current_user.nickname)%><a href="/users/update_profile">Update</a></li>
+                <% else %>
+                <li class="<%= " active" if @profile_page%>"><%= image_tag(User.find(current_user.id).image_url, size: '30x30', class:'circle', alt:current_user.nickname)%><a href="/users/profile/<%= current_user.nickname %>">Profile</a></li>
+                <% end %>
+                <li>
+                 <%= link_to 'Signout', sign_out_path, method: :delete %>
+               </li>
+              <% else %>
+                <li><a class="modal-trigger" data-toggle="modal" href="#modal1" ><i class="material-icons">vpn_key</i>Login</a></li>
+            <% end %>
+            </li>
+          </ul>
+          <a data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
         </div>
       </nav>
       <% if current_user %>
