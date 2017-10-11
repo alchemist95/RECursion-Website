@@ -14,14 +14,12 @@
       <%= f.text_field :all_tags, placeholder: "Tags separated with comma", required: "", class: "autocomplete", autocomplete: "off"%>
     </div>
 
-    <div class="search_results">
-    
-
+    <div class="search_results">  
     </div>
 
   <br />
 
- <button class="btn waves-effect waves-light" type="submit" name="action"><%= f.submit 'Ask' %></button>
+ <button class="btn waves-effect waves-light" type="submit" name="action"><%= f.submit 'Ask', data: { confirm: 'Are you sure you want to post this question?' } %></button>
 
 
 <% end %>

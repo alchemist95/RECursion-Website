@@ -46,12 +46,6 @@
                       <input type="text" name="dept" class="form-control" value="<%=@user.first[:dept]%>" />
                     </div>
                   </div>
-                  <div class="col s12 m6">
-                    <div class="input-field">
-                      <label class="control-label"> Date Of Birth </label>
-                      <input type="date" name="dateofbirth" class="datepicker" value="<%=@user.first[:dob]%>" />
-                    </div>
-                  </div>
                   <span style="float: right; padding-top: 3.5vh;"><%=submit_tag "Update",class: "btn btn-success"%></span>
                   <%end%>
                 </div>

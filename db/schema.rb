@@ -105,11 +105,9 @@ ActiveRecord::Schema.define(version: 20170907053602) do
     t.string   "email"
     t.string   "college"
     t.integer  "role"
-    t.string   "batch"
     t.string   "dept"
     t.string   "image_url"
     t.string   "nickname"
-    t.date     "dob"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
