@@ -34,6 +34,10 @@ span.badge.new a:hover{
 .sidenav i {
   color: #929292;
 }
+
+.side-nav img {
+margin-right: 15px; 
+}
 .side-nav a:hover {
   color: #0097a7;
 }
@@ -257,6 +261,7 @@ span.badge {
   font-size: 10vh;
   text-align: center;
   letter-spacing: 10px;
+  padding-bottom: 3vh;
 }
 @media only screen and (max-width: 601px){
   .update-profile p {
