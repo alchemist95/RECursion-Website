@@ -17,4 +17,3 @@
 //= require social-share-button
 //= require moment
 //= require fullcalendar
-// require ckeditor/init
