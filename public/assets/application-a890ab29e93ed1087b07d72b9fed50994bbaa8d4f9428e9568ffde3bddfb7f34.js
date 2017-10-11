@@ -33251,5 +33251,4 @@ return FC; // export for Node/CommonJS
 
 
 
-// require ckeditor/init
 ;

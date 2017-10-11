@@ -24,7 +24,6 @@ span.badge.new a:hover{
 .navbar-fixed a:hover {
   color: #fff;
 }
-
 .sidenav {
   padding-top: 40px;
   height: 100%;
@@ -36,6 +35,13 @@ span.badge.new a:hover{
 }
 .sidenav i {
   color: #929292;
+}
+
+.side-nav img {
+margin-right: 15px; 
+}
+.side-nav a:hover {
+  color: #0097a7;
 }
 span.badge {
   min-width: 2.5rem;
@@ -209,6 +215,70 @@ span.badge {
             flex: 1;
 }
 
+.vr {
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  min-height: 100%;
+}
+
+.update-profile {
+  width: 100%;
+  background-color: #eeeeee;
+  text-align: center;
+  margin-bottom: 5px;
+}
+.update-profile h1 {
+  font-size: calc(4vw + 30vh);
+  display: inline;
+  padding: 11px;
+  vertical-align: middle;
+}
+@media only screen and (max-width: 601px){
+  .update-profile h1 {
+    font-size: calc(12vw + 5vh);
+    padding: 3px;
+  }
+}
+.update-profile h2 {
+  font-size: calc(3vw + 23vh);
+  display: inline;
+  padding: 11px;
+  vertical-align: middle;
+}
+@media only screen and (max-width: 601px){
+  .update-profile h2 {
+    font-size: calc(10vw + 3vh);
+    padding: 3px;
+  }
+}
+.update-profile h3 {
+  font-size: calc(2vw + 17vh);
+  display: inline;
+  padding: 11px;
+  vertical-align: middle;
+}
+@media only screen and (max-width: 601px){
+  .update-profile h3 {
+    font-size: calc(8vw + 1vh);
+    padding: 3px;
+  }
+}
+.update-profile img {
+  margin-top: 2.5vh;
+  vertical-align: middle;
+}
+.update-profile p {
+  font-size: 10vh;
+  text-align: center;
+  letter-spacing: 10px;
+  padding-bottom: 3vh;
+}
+@media only screen and (max-width: 601px){
+  .update-profile p {
+    font-size: calc(4vw + 5vh);
+    letter-spacing: 3px;
+  }
+}
 .links {
   text-align: center;
   margin-bottom: 0.7vh;
