@@ -22,7 +22,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
-
+    @forum_page = true
   	@question = Question.find(params[:id])
     @tags = @question.tags
     @answer = Answer.new

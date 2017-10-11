@@ -13,24 +13,7 @@
 //= require jquery
 //= require gritter
 //= require jquery_ujs
-//= require_tree .
 //= require ckeditor/init
 //= require social-share-button
 //= require moment
 //= require fullcalendar
-
-$(document).ready(function(){
-  $(".button-collapse").sideNav();
-  $('.modal').modal();
-  $('.modal-trigger').modal();
-  $('.modal-trigger').click(function(){
-    event.preventDefault();
-    $('.modal').modal('open');      
-  });
-})
-
-$.extend($.gritter.options, { 
-    time: 1000
-});
-
-$("#gritter").css('top',"120px");

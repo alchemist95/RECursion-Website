@@ -6,4 +6,8 @@ module ApplicationHelper
 		link_to title, :sort => column, :direction => direction
 	end
 
+	def addcustomjs(_files)
+		content_for(:head_js) { javascript_include_tag(_files) }
+	end
+
 end
