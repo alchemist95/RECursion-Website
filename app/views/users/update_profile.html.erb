@@ -11,19 +11,20 @@
                 <p>RECursion</p><hr>
               </div>
               <div class="container2">
-                <h5>Update Your Profile</h5>
-                <div class="row">
+                <h5 style="padding-top: 3vh;">Update Your Profile</h5>
+                <h7 class="red-text text-darken-1"><em>Note: Choose a unique username to get your profile ready.</em></h7>
+                <div class="row" style="padding-top: 3vh;">
                   <%= form_tag("/users/update_profile", method: "post") do %>
                   <div class="col s12 m6">
                     <%if @user.first[:nickname].nil? || @user.first[:nickname].blank?%>
                     <div class="input-field">
-                      <label class="control-label"> Nickname</label>
-                      <input type="text" name="nickname" id="nickname" class="form-control">
+                      <label class="control-label" id="status">Username</label>
+                      <input type="text" name="nickname" id="nickname" class="form-control" autocomplete="off">
                     </div>
-                    <span id="status"></span>
+                    
                     <%else%>
                     <div class="input-field">
-                      <label class="control-label"> Nickname</label>
+                      <label class="control-label"> Username</label>
                       <input type="text" name="nickname" class="form-control" value="<%=@user.first[:nickname]%>" disabled/>
                     </div>
                     <%end%>
@@ -31,7 +32,7 @@
                   <div class="col s12 m6">
                     <div class="input-field">
                       <label class="control-label"> Name </label>
-                      <input type="text" name="name" class="form-control" value="<%=@user.first[:name]%>" />
+                      <input type="text" name="name" class="form-control" value="<%=@user.first[:name]%>"  autocomplete="off" />
                     </div>
                   </div>
                   <div class="col s12 m6">
