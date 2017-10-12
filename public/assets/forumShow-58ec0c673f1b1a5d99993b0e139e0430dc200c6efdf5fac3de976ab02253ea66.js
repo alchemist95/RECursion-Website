@@ -50,7 +50,7 @@ $(document).ready(function(){
 	 		}
 	 	});
 	 	$("#commentForm").val("");
-
+	 	$('#commentButton').prop('disabled', true);
 	});
 
 
