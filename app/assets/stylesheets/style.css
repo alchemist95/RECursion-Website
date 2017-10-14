@@ -63,14 +63,11 @@ span.badge.new a:hover{
 .sidenav {
   padding-top: 40px;
   height: 100%;
-  word-wrap: break-word;
-  align-items: center;
-  position: fixed;
+  position: relative;
 }
 .sidenav i {
   color: #929292;
 }
-
 .side-nav img {
 margin-right: 25px; 
 }
