@@ -52,7 +52,8 @@
 
 		<div id ='answerForm'>
 			  <br />
-			  <h7 class="text-darken-1" id="note"><em>Note: Your answer should have 50 characters atleast.</em></h7>
+			  <h7 class="text-darken-1"><em>Note: Your answer should have 50 characters atleast.</em></h7>
+				<h7 class="text-darken-2" id="note"><em> Please wait a few seconds for the editor to load</em></h7>
 			  <br />
 			<%= form_for(@answer, url: answer_path) do |f| %>
 				<% if @answer.errors.any? %>
@@ -165,3 +166,11 @@
 		</div>
 	</div>
 </div>
+
+<script>
+$(document).ready(function(){
+  setTimeout(function(){
+     $('#note').fadeOut();
+  }, 5000);
+});
+</script>
