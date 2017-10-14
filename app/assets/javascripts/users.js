@@ -1,6 +1,4 @@
 $(document).ready(function() {
-
-	$(':input[type="submit"]').prop('disabled', true);
 	$("#nickname").keyup(function(){
 			nickname = $(this).val();
 			if(/^[a-zA-Z0-9_]*$/.test(nickname) == false || nickname.length < 4) {

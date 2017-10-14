@@ -29,7 +29,7 @@ class QuestionsController < ApplicationController
   def show
     @forum_page = true
   	@question = Question.find(params[:id])
-    if User.find(@question.user_id).nickname.blank?
+    if User.find(@question.user_id).nickname.blank? || (current_user && current_user.nickname.blank?)
       flash[:notice] = "Please complete your profile"
       redirect_to root_url
     else
