@@ -24,12 +24,16 @@ class QuestionsController < ApplicationController
   def show
     @forum_page = true
   	@question = Question.find(params[:id])
-    @tags = @question.tags
-    @answer = Answer.new
-    @answers = @question.answers
-    @users = @answers.group(:user_id).pluck(:user_id)  
-    @comments = @question.comments.order(created_at: :desc)
-
+    if User.find(@question.user_id).nickname.blank?
+      flash[:notice] = "Please complete your profile"
+      redirect_to root_url
+    else
+      @tags = @question.tags
+      @answer = Answer.new
+      @answers = @question.answers
+      @users = @answers.group(:user_id).pluck(:user_id)  
+      @comments = @question.comments.order(created_at: :desc)
+    end
   end
 
   def tagged_questions
