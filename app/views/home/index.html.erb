@@ -2,35 +2,32 @@
 	RECursion
 <% end %>
 
-	<div class="intro-header scrollspy wow slideInUp" id="home" >
+	<div class="intro-header scrollspy" id="home" >
         <div class="row">
             <div class="col-lg-12">
                 <div class="intro-message">
-                    <h1 class="wow fadeInUp" data-wow-delay="0.5s">RECursion</h1>
+                    <h1>RECursion</h1>
                     <hr class="intro-divider">
-                    <h3 class="wow fadeInDown" data-wow-delay="0.5s">Programming Club of NIT Durgapur</h3>
+                    <h3>Programming Club of NIT Durgapur</h3>
                     
                 </div>
             </div>
         </div>
  </div>
  
- <div class= "section scrollspy wow fadeInUp" id="about">
+ <div class= "section scrollspy" id="about">
     	<div class="section no-pad-bot white scrollspy" id="about">
          <div class="container">
-          <h2 class ="wow fadeInUp">Who are we?</h2>
+          <h2 >Who are we?</h2>
          </div>
          <div class="container">
-            <img class="TextWrap wow fadeIn" data-wow-duration="4s" src="icons/show.jpg">
-            <p class="wow fadeInUp" data-wow-duration="4s">RECursion NIT Durgapur is an initiative to embolden the budding coding minds through regular Code Classes, robust coding competitions and geeky sessions.</p>
-            <p class="wow fadeInUp" data-wow-duration="4s">
-              Pioneered by a faction of enthusiast in 2014, RECursion has continued to evolve ever since.Besides a fancy placement package, We seek to ameliorate participation in programming competitions like ACM ICPC etc.
-            </p>
-            <p class="wow fadeInUp" data-wow-duration="4s">
+            <img class="TextWrap" src="icons/show.jpg">
+            <p style="line-height: 1.15em;">RECursion NIT Durgapur is an initiative to embolden the budding coding minds through regular Code Classes, robust coding competitions and geeky sessions. <br>
+              Pioneered by a faction of enthusiast in 2014, RECursion has continued to evolve ever since.Besides a fancy placement package, We seek to ameliorate participation in programming competitions like ACM ICPC etc. <br>
             Our dynamic panel is invariably available to sort any techie doubts and cultivate positivity in you. We intend to create an intriguing ambience where coding is more of a mind sport and after every green tick the Coder in you gets bigger and wittier.
             So if you have those bits hovering over your head 24*7, RECursion is your Solution!<Br>
             <P align="Center">
-            <blockquote class="wow fadeInUp" data-wow-duration="2s">
+            <blockquote>
             "Coding is a Choice, not a Compulsion.<Br>When you are doing it, just do it with a smile."
             </blockquote>
           </div>
@@ -42,15 +39,15 @@
 
 <div class="section no-pad-bot white scrollspy" id="event">
         <div class="container">
-          <h2 class="wow fadeInUp" data-wow-duration="3000ms">Events</h2>
+          <h2>Events</h2>
           <div class="row">
          <div class="col s12">
            <ul class="tabs">
-             <li class="tab col s6"><a class="active wow slideInDown" data-wow-duration="3000ms" href="#future">Future</a></li>
-             <li class="tab col s6"><a class="active wow slideInDown" data-wow-duration="3000ms" href="#past">Past </a></li>
+             <li class="tab col s6"><a class="active" href="#future">Future</a></li>
+             <li class="tab col s6"><a class="active" href="#past">Past </a></li>
            </ul>
          </div>
-         <div id="future" class="col s12 wow fadeInUp" data-wow-delay="0.5s" data-wow-duration="500ms">
+         <div id="future" class="col s12">
            <div class="row" style="padding-top:5%">
             <% @future_events.each do |event| %>
              <div class="col-sm-4">
@@ -58,7 +55,7 @@
                 <div class="card-image waves-effect waves-block waves-light">
                   <img class="img-responsive activator" src="icons/7.jpg">
                 </div>
-                <div class="card-content wow fadeInUp" data-wow-delay="1s">
+                <div class="card-content">
                   <span style="font-size: 16px" class="card-title activator grey-text text-darken-4"><%= event.title.truncate(22) %><i class="material-icons right" aria-hidden="true">expand_less</i></span>
                   <p><%= event.start_time.strftime('%b %d, %Y') %></p>
                 </div>
@@ -72,15 +69,15 @@
             <% end %> 
            </div>
          </div>
-         <div id="past" class="col s12 wow fadeInUp" data-wow-delay="0.5s" data-wow-duration="500ms">
+         <div id="past" class="col s12">
            <div class="row" style="padding-top:5%">
            <% @past_events.each do |event| %>
              <div class="col-sm-4">
                <div class="card">
-                <div class="card-image waves-effect waves-block waves-light">
+                <div class="card-image">
                   <img class="img-responsive activator" src="icons/7.jpg">
                 </div>
-                <div class="card-content wow fadeInUp" data-wow-delay="1s">
+                <div class="card-content">
                   <span style="font-size: 16px" class="card-title activator grey-text text-darken-4"><%= event.title.truncate(22) %><i class="material-icons right" aria-hidden="true">expand_less</i></span>
                   <p><%= event.start_time.strftime('%b %d, %Y') %></p>
                 </div>
@@ -100,7 +97,7 @@
      </div>
 
     <!-- PARALLAX 2 -->
-<div class="parallax-container wow fadeIn" data-wow-duration="5s" data-wow-delay="1s">
+<div class="parallax-container">
   <!-- <div class="parallax"><img src="img/7.jpg" width=100px ></div> -->
   <div id="owl-ca" class="owl-carousel owl-theme">
     <div class="item"><img src="icons/class1.jpg"></div>
@@ -112,16 +109,14 @@
   </div>
 </div>
 
-    <div class="section scrollspy wow fadeInUp" data-wow-duration="0.14s" id="team">
+    <div class="section scrollspy" id="team">
     <div id="firstPage">
        <div class="container">
            <h2 class="header text_b" style="color: #212121;"> Our Team </h2>
            <div class="row">
-               <div class="col s12 m4 wow fadeInDown" data-wow-delay="0.2s" data-wow-duration="0.1s">
+               <div class="col s12 m4">
                    <div class="card card-avatar">
-                       <div class="waves-effect waves-block waves-light">
-                           <img class=" activator" src="/icons/siddharth.jpg">
-                       </div>
+                       <img class="activator" src="/icons/siddharth.jpg">
                        <div class="card-content">
                            <span class="card-title activator grey-text text-darken-4">Siddharth Garg <br/>
                                <small><em><h6 class="red-text text-darken-1">President</h6></em></small></span>
@@ -137,11 +132,9 @@
                        </div>
                    </div>
                </div>
-               <div class="col s12 m4 wow fadeInDown" data-wow-delay="2s" data-wow-duration="1s">
+               <div class="col s12 m4">
                    <div class="card card-avatar">
-                       <div class="waves-effect waves-block waves-light">
-                           <img class=" activator" src="/icons/anjali.jpg">
-                       </div>
+                      <img class=" activator" src="/icons/anjali.jpg">
                        <div class="card-content">
                            <span class="card-title activator grey-text text-darken-4">Anjali Agarwal <br/>
                                <small><em><h6 class="red-text text-darken-1">Treasurer</h6></em></small></span>
@@ -157,11 +150,9 @@
                        </div>
                    </div>
                </div>
-               <div class="col s12 m4 wow fadeInDown" data-wow-delay="2s" data-wow-duration="1s">
+               <div class="col s12 m4">
                    <div class="card card-avatar">
-                       <div class="waves-effect waves-block waves-light">
-                           <img class=" activator" src="/icons/shrey.jpg">
-                       </div>
+                      <img class=" activator" src="/icons/shrey.jpg">
                        <div class="card-content">
                            <span class="card-title activator grey-text text-darken-4">Shreyy Sharma<br/>
                                <small><em><h6 class="red-text text-darken-1">Convenor</h6></em></small>
