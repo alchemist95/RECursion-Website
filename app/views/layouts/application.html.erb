@@ -50,7 +50,7 @@
                 <% if current_user.nickname.nil? %>
                 <li class="<%= " active" if @profile_page%>"><a href="/users/update_profile"><img><%= image_tag(User.find(current_user.id).image_url, size: '30x30', class:'circle', alt:current_user.nickname)%></img> Update</a></li>
                 <% else %>
-                <li class="<%= " active" if @profile_page%>"><%= image_tag(User.find(current_user.id).image_url, size: '30x30', class:'circle', alt:current_user.nickname)%><a href="/users/profile/<%= current_user.nickname %>">Profile</a></li>
+                <li class="<%= " active" if @profile_page%>"><a href="/users/profile/<%= current_user.nickname %>"><%= image_tag(User.find(current_user.id).image_url, size: '30x30', class:'circle', alt:current_user.nickname)%>Profile</a></li>
                 <% end %>
                 <li>
                  <%= link_to 'Signout', sign_out_path, method: :delete %>
