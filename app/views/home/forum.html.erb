@@ -42,7 +42,7 @@
           <tr>
             <td ><%= link_to question.title.truncate(75), question_path(question) %></td>
             <% if User.find(question.user_id).nickname.blank? %>
-            <td style="text-align: center"><%= "User" %>
+            <td style="text-align: center"><span class="tooltipped" data-tooltip="Incomplete Profile"><%= "User" %></span>
             <% else %>
             <td style="text-align: center;"><%= link_to link_to image_tag(User.find(question.user_id).image_url, size: "40x40", class: 'circle', alt: User.find(question.user_id).nickname), users_path(User.find(question.user_id).nickname) %></td>
             <% end %>
