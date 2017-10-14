@@ -3,7 +3,12 @@ class QuestionsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def new
-  	@question = Question.new
+    if current_user && current_user.nickname.blank?
+      flash[:notice] = "Please Complete your profile"
+      redirect_to root_url
+    else
+  	 @question = Question.new
+    end
   end
 
   def create
