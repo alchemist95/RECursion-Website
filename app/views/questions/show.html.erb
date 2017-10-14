@@ -6,7 +6,7 @@
 
 	<div class="col s12 m8 l8">
 	    <h4><%= @question.title %></h4>
-	    
+
 	    <% @tags.each do |tag| %>
 	    	<span class="new badge" data-badge-caption=""><a href='/askrec/questions/tags/<%= tag.name %>' ><%= tag.name %></a></span>
     	<% end %>
@@ -25,13 +25,13 @@
 		</div><hr>
 		<div class="row">
 			<% if current_user %>
-				<div class="question_id" id='<%= @question.id %>'></div>	
-				<div class="follow_status" id='<%= current_user.already_followed(@question) %>'></div>	
+				<div class="question_id" id='<%= @question.id %>'></div>
+				<div class="follow_status" id='<%= current_user.already_followed(@question) %>'></div>
 				<div id='upvote_downvote'>
-					<button class='btn waves-effect' style="background-color: #0097a7;" id='showAnswerForm'>Answer</button>	
+					<button class='btn waves-effect' style="background-color: #0097a7;" id='showAnswerForm'>Answer</button>
 
 					<% if current_user != @question.user %>
-			
+
 					<% if current_user.already_followed(@question) %>
 
 						<button class='btn waves-effect waves-light' style="background-color: #0097a7" id='followButton'>Unfollow</button>
@@ -43,7 +43,7 @@
 					<% end %>
 
 					<% end %>
-					<span class="new badge" data-badge-caption="" style="float: right; margin-top: 15px; margin-right: 5px;"><span class="follow_count"><%= @question.follows.count %> Followers</span></span>			
+					<span class="new badge" data-badge-caption="" style="float: right; margin-top: 15px; margin-right: 5px;"><span class="follow_count"><%= @question.follows.count %> Followers</span></span>
 				</div>
 			<% else %>
 				<p>Please Log In to Answer</p>
@@ -51,6 +51,9 @@
 		</div>
 
 		<div id ='answerForm'>
+			  <br />
+			  <h7 class="text-darken-1" id="note"><em>Note: Your answer should have 50 characters atleast.</em></h7>
+			  <br />
 			<%= form_for(@answer, url: answer_path) do |f| %>
 				<% if @answer.errors.any? %>
 					<div id="error_explanation">
@@ -63,10 +66,10 @@
 					</div>
 				<% end %>
 				<div class="input-field">
-					<%= f.cktext_area :description, :as => :ckeditor, input_html: {:ckeditor => {:toolbar => 'mini'}}, required: "" %>
+					<%= f.cktext_area :description,id: "answerText" ,:as => :ckeditor, input_html: {:ckeditor => {:toolbar => 'mini'}}, required: ""%>
 				</div>
 				<br />
-				<button style="background-color: #0097a7" class="btn waves-effect right" type="submit" name="action"><%= f.submit "Post" %></button><br><br>
+				<button style="background-color: #0097a7" class="btn waves-effect right" type="submit" name="action" id="answerButton"><%= f.submit "Post" %></button><br><br>
 			<% end %>
 		</div>
 		<br />
@@ -128,8 +131,8 @@
 					<div id="commentStatus"></div>
 					<div class="col s3" style="margin-top: 4em;">
 						<button style="background-color: #0097a7;" class="btn" id="commentButton"><i class="material-icons">send</i></button>
-					</div>	
-				</div>		
+					</div>
+				</div>
 			<% end %>
 
 			<div id="commentSection">

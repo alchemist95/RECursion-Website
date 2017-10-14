@@ -1,30 +1,36 @@
 <%= form_for(question) do |f| %>
-  
+
  <div class="input-field col s12">
     <i class="material-icons prefix">mode_edit</i>
     <%= f.text_field :title, placeholder: 'Title for your Question', required: ""%>
   </div>
   <br />
-
+  <h7 class="text-darken-1" id="note"><em>Note: Please wait a few seconds for the editor to load</em></h7>
+  <br />
   <div class="input-field col s12" style="height:30em;" >
-    <%= f.cktext_area :description, :as => :ckeditor, input_html: {:ckeditor => {:toolbar => 'FULL'}}, required: true, rows: 50%>
+    <%= f.cktext_area :description, id:"questionText" ,:as => :ckeditor, input_html: {:ckeditor => {:toolbar => 'FULL'}}, required: true, rows: 50%>
   </div>
 
     <div class="input-field col s12">
       <%= f.text_field :all_tags, placeholder: "Tags separated with comma", required: "", class: "autocomplete", autocomplete: "off"%>
     </div>
 
-    <div class="search_results">  
+    <div class="search_results">
     </div>
 
   <br />
 
- <button class="btn waves-effect waves-light" type="submit" name="action"><%= f.submit 'Ask', data: { confirm: 'Are you sure you want to post this question?' } %></button>
+ <button class="btn waves-effect waves-light" type="submit" name="action" id="questionButton"><%= f.submit 'Ask', data: { confirm: 'Are you sure you want to post this question?' } %></button>
 
 
 <% end %>
 <script>
 $(document).ready(function(){
+
+  setTimeout(function(){
+     $('#note').fadeOut();
+  }, 5000);
+
   $("#question_all_tags").keyup(function(){
     list = $(this).val().split(",");
     keyword = list.pop().trim();

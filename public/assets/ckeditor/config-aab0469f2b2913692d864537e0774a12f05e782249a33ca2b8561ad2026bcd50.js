@@ -1,6 +1,6 @@
 CKEDITOR.editorConfig = function(config) {
   config.language = 'en';
-  config.height = '300';
+  config.height = '300'; 
   config.filebrowserBrowseUrl = "/ckeditor/attachment_files";
   config.filebrowserImageBrowseLinkUrl = "/ckeditor/pictures";
   config.filebrowserImageBrowseUrl = "/ckeditor/pictures";
@@ -13,6 +13,9 @@ CKEDITOR.editorConfig = function(config) {
   config.toolbar_mini = [
     ["Bold",  "Italic", "Strike",  "Underline", "-",  "NumberedList",  "BulletedList", "Link", "Unlink", "CodeSnippet", "RemoveFormat"],
   ];
+  
+  config.removeButtons = 'CopyFormatting,RemoveFormat,Strike,Form,Scayt,SelectAll,Find,Replace,Redo,Undo,Cut,Templates,Copy,Paste,PasteText,PasteFromWord,Button,Select,Textarea,TextField,Radio,Checkbox,HiddenField,ImageButton,BidiLtr,BidiRtl,Language,Anchor,Flash,PageBreak,About,Source,Save,NewPage,Preview,Print';
+
   config.toolbar = 'mini';
   return true;
 };
