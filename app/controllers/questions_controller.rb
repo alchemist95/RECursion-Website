@@ -1,6 +1,8 @@
 class QuestionsController < ApplicationController
   before_action :authenticate, only: [:new, :create]
   helper_method :sort_column, :sort_direction
+  before_filter :set_cache_headers
+
 
   def new
     if current_user && current_user.nickname.blank?
@@ -36,7 +38,7 @@ class QuestionsController < ApplicationController
       @tags = @question.tags
       @answer = Answer.new
       @answers = @question.answers
-      @users = @answers.group(:user_id).pluck(:user_id)  
+      @users = @answers.group(:user_id).pluck(:user_id)
       @comments = @question.comments.order(created_at: :desc)
     end
   end
@@ -48,10 +50,10 @@ class QuestionsController < ApplicationController
     if sort_column == 'Answers'
       @questions = Question.tagged_with(@tag).sort_by(&:answer_count)
     elsif sort_column == 'Date'
-      @questions = Question.tagged_with(@tag).order('created_at')     
+      @questions = Question.tagged_with(@tag).order('created_at')
     else
       @questions = Question.tagged_with(@tag).sort_by(&:follow_count)
-    end 
+    end
 
     if sort_direction == 'desc'
       @questions = @questions.reverse
@@ -77,13 +79,13 @@ class QuestionsController < ApplicationController
     comment.user_id = current_user.id
     comment.question_id = params[:id]
     comment.save!
- 
+
   end
 
   def upvote
     answer = Answer.find(params[:id])
     if current_user.already_upvoted(answer)
-      answer.upvotes.where(user_id: current_user.id).destroy_all 
+      answer.upvotes.where(user_id: current_user.id).destroy_all
     else
       answer.upvotes.where(user_id: current_user.id).first_or_create
     end
@@ -92,7 +94,7 @@ class QuestionsController < ApplicationController
   def follow
     question = Question.find(params[:id])
     if current_user.already_followed(question)
-      question.follows.where(user_id: current_user.id).destroy_all 
+      question.follows.where(user_id: current_user.id).destroy_all
     else
       question.follows.where(user_id: current_user.id).first_or_create
     end
@@ -108,7 +110,7 @@ class QuestionsController < ApplicationController
     end
     respond_to do |format|
       format.json { render json: data }
-    end 
+    end
   end
 
   private
@@ -127,6 +129,12 @@ class QuestionsController < ApplicationController
 
   def sort_direction
     params[:direction] || 'desc'
+  end
+
+  def set_cache_headers
+    response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
   end
 
 end

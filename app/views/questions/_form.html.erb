@@ -2,7 +2,7 @@
 
  <div class="input-field col s12">
     <i class="material-icons prefix">mode_edit</i>
-    <%= f.text_field :title, placeholder: 'Title for your Question', required: ""%>
+    <%= f.text_field :title, placeholder: 'Title for your Question', required: "", id:'titleText'%>
   </div>
   <br />
   <h7 class="text-darken-1" id="note"><em>Note: Please wait a few seconds for the editor to load</em></h7>
@@ -27,6 +27,9 @@
 <script>
 $(document).ready(function(){
 
+  $("#titleText").val("");
+  $("#questionText").val("");
+  
   setTimeout(function(){
      $('#note').fadeOut();
   }, 5000);
