@@ -1,9 +1,7 @@
 class User < ApplicationRecord
 
 	has_many :identities
-	has_many :posts
 	has_many :questions
-	has_many :likes
 	has_many :answers
 	has_many :upvotes
 	has_many :comments
