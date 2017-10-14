@@ -21,6 +21,40 @@ span.badge.new a:hover{
   color: #fff;
 }
 
+.pagination {
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  word-spacing: 0.5em;
+  font-size: 1.15em;
+}
+.pagination .disabled {
+  color: #aaaaaa;
+  cursor: not-allowed;
+}
+.pagination .current {
+  cursor: not-allowed;
+  color: #fff;
+  background-color: #0097a7;
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  line-height: 1.5em;
+  border-radius: 0.2em;
+  font-weight: bold; 
+}
+.pagination a {
+  text-decoration: none;
+  color: #000;
+}
+.pagination a:hover, .pagination a:focus {
+  color: #fff;
+  background-color: #0097a7;
+  padding: 0.3em;
+  border-radius: 0.2em;
+  text-decoration: none; 
+}
+
 .navbar-fixed a:hover {
   color: #fff;
 }
