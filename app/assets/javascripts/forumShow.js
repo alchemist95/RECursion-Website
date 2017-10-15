@@ -3,11 +3,27 @@ $(document).ready(function(){
 	//console.log("Hi from forumShow.js");
 
 	$("#answerForm").hide();
+	$("#warningNote").hide();
 	$('#commentButton').prop('disabled', true);
 	$("#answerButton").prop('disabled', true);
 	
+	$("#answerButton").click(function(event){
+  		event.preventDefault();
+  		var e = CKEDITOR.instances['answerText'];
+  		var dat = e.getData();
+
+  	if( dat.length < 58 || /^[\s]*$/.test(dat) == true){
+		$("#answerButton").prop('disabled', true);
+	  	$("#warningNote").show();
+ 	    return;			
+	}
+		$("#answerButton").prop('disabled', false);
+		$("#new_answer").submit();
+  	});
+
 	var e = CKEDITOR.instances['answerText'];
 	e.on('key', function(){
+		$("#warningNote").hide();
 	    text = e.getData();
 		console.log(text);		
 		if( text.length < 58 || /^[\s]*$/.test(text) == true){

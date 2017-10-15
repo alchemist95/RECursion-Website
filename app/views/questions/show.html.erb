@@ -78,6 +78,7 @@
 				<br />
 				<button style="background-color: #0097a7" class="btn waves-effect right" type="submit" name="action" id="answerButton"><%= f.submit "Post" %></button><br><br>
 			<% end %>
+			<h7 class="text-darken-2" id="warningNote"><em> Please make sure the answer has 50 characters</em></h7>
 		</div>
 		<br />
 
@@ -176,8 +177,10 @@
 
 <script>
 $(document).ready(function(){
+
   setTimeout(function(){
      $('#note').fadeOut();
   }, 5000);
+
 });
 </script>
