@@ -74,7 +74,7 @@ $(document).ready(function(){
 	});
 
 	
-	$("#followButton").click(function() {
+	$("#followButton").click(function(event) {
 		event.preventDefault();
 		var id = $(".question_id").attr("id");
 		var count = parseInt($(".follow_count").text());
@@ -103,7 +103,7 @@ $(document).ready(function(){
 
 	});
 
-	$(".upvoteAnswer").click(function() {
+	$(".upvoteAnswer").click(function(event) {
 		event.preventDefault();
 		var id = $(this).attr("id");
 		console.log(id);
