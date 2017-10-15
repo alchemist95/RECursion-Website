@@ -3,7 +3,7 @@
 <% end %>
 
 <style>
-.answer ul li {
+.comment ul li {
   list-style-type: disc !important;
 }
 </style>
@@ -87,7 +87,7 @@
 		<div class="divider"></div>
 		<% if @answers.any? %>
 			<% @answers.each do |answer| %>
-				<div class="answer">
+				<div class="comment">
 					<div class="row">
 						<div class="col sm2 l1">
 							<%= link_to image_tag(User.find(answer.user_id).image_url, size: "50x50", class: 'circle', alt: User.find(answer.user_id).nickname), users_path(User.find(answer.user_id).nickname) %>
