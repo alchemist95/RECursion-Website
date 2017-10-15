@@ -3,7 +3,7 @@ class HomeController < ApplicationController
 
 	def index
 		@home_page = true
-		@future_events = Event.where('start_time > ?', DateTime.now).limit(3)
+		@future_events = Event.where('start_time > ?', DateTime.now).order('start_time').limit(3)
 		@past_events = Event.order(:start_time).where('start_time < ?', DateTime.now).limit(3)		
 	end
 

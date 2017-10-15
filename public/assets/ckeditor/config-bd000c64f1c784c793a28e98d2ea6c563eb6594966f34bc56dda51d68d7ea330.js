@@ -9,8 +9,6 @@ CKEDITOR.editorConfig = function(config) {
   config.uiColor = '#E7EEF8';
   config.tabSpaces = 4;
 
-  config.codeSnippet_tabSpaces = 4;
-
   config.extraPlugins = 'widget,dialog,dialogui,lineutils,codesnippet,button,notification,clipboard,toolbar,widgetselection';
 
   config.toolbar_mini = [

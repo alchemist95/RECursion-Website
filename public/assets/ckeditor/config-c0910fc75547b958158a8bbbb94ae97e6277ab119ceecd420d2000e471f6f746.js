@@ -17,5 +17,14 @@ CKEDITOR.editorConfig = function(config) {
     ["Bold",  "Italic", "Strike",  "Underline", "-",  "NumberedList",  "BulletedList", "Link", "Unlink", "CodeSnippet", "RemoveFormat"],
   ];
   config.toolbar = 'mini';
+  
+  config.codeSnippet_languages: {
+      coffeescript: 'CoffeeScript',
+      cpp: 'C++',
+      cs: 'C#',
+      css: 'CSS'
+  }
+
+
   return true;
 };
