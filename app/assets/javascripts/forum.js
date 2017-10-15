@@ -2,7 +2,7 @@ $(document).ready(function(){
     //console.log("Hi from forum.js");
 
     $("#search").keyup(function(){
-      keyword = $(this).val();
+      keyword = $(this).val().toLowerCase();
 
       if( keyword.length < 1 || /^[\s]*$/.test(keyword) == true){
         $('.search_results').html("");

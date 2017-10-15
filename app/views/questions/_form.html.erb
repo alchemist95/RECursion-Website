@@ -36,7 +36,7 @@ $(document).ready(function(){
 
   $("#question_all_tags").keyup(function(){
     list = $(this).val().split(",");
-    keyword = list.pop().trim();
+    keyword = list.pop().trim().toLowerCase();
 
     if( keyword.length < 1 || /^[\s]*$/.test(keyword) == true){
       $('.search_results').html("");
