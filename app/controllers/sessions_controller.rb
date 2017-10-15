@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 	
 	    session[:user_id] = user.id
     	flash[:success] = "Successfully logged in !!"
-    	redirect_to profile_update_path
+    	redirect_to request.env['omniauth.origin'] || root_path
  	
  	end
 
