@@ -41,15 +41,31 @@
                       <input type="text" name="college" class="form-control" value="<%=@user.first[:college]%>" />
                     </div>
                   </div>
-                  <div class="col s12 m6">
-                    <div class="input-field">
-                      <label class="control-label"> Specilization </label>
-                      <input type="text" name="dept" class="form-control" value="<%=@user.first[:dept]%>" />
-                    </div>
-                  </div>
+<div class="input-field col s12 m6">
+    <select name="dept">
+      <option value="" disabled selected><%= @user.first[:dept] %></option>
+      <option value="CSE">CSE</option>
+      <option value="ECE">ECE</option>
+      <option value="IT">IT</option>
+      <option value="MECH">MECH</option>
+      <option value="ELECTRICAL">EE</option>
+      <option value="CIVIL">CE</option>
+      <option value="META">MME</option>
+      <option value="OTHER">Other</option>      
+    </select>
+    <label>Specialization</label>
+  </div>
+
                   <span style="float: right; padding-top: 3.5vh;"><%=submit_tag "Update",class: "btn btn-success"%></span>
                   <%end%>
                 </div>
               </div>
             </div>
           </div>
+
+      <script>
+        $(document).ready(function() {
+          $('select').material_select();
+          $(".caret").hide()
+        });
+      </script>
