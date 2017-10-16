@@ -37,7 +37,7 @@ class QuestionsController < ApplicationController
     else
       @tags = @question.tags
       @answer = Answer.new
-      @answers = @question.answers
+      @answers = @question.answers.sort_by(&:upvote_count)
       @users = @answers.group(:user_id).pluck(:user_id)
       @comments = @question.comments.order(created_at: :desc)
     end
