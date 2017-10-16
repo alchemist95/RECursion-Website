@@ -3,7 +3,7 @@
 <% end %>
 <div class="container-fluid" style="min-height: 100%; padding-top: 25px;">
 <div class="right">
-  <a href='/askrec/questions/new' class="waves-effect waves-light btn" style="background-color: #0097a7">Ask a Question</a> 
+  <a href='/askrec/questions/new'><button class="waves-effect waves-light btn" style="background-color: #0097a7">Ask a Question</button></a>
 </div>
 <br /><br /><br />
 
@@ -16,12 +16,17 @@
       <div class="card">
         <div class="container2" style="padding-top: 5px; padding-bottom: 10px">
           <div class="text-center" style="padding-top: 10px;"><h5>Popular Tags</h5><hr></div>
-          <p style="word-wrap: break-word; margin: 0px;">
-            <% @tags.each do |tag| %>
-              <h6><a href='/askrec/questions/tags/<%= tag.name %>' ><%= tag.name %></a>
-              <span class="new badge" data-badge-caption="" style="float: right;" ><%= tag.questions.count %></span></p>
-              </h6>
-            <% end %>
+          <% @tags.each do |tag| %>
+            <a href='/askrec/questions/tags/<%= tag.name %>' >
+              <table class="highlight">
+              <td style="padding: 5px;">
+                <h6><%= tag.name %>
+                <span class="new badge" data-badge-caption="" style="float: right;" ><%= tag.questions.count %></span>
+                </h6>
+              </td>
+              </table>
+            </a>
+          <% end %>
         </div>
       </div>
     </div>
