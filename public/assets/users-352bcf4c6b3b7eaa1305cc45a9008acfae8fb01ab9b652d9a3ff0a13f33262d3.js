@@ -2,7 +2,7 @@ $(document).ready(function() {
 	$("#nickname").keyup(function(){
 			nickname = $(this).val();
 			if(/^[a-zA-Z0-9_]*$/.test(nickname) == false || nickname.length < 4) {
-    			$('#status').hide().html('Username (Minimum 4 letters)').fadeIn("slow");
+    			$('#status').hide().html('Username (Minimum 4 letters and no special characters)').fadeIn("slow");
     			$(':input[type="submit"]').prop('disabled', true);
 				return;
 			}

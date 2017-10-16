@@ -17,8 +17,10 @@
         <div class="nav-wrapper">
           <span class="brand-logo" style="margin-left: 20px;"><%= yield :heading %></span>
           <ul class="right hide-on-med-and-down">
-            <% if @forum_page %>
+            <% if current_user && @forum_page %>
             <li><a class="tooltipped" href="/askrec/questions/new" data-tooltip="Ask a question"><i class="material-icons">create</i></a></li>
+            <% elsif @forum_page %>
+            <li><a class="modal-trigger tooltipped" data-toggle="modal" data-tooltip="Ask a question" href="#modal1"><i class="material-icons">create</i></a></li>
             <% end %>
 
             <% if current_user and current_user.admin? %>
@@ -36,8 +38,10 @@
             </li>
           </ul>
           <ul id="slide-out" class="side-nav">
-            <% if @forum_page %>
+            <% if current_user && @forum_page %>
             <li><a href="/askrec/questions/new"><i class="material-icons">create</i>Ask a Question</a></li>
+            <% elsif @forum_page %>
+            <li><a class="modal-trigger" data-toggle="modal" href="#modal1" ><i class="material-icons">create</i>Ask a Question</a></li>
             <% end %>
 
             <% if current_user and current_user.admin? %>

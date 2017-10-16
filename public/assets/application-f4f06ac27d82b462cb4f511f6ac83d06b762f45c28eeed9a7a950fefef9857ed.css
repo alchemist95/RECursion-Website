@@ -8801,12 +8801,25 @@ html {
     letter-spacing: 10px;
     word-wrap: break-word;
 }
-.get-message > p{
+.get-message p{
     position: relative;
-    padding-top: 10%;
-    padding-bottom: 20%;
-    color: #111111;
     font-size: 2em;
+    padding-top: 10%;
+    padding-bottom: 7%; 
+    color: #111111;
+}
+.get-body {
+    width: 100%;
+}
+.get-body p {
+    line-height: 1.5em;
+}
+.get-body ul {
+    margin-left: 0px;
+}
+.get-body li a {
+    font-size: 1.3em;
+    line-height: 2.1em;
 }
 
 .intro-divider {
@@ -18687,7 +18700,6 @@ span.badge {
   font-style: bold;
   margin: 0 auto;
   max-width: 1280px;
-  width: 90%;
   font-size: 19px;
   text-align: justify;
 }
@@ -18928,6 +18940,12 @@ span.badge {
 }
 .comment i {
   color: #a7a7a7;
+}
+.comment a:visited {
+  color: #000;
+}
+.comment a:hover {
+  color: #0097a7;
 }
 .input-field textarea {
   background-color: transparent;
