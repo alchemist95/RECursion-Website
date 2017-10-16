@@ -139,7 +139,6 @@ span.badge {
   font-style: bold;
   margin: 0 auto;
   max-width: 1280px;
-  width: 90%;
   font-size: 19px;
   text-align: justify;
 }
@@ -367,6 +366,12 @@ span.badge {
 }
 .comment i {
   color: #a7a7a7;
+}
+.comment a:visited {
+  color: #000;
+}
+.comment a:hover {
+  color: #0097a7;
 }
 .input-field textarea {
   background-color: transparent;
