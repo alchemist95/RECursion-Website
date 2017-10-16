@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
   def new
     if current_user && current_user.nickname.blank?
       flash[:notice] = "Please Complete your profile"
-      redirect_to root_url
+      redirect_to profile_update_path
     else
   	 @question = Question.new
     end
