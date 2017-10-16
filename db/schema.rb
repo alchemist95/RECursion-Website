@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171016181754) do
+ActiveRecord::Schema.define(version: 20171016182755) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "description"
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 20171016181754) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_tags_on_name"
   end
 
   create_table "upvotes", force: :cascade do |t|
