@@ -37,42 +37,42 @@
 			<div id="qfollow" class="section scrollspy">
 				<h5>Questions Following</h5><hr>
 				<% @followed_question_ids.each do |q_id| %>
+					<%= link_to question_path(q_id) do %>
 					<table class="highlight">
-					<td>
-						<%= link_to question_path(q_id) do %>
+						<td>
 							<h6><%= Question.find(q_id).title %>
 							<span style="float: right;"><small><%= Question.find(q_id).answers.count %> Answers</small></span></h6>
-						<% end %>
-					</td>
+						</td>
 					</table>
+					<% end %>
 				<% end %>
 			</div>
 
 			<div id="qposted" class="section scrollspy">
 				<h5>Questions Posted</h5><hr>
 				<% @user.questions.each do |question| %>
+					<%= link_to question_path(question) do %>
 					<table class="highlight">
-					<td>
-						<%= link_to question_path(question) do %>
+						<td>
 							<h6><%= question.title %>
 							<span style="float: right;"><small><%= question.follows.count %> Followers | <%= question.answers.count %> Answers</small></span></h6>
-						<% end %>
-					</td>
+						</td>
 					</table>
+					<% end %>
 				<% end %>
 			</div>
 
 			<div id="qanswered" class="section scrollspy">
 				<h5>Questions Answered</h5><hr>
 				<% @answered_question_ids.each do |q_id| %>
-					<table class="highlight">
-					<td>
-						<%= link_to question_path(q_id[0]) do %>
+					<%= link_to question_path(q_id[0]) do %>
+						<table class="highlight">
+						<td>
 							<h6><%= Question.find(q_id[0]).title %>
 							<span style="float: right;"><small><%= Answer.find(q_id[1]).upvotes.count %> Upvotes</small></span></h6>
-						<% end %>
-					</td>
-					</table>
+						</td>
+						</table>
+					<% end %>
 				<% end %>
 			</div>
 

@@ -4,10 +4,16 @@
 
           <div class="container" style="min-height: 100%;">
             <div class="vr">
-              <div class="update-profile">
+              <div class="update-profile hide-on-med-and-down">
                 <h1>{</h1><h2>{</h2><h3>{</h3>
                 <img><%= image_tag(User.find(current_user.id).image_url, size: '100x100', class:'circle', alt:current_user.nickname)%></img>
                 <h3>}</h3><h2>}</h2><h1>}</h1><br><br><br>
+                <p>RECursion</p><hr>
+              </div>
+              <div class="update-profile hide-on-large-only">
+                <h4>{</h4><h5>{</h5><h6>{</h6>
+                <img><%= image_tag(User.find(current_user.id).image_url, size: '70x70', class:'circle', alt:current_user.nickname)%></img>
+                <h6>}</h6><h5>}</h5><h4>}</h4><br><br><br>
                 <p>RECursion</p><hr>
               </div>
               <div class="container2">
