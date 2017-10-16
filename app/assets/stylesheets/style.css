@@ -256,23 +256,11 @@ span.badge {
   padding: 11px;
   vertical-align: middle;
 }
-@media only screen and (max-width: 601px){
-  .update-profile h1 {
-    font-size: calc(12vw + 5vh);
-    padding: 3px;
-  }
-}
 .update-profile h2 {
   font-size: calc(3vw + 23vh);
   display: inline;
   padding: 11px;
   vertical-align: middle;
-}
-@media only screen and (max-width: 601px){
-  .update-profile h2 {
-    font-size: calc(10vw + 3vh);
-    padding: 3px;
-  }
 }
 .update-profile h3 {
   font-size: calc(2vw + 17vh);
@@ -280,18 +268,30 @@ span.badge {
   padding: 11px;
   vertical-align: middle;
 }
-@media only screen and (max-width: 601px){
-  .update-profile h3 {
-    font-size: calc(8vw + 1vh);
-    padding: 3px;
-  }
+.update-profile h4 {
+  font-size: calc(12vw + 5vh);
+  padding: 3px;
+  display: inline;
+  vertical-align: middle;
+}
+.update-profile h5 {
+  font-size: calc(10vw + 3vh);
+  padding: 3px;
+  display: inline;
+  vertical-align: middle;
+}
+.update-profile h6 {
+  font-size: calc(8vw + 1vh);
+  padding: 3px;
+  display: inline;
+  vertical-align: middle;
 }
 .update-profile img {
   margin-top: 2.5vh;
   vertical-align: middle;
 }
 .update-profile p {
-  font-size: 10vh;
+  font-size: 7em;
   text-align: center;
   letter-spacing: 10px;
   padding-bottom: 3vh;
