@@ -9,8 +9,7 @@ class User < ApplicationRecord
 
 	enum role: [ :normal, :admin ]
 
-	scope :starts_with, -> (nickname) { where("nickname like ? OR nickname like ? OR name like ? OR name like ?",
-		"#{nickname}%", "#{nickname.upcase}%", "#{nickname}%", "#{nickname.upcase}%" )}
+	scope :starts_with, -> (nickname) { where("lower(nickname) like ? OR lower(name) like ?","#{nickname}%", "#{nickname}%" )}
 
 	def self.sign_in_from_omniauth(auth)
 		
