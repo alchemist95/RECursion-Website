@@ -68,7 +68,7 @@ class UsersController  < ApplicationController
 	      if user.nickname.nil? || user.nickname.blank?
 	      	next
 	      end
-	      data[:users].push([user.nickname, user.name.truncate(15), user.image_url])
+	      data[:users].push([user.nickname, user.name.truncate(20), user.image_url])
 	      puts user.nickname
 	    end
 	    respond_to do |format|
