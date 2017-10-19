@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171016182755) do
+ActiveRecord::Schema.define(version: 20171019212429) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "description"
@@ -111,6 +111,7 @@ ActiveRecord::Schema.define(version: 20171016182755) do
     t.string   "nickname"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_users_on_name"
     t.index ["nickname"], name: "index_users_on_nickname"
   end
 
