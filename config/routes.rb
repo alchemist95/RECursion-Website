@@ -34,6 +34,8 @@ Rails.application.routes.draw do
 
 	post '/find_questions' => 'questions#search'
 
+	post '/find_users' => 'users#search'
+
 	post '/upvoteAnswer' => 'questions#upvote'
 
 	resources :events, only: [:index]

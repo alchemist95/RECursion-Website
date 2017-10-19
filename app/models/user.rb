@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
 	enum role: [ :normal, :admin ]
 
-	enum year: [ :firstyear, :secondyear, :thirdyear, :finalyear, :alumnus ]
+	scope :starts_with, -> (nickname) { where("nickname like ?", "#{nickname}%")}
 
 	def self.sign_in_from_omniauth(auth)
 		
