@@ -65,6 +65,9 @@ class UsersController  < ApplicationController
 	    data = {}
 	    data[:users] = []
 	    users.each do |user|
+	      if user.nickname.nil? || user.nickname.blank?
+	      	next
+	      end
 	      data[:users].push([user.nickname, user.name.truncate(15), user.image_url])
 	      puts user.nickname
 	    end
