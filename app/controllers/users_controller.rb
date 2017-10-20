@@ -1,4 +1,5 @@
 class UsersController  < ApplicationController
+	
 
 	def update_profile
 		if current_user
@@ -7,10 +8,10 @@ class UsersController  < ApplicationController
 				@user = []
 		        @user << { name: current_user.name, nickname: current_user.nickname, college: current_user.college, dept: current_user.dept }
 			else
-				redirect_to root_url
+				redirect_to request.env['omniauth.origin'] || root_url
 			end
 		else
-			redirect_to root_url
+			redirect_to request.env['omniauth.origin'] || root_url
 		end
 	end
 
@@ -58,5 +59,21 @@ class UsersController  < ApplicationController
 		@rep = (total_follows+total_upvotes)*0.25
 	end
 
+	def search
+	    nickname = params[:nickname]
+	    users= User.starts_with(nickname).reverse
+	    data = {}
+	    data[:users] = []
+	    users.each do |user|
+	      if user.nickname.nil? || user.nickname.blank?
+	      	next
+	      end
+	      data[:users].push([user.nickname, user.name.truncate(20), user.image_url])
+	      puts user.nickname
+	    end
+	    respond_to do |format|
+	      format.json { render json: data }
+	    end
+	end
 
 end
