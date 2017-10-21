@@ -66,9 +66,8 @@ span.badge.new a:hover{
 }
 
 .sidenav {
-  padding-top: 40px;
-  height: 100%;
-  position: relative;
+  padding: 40px;
+  position: fixed;
 }
 .sidenav i {
   color: #929292;
@@ -85,8 +84,14 @@ span.badge {
   float: right;
   text-align: center;
   font-size: 1.0rem;
-  color: #ffffff;
-} 
+}
+a span.badge.new {
+  color: #000;
+}
+a:hover span.badge.new {
+  color: #fff;
+}
+
 .text_h {
   text-align: center;
   font-size: 1.5em;

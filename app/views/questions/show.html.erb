@@ -14,7 +14,7 @@
 	    <h4><%= @question.title %></h4>
 
 	    <% @tags.each do |tag| %>
-	    	<span class="new badge" data-badge-caption=""><a href='/askrec/questions/tags/<%= tag.name %>' ><%= tag.name %></a></span>
+	    	<a href='/askrec/questions/tags/<%= tag.name %>' ><span class="new badge" data-badge-caption=""><%= tag.name %></span></a>
     	<% end %>
 		<br><hr />
 	    <h6 class="text-left"><%= @question.description.html_safe %></h6>
