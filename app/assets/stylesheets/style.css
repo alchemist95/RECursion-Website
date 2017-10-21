@@ -58,9 +58,13 @@ span.badge.new a:hover{
   text-decoration: none; 
 }
 
+.navbar-fixed a{
+  color: #666;
+}
 .navbar-fixed a:hover {
   color: #fff;
 }
+
 .sidenav {
   padding-top: 40px;
   height: 100%;
