@@ -15,12 +15,10 @@ li a {
 a:hover{
     background-color: transparent;
     color: #4fc3f7;
+    text-decoration: none;
   }
 ul.right.hide-on-med-and-down {
   line-height: 64px;
-}
-span.badge.new a:visited{
-  color: #000;
 }
 span.badge.new a:hover{
   color: #fff;
@@ -60,13 +58,16 @@ span.badge.new a:hover{
   text-decoration: none; 
 }
 
+.navbar-fixed a{
+  color: #666;
+}
 .navbar-fixed a:hover {
   color: #fff;
 }
+
 .sidenav {
-  padding-top: 40px;
-  height: 100%;
-  position: relative;
+  padding: 40px;
+  position: fixed;
 }
 .sidenav i {
   color: #929292;
@@ -83,8 +84,14 @@ span.badge {
   float: right;
   text-align: center;
   font-size: 1.0rem;
-  color: #ffffff;
-} 
+}
+a span.badge.new {
+  color: #000;
+}
+a:hover span.badge.new {
+  color: #fff;
+}
+
 .text_h {
   text-align: center;
   font-size: 1.5em;
@@ -367,12 +374,7 @@ span.badge {
 .comment i {
   color: #a7a7a7;
 }
-.comment a:visited {
-  color: #000;
-}
-.comment a:hover {
-  color: #0097a7;
-}
+
 .input-field textarea {
   background-color: transparent;
   border: none;

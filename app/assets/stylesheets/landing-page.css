@@ -27,7 +27,6 @@ html {
     text-align: center;
     color: #f8f8f8;
     background: url(/icons/frontpage.jpg) no-repeat center center;
-    opacity: 0.7;
     background-size: cover;
 }
 
@@ -49,7 +48,7 @@ html {
 .intro-message > h1 {
     margin: 0;
     text-shadow: 3px 3px 0px white, 5px 5px 0px #5c5f72;
-    font-size: 15em;
+    font-size: 11em;
     /*color: #4A4E54;*/
     color:#34495e;
     letter-spacing: 10px;
@@ -76,7 +75,7 @@ html {
     line-height: 1.5em;
 }
 .get-body ul {
-    margin-left: 0px;
+    margin-left: 2em;
 }
 .get-body li a {
     font-size: 1.3em;
@@ -84,7 +83,7 @@ html {
 }
 
 .intro-divider {
-    width: 1000px;
+    max-width: 1000px;
     border-top: 10px solid #ecf0f1;
     border-bottom: 5px solid rgba(0,0,0,0.2);
 }
