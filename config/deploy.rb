@@ -40,7 +40,7 @@ set :keep_releases, 5
 # set :ssh_options, verify_host_key: :secure
 
 set :chruby_type, :user
-set :chruby_ruby, 'ruby-2.3.0'
+set :chruby_ruby, 'ruby-2.4.1'
 
 set :puma_rackup, -> { File.join(current_path, 'config.ru') }
 set :puma_state, "#{shared_path}/tmp/pids/puma.state"
