@@ -25,6 +25,10 @@ gem 'momentjs-rails'
 gem "gritter", "1.2.0"
 gem 'carrierwave', '~> 1.0'
 gem "mini_magick"
+
+# Gem figaro for saving app configuration
+gem 'figaro'
+
 # Rails Admin Support
 gem 'rails_admin'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -70,6 +74,12 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # Gem capistrano for deployment to aws
+  gem 'capistrano'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-chruby'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
