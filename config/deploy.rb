@@ -39,7 +39,7 @@ set :keep_releases, 5
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
 
-set :chruby_type, :user
+#set :chruby_type, :user
 set :chruby_ruby, 'ruby-2.3.0'
 
 set :puma_rackup, -> { File.join(current_path, 'config.ru') }
