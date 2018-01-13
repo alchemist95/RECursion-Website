@@ -9,17 +9,6 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
-Rails.application.config.assets.precompile += %w( style.css )
-Rails.application.config.assets.precompile += %w( font-awesome.min.css )
-Rails.application.config.assets.precompile += %w( owl.carousel.css )
-Rails.application.config.assets.precompile += %w( owl.theme.css )
-Rails.application.config.assets.precompile += %w( owl.carousel.min.js )
-Rails.application.config.assets.precompile += %w( materialize.js )
-Rails.application.config.assets.precompile += %w( materialize.min.js )
-Rails.application.config.assets.precompile += %w( materialize.css )
-Rails.application.config.assets.precompile += %w( forum.js )
-Rails.application.config.assets.precompile += %w( forumShow.js )
-Rails.application.config.assets.precompile += %w( users.js )
-Rails.application.config.assets.precompile += %w( profile.js )
-
-
+Rails.application.config.assets.precompile += %w(style.css font-awesome.min.css owl.carousel.css owl.theme.css owl.carousel.min.js )
+Rails.application.config.assets.precompile += %w(materialize.js materialize.min.js materialize.css users.js forum.js forumShow.js profile.js )
+Rails.application.config.assets.precompile += %w(ckeditor ckeditor/*)
