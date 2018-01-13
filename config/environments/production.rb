@@ -25,9 +25,7 @@ Rails.application.configure do
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = true
 
-  unless config.public_file_server.enabled
-    config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
-  end
+  config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
 
   config.log_level = :debug
 
