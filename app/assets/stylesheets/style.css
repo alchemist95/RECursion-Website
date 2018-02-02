@@ -98,13 +98,16 @@ a:hover span.badge.new {
   color: #fff;
 }
 .fc-left h2{
-  font-size: 36px;
   color: #066696;
 }
 
 .fc-content{
   white-space: inherit !important; 
   overflow: auto !important;
+}
+
+.fc-center h2{
+  font-size: 2.5em;
 }
 
 .fc-event:hover {
