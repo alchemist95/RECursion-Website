@@ -77,12 +77,12 @@ class QuestionsController < ApplicationController
 
     old_tag = params["old_tag"].to_i
     puts old_tag
-    new_tag = params["new_tag"]
+    new_tag = params["new_tag"].strip.downcase
 
     old_tag_id = Tag.where(id: old_tag).pluck(:id)[0]
     tagging = Tagging.find(Tagging.where(question_id: params[:q_id].to_i, tag_id: old_tag_id).pluck(:id)[0])
 
-    Tag.where(name: new_tag.strip.downcase).first_or_create!
+    Tag.where(name: new_tag).first_or_create!
     new_tag_id = Tag.where(name: new_tag).pluck(:id)[0]
     
     tagging.tag_id = new_tag_id
@@ -92,9 +92,9 @@ class QuestionsController < ApplicationController
 
   def add_tag
 
-    new_tag = params["name"]
+    new_tag = params["name"].strip.downcase
     q_id = params[:q_id].to_i
-    Tag.where(name: new_tag.strip.downcase).first_or_create!
+    Tag.where(name: new_tag.first_or_create!
     new_tag_id = Tag.where(name: new_tag).pluck(:id)[0]
     tagging = Tagging.new(question_id: q_id, tag_id: new_tag_id)
     tagging.save!
