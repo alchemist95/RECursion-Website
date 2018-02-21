@@ -172,7 +172,7 @@
 			</div>
 		</div>
 		<br />
-		<% if current_user && current_user.admin? %>
+		<% if current_user && ( current_user.admin? || current_user.member? ) %>
 		<h5><em>Special Admin Rights</em></h5>
 			<h7 class="text-darken-1"><em>Kindly refresh the page to observe changes if any.</em> 
 				<a id="refresh"><i class="material-icons">refresh</i></a>
