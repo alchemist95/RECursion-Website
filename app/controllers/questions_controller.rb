@@ -52,7 +52,7 @@ class QuestionsController < ApplicationController
     elsif sort_column == 'Follows'
       @questions = Question.tagged_with(@tag).sort_by(&:follow_count)
     else
-      @questions = Question.tagged_with(@tag).order('created_at')     
+      @questions = Question.tagged_with(@tag).order('created_at')      
     end
 
     if sort_direction == 'desc'

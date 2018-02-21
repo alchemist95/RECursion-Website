@@ -12,10 +12,11 @@ class HomeController < ApplicationController
 
 		if sort_column == 'Answers'
 			@questions = Question.all.sort_by(&:answer_count)
-		elsif sort_column == 'Date'
-			@questions = Question.order('created_at')			
+		elsif sort_column == 'Follows'
+			@questions = Question.all.sort_by(&:follow_count)			
 		else
-			@questions = Question.all.sort_by(&:follow_count)
+			@questions = Question.order('created_at')
+
 		end	
 
 		if sort_direction == 'desc'
