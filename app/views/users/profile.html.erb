@@ -7,7 +7,7 @@
 	<div class="row hide-on-large-only">
 		<div class="col s5 offset-s1" style="padding: 20px; word-wrap: break-word;">
 			<%= image_tag(User.find(@user.id).image_url, size: '150x150', class:'circle', alt: 'Picture Loading')%>
-			<h4><%= @user.nickname %></h4>
+			<h4><%= @user.nickname %> <% if @user.admin? || @user.member? %><i class="material-icons">group</i><% end %></h4>
 			<h6><i>Name:</i> <%= @user.name %></h6>
 			<h6><i>Studies at: </i><%= @user.college %></h6>
 			<h6><i>Specialization:</i> <%= @user.dept %></h6>
@@ -34,7 +34,7 @@
 		<div class="col s12 m3 hide-on-med-and-down">
 			<div class="sidenav" style="background-color: #fafafa;">
 				<%= image_tag(User.find(@user.id).image_url, size: '135x135', class:'circle', alt: 'Picture Loading')%>
-				<h4><%= @user.nickname %></h4>
+				<h4><%= @user.nickname %> <% if @user.admin? || @user.member? %><i class="material-icons">group</i><% end %></h4>
 				<h6><i>Name:</i> <%= @user.name %></h6>
 				<h6><i>Studies at: </i><%= @user.college %></h6>
 				<h6><i>Specialization:</i> <%= @user.dept %></h6>
