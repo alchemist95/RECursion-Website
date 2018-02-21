@@ -7,7 +7,7 @@ class User < ApplicationRecord
 	has_many :comments
 	has_many :follows
 
-	enum role: [ :normal, :admin ]
+	enum role: [ :normal, :admin, :member ]
 
 	scope :starts_with, -> (nickname) { where("lower(nickname) like ? OR lower(name) like ?","#{nickname}%", "#{nickname}%" )}
 
