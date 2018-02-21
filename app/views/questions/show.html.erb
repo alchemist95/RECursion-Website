@@ -14,7 +14,7 @@
 	    <h4><%= @question.title %></h4>
 
 	    <% @tags.each do |tag| %>
-	    	<a href='/askrec/questions/tags/<%= tag.name %>' ><span class="new badge" data-badge-caption=""><%= tag.name %></span></a>
+	    	<a id="tag-<%= tag.id %>" href='/askrec/questions/tags/<%= tag.name %>' ><span class="new badge" data-badge-caption=""><%= tag.name %></span></a>
     	<% end %>
 		<br><hr />
 	    <h6 class="text-left"><%= @question.description.html_safe %></h6>
@@ -171,6 +171,35 @@
 				<% end %>
 			</div>
 		</div>
+		<br />
+		<% if current_user && current_user.admin? %>
+		<h5><em>Special Admin Rights</em></h5>
+			<h7 class="text-darken-1"><em>Kindly refresh the page to observe changes if any.</em> 
+				<a id="refresh"><i class="material-icons">refresh</i></a>
+			</h7>
+			<hr />
+			<div id="editTagSection" class="row">
+				<h5>Edit existing tags</h5>
+				<% @tags.each do |tag| %>
+					<div class="input-field col s10">
+            			<input id="edit-<%= tag.id %>" type="text" value="<%= tag.name %>">
+            		</div>
+            		<div class="input-field col s2" style="margin-top: 2em;">
+            			<a class="changeTag" href=""><i id="<%= tag.id %>" class="material-icons">done</i></a>
+      				</div>
+				<% end %>	
+			</div>
+			<div id="addTagSection" class="row">
+				<h5>Add a new tag</h5>
+				<div class="input-field col s10">
+					<input id="add-tag" type="text" placeholder="Enter a new tag">
+				</div>
+				<div class="input-field col s2" style="margin-top: 2em;">
+					<a class="addTag" href=""><i class="material-icons">build</i></a>
+				</div>
+			</div>
+		<% end %>
+		
 	</div>
 </div>
 </div>
@@ -182,5 +211,56 @@ $(document).ready(function(){
      $('#note').fadeOut();
   }, 5000);
 
+  $(".changeTag").click( function(event) {
+  
+  	event.preventDefault();
+  	var oldTag = $(event.target).attr("id");
+  	//console.log(oldTag);
+  	var id_finder = '#edit-'+oldTag;
+  	var newTag = $(id_finder).val();
+  	//console.log(newTag);
+  	var id = $(".question_id").attr("id");
+  	//console.log(id);
+
+  	if(newTag.length < 1){
+  		return;
+  	}
+
+    $.ajax({
+   		type: "GET",
+    	url: "/edit_tag",
+    	data: {"old_tag": oldTag, "new_tag": newTag, "q_id": id},
+        success: function(result){
+        },
+	});
+
+  });
+
+  $('#refresh').click(function() {
+    location.reload();	
+  });
+
+  $(".addTag").click( function(event) {
+  	event.preventDefault();
+  	var newTag = $("#add-tag").val();
+  	//console.log(newTag)
+  	var id = $(".question_id").attr("id");	
+  	
+  	if(newTag.length < 1){
+  		return;
+  	}
+
+  	$.ajax({
+  		type: "GET",
+  		url: "/add_tag",
+  		data: {"name": newTag, "q_id": id},
+  		success: function(result){
+
+  		},
+  	});
+
+  })
+
 });
+
 </script>

@@ -36,6 +36,9 @@ Rails.application.routes.draw do
 
 	post '/find_users' => 'users#search'
 
+	get '/edit_tag' => 'questions#edit_tag_name'
+	get '/add_tag' => 'questions#add_tag'
+
 	post '/upvoteAnswer' => 'questions#upvote'
 
 	resources :events, only: [:index]

@@ -9,12 +9,12 @@ class QuestionsController < ApplicationController
       flash[:notice] = "Please Complete your profile"
       redirect_to profile_update_path
     else
-  	 @question = Question.new
+     @question = Question.new
     end
   end
 
   def create
-  	@question = Question.new(question_params)
+    @question = Question.new(question_params)
     @question.user_id = current_user.id
 
     respond_to do |format|
@@ -30,7 +30,7 @@ class QuestionsController < ApplicationController
 
   def show
     @forum_page = true
-  	@question = Question.find(params[:id])
+    @question = Question.find(params[:id])
     if User.find(@question.user_id).nickname.blank? || (current_user && current_user.nickname.blank?)
       flash[:notice] = "Please complete your profile"
       redirect_to root_url
@@ -49,10 +49,10 @@ class QuestionsController < ApplicationController
 
     if sort_column == 'Answers'
       @questions = Question.tagged_with(@tag).sort_by(&:answer_count)
-    elsif sort_column == 'Follows'
-      @questions = Question.tagged_with(@tag).sort_by(&:follow_count)
+    elsif sort_column == 'Date'
+      @questions = Question.tagged_with(@tag).order('created_at')
     else
-      @questions = Question.tagged_with(@tag).order('created_at')      
+      @questions = Question.tagged_with(@tag).sort_by(&:follow_count)
     end
 
     if sort_direction == 'desc'
@@ -70,6 +70,34 @@ class QuestionsController < ApplicationController
     answer.question_id = params[:id]
     answer.save!
     redirect_to question_path
+
+  end
+
+  def edit_tag_name
+
+    old_tag = params["old_tag"].to_i
+    puts old_tag
+    new_tag = params["new_tag"]
+
+    old_tag_id = Tag.where(id: old_tag).pluck(:id)[0]
+    tagging = Tagging.find(Tagging.where(question_id: params[:q_id].to_i, tag_id: old_tag_id).pluck(:id)[0])
+
+    Tag.where(name: new_tag.strip.downcase).first_or_create!
+    new_tag_id = Tag.where(name: new_tag).pluck(:id)[0]
+    
+    tagging.tag_id = new_tag_id
+    tagging.save! 
+
+  end
+
+  def add_tag
+
+    new_tag = params["name"]
+    q_id = params[:q_id].to_i
+    Tag.where(name: new_tag.strip.downcase).first_or_create!
+    new_tag_id = Tag.where(name: new_tag).pluck(:id)[0]
+    tagging = Tagging.new(question_id: q_id, tag_id: new_tag_id)
+    tagging.save!
 
   end
 
@@ -116,7 +144,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-  	params.require(:question).permit(:description, :title, :all_tags)
+    params.require(:question).permit(:description, :title, :all_tags)
   end
 
   def answer_params
