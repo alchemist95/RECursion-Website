@@ -16,7 +16,6 @@ class HomeController < ApplicationController
 			@questions = Question.all.sort_by(&:follow_count)			
 		else
 			@questions = Question.order('created_at')
-
 		end	
 
 		if sort_direction == 'desc'
