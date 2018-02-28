@@ -49,10 +49,11 @@ class QuestionsController < ApplicationController
 
     if sort_column == 'Answers'
       @questions = Question.tagged_with(@tag).sort_by(&:answer_count)
-    elsif sort_column == 'Date'
-      @questions = Question.tagged_with(@tag).order('created_at')
-    else
+    elsif sort_column == 'Follows'
       @questions = Question.tagged_with(@tag).sort_by(&:follow_count)
+    else
+      @questions = Question.tagged_with(@tag).order('created_at')
+      
     end
 
     if sort_direction == 'desc'
