@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   	get '/lectures/:held_on' => 'lectures#show', as: 'lecture'
 
 	post '/askrec/questions/:id' => 'questions#submit_answer', as: 'answer'
+	post '/edit_answer' => 'questions#edit_answer'
 
 	get '/askrec/questions/:id/follow' => 'questions#follow'
 	post '/askrec/questions/:id/comment' => 'questions#add_comment'

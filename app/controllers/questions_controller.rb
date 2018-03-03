@@ -37,8 +37,9 @@ class QuestionsController < ApplicationController
     else
       @tags = @question.tags
       @answer = Answer.new
-      @answers = @question.answers
-      @users = @answers.group(:user_id).pluck(:user_id)
+      @unsorted_answers = @question.answers
+      @answers = @question.answers.sort_by(&:upvote_count).reverse
+      @users = @unsorted_answers.group(:user_id).pluck(:user_id)
       @comments = @question.comments.order(created_at: :desc)
     end
   end
@@ -70,6 +71,14 @@ class QuestionsController < ApplicationController
     answer.question_id = params[:id]
     answer.save!
     redirect_to question_path
+
+  end
+
+  def edit_answer
+
+    answer = Answer.find(params['id'])
+    answer.update(description: params['description'])
+    answer.save!
 
   end
 
