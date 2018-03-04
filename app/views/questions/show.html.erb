@@ -103,7 +103,7 @@
 						<div class="col s12" id="answer-description-<%= answer.id %>">
 							<h4><%= raw(answer.description) %></h4>
 						</div>
-						<div class="col s12" id="edit-answer-description-<%= answer.id %>" style="display: none;">
+						<div class="col s12" id="edit-answer-description-<%= answer.id %>">
 							<br />
 							<%= form_for(answer) do |f| %>
 							<%= f.cktext_area :description ,:as => :ckeditor, id: answer.id , input_html: {:ckeditor => {:toolbar => 'mini'}}, required: ""%>
@@ -225,6 +225,7 @@
 $(document).ready(function(){
 
   $('[id^="editWarningNote"]').hide();
+  $('[id^="edit-answer-description"]').hide();
 
   setTimeout(function(){
      $('#note').fadeOut();
@@ -290,10 +291,9 @@ $(document).ready(function(){
 		var descId = '#answer-description-'+answerId.toString();
 		console.log(descId);
 		$(descId).hide();
-		var editDescId  = 'edit-answer-description-'+answerId.toString();
-		var elem = document.getElementById(editDescId);
+		var editDescId  = '#edit-answer-description-'+answerId.toString();
 		console.log(editDescId);
-		elem.style.display = "inline";
+		$(editDescId).show();
 		$(this).hide();
 
   	})

@@ -38,7 +38,7 @@ class QuestionsController < ApplicationController
       @tags = @question.tags
       @answer = Answer.new
       @unsorted_answers = @question.answers
-      @answers = @question.answers.sort_by(&:upvote_count).reverse
+      @answers = @unsorted_answers.sort_by {|x| [-x.upvote_count, x.created_at] }
       @users = @unsorted_answers.group(:user_id).pluck(:user_id)
       @comments = @question.comments.order(created_at: :desc)
     end
