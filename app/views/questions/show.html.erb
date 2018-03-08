@@ -106,7 +106,7 @@
 						<div class="col s12" id="edit-answer-description-<%= answer.id %>">
 							<br />
 							<%= form_for(answer) do |f| %>
-							<%= f.cktext_area :description ,:as => :ckeditor, id: answer.id , input_html: {:ckeditor => {:toolbar => 'mini'}}, required: ""%>
+							<%= f.cktext_area :description ,:as => :ckeditor, id: "edit-answer-box-#{answer.id}" , input_html: {:ckeditor => {:toolbar => 'mini'}}, required: ""%>
 							<br />
 							<button class='btn waves-effect updateAnswer' style="float: right; background-color: #0097a7" id='update-answer-<%= answer.id %>'>Update</button>
 							<button class='btn waves-effect cancelUpdateAnswer' style="float: right; background-color: #0097a7; margin-right: 10px" id='cancel-update-answer-<%= answer.id %>'>Cancel</button>
@@ -305,7 +305,8 @@ $(document).ready(function(){
 		var answerId = parseInt(id.match(/\d+/)[0]);
 		console.log(answerId);
 
-		var e = CKEDITOR.instances[answerId.toString()];
+		var editor_id = 'edit-answer-box-'+answerId.toString();
+		var e = CKEDITOR.instances[editor_id];
   		var dat = e.getData();
   		console.log(dat);
 		
