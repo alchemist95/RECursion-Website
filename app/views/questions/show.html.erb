@@ -73,7 +73,7 @@
 					</div>
 				<% end %>
 				<div class="input-field">
-					<%= f.cktext_area :description,id: "answerText" ,:as => :ckeditor, input_html: {:ckeditor => {:toolbar => 'mini'}}, required: ""%>
+					<%= f.cktext_area :description, id: "answerText" ,:as => :ckeditor, input_html: {:ckeditor => {:toolbar => 'mini'}}, required: ""%>
 				</div>
 				<br />
 				<button style="background-color: #0097a7" class="btn waves-effect right" type="submit" name="action" id="answerButton"><%= f.submit "Post" %></button><br><br>
@@ -100,8 +100,20 @@
 								<i><%= User.find(answer.user_id).name %></i>
 							<%end %>
 						</div>
-						<div class="col s12">
+						<div class="col s12" id="answer-description-<%= answer.id %>">
 							<h4><%= raw(answer.description) %></h4>
+						</div>
+						<div class="col s12" id="edit-answer-description-<%= answer.id %>">
+							<br />
+							<%= form_for(answer) do |f| %>
+							<%= f.cktext_area :description ,:as => :ckeditor, id: "edit-answer-box-#{answer.id}" , input_html: {:ckeditor => {:toolbar => 'mini'}}, required: ""%>
+							<br />
+							<button class='btn waves-effect updateAnswer' style="float: right; background-color: #0097a7" id='update-answer-<%= answer.id %>'>Update</button>
+							<button class='btn waves-effect cancelUpdateAnswer' style="float: right; background-color: #0097a7; margin-right: 10px" id='cancel-update-answer-<%= answer.id %>'>Cancel</button>
+							
+							<% end %>
+							<br />
+							<h7 class="text-darken-2" id="editWarningNote-<%= answer.id %>" style="color: #f44336"><em> Please make sure the answer is not too short</em></h7>
 						</div>
 
 						<% if current_user and answer.user != current_user %>
@@ -113,9 +125,14 @@
 							<button class='btn waves-effect upvoteAnswer' style="float: right; background-color: #0097a7" id='answer-<%= answer.id %>'>Upvote</button>
 						<% end %>
 
+						<% elsif current_user and answer.user == current_user %>
+							<span class="new badge" data-badge-caption="" style="float: right; margin-top: 15px;"><%= answer.upvotes.count %> Upvotes</span>
+							<button class='btn waves-effect editAnswer' style="float: right; background-color: #0097a7" id='edit-answer-<%= answer.id %>'>Edit</button>
 						<% else %>
 							<span class="new badge" data-badge-caption="" style="float: right; margin-top: 0px;"><%= answer.upvotes.count %> Upvotes</span>
 						<% end %>
+
+						
 					</div>
 					<div class="divider"></div>
 				</div>
@@ -207,6 +224,9 @@
 <script>
 $(document).ready(function(){
 
+  $('[id^="editWarningNote"]').hide();
+  $('[id^="edit-answer-description"]').hide();
+
   setTimeout(function(){
      $('#note').fadeOut();
   }, 5000);
@@ -260,6 +280,72 @@ $(document).ready(function(){
   	});
 
   })
+
+
+  	$(".editAnswer").click(function(event) {
+  		event.preventDefault();
+		var id = $(this).attr("id");
+		console.log(id);
+		var answerId = parseInt(id.match(/\d+/)[0]);
+		console.log(answerId);
+		var descId = '#answer-description-'+answerId.toString();
+		console.log(descId);
+		$(descId).hide();
+		var editDescId  = '#edit-answer-description-'+answerId.toString();
+		console.log(editDescId);
+		$(editDescId).show();
+		$(this).hide();
+
+  	})
+
+  	$(".updateAnswer").click(function(event) {
+  		event.preventDefault();
+  		var id = $(this).attr("id");
+		console.log(id);
+		var answerId = parseInt(id.match(/\d+/)[0]);
+		console.log(answerId);
+
+		var editor_id = 'edit-answer-box-'+answerId.toString();
+		var e = CKEDITOR.instances[editor_id];
+  		var dat = e.getData();
+  		console.log(dat);
+		
+		var editNote = '#editWarningNote-'+answerId.toString();
+
+		if( dat.length < 70 || /^[\s]*$/.test(dat) == true){
+		  	$(editNote).show();
+			setTimeout(function(){
+  			   $(editNote).fadeOut();
+			}, 1000);
+	 	    return;			
+		}
+
+		$.ajax({
+	  		type: "POST",
+	  		url: "/edit_answer",
+	  		data: {"id": answerId, "description": dat},
+	  		success: function(result){
+	  			location.reload();
+	  		},
+	  		error: function(){
+	  			alert('Something went wrong!!');
+	  		}
+  		});
+	
+  	})
+
+  	$(".cancelUpdateAnswer").click(function(event) {
+  		event.preventDefault();
+  		var id = $(this).attr("id");
+		var answerId = parseInt(id.match(/\d+/)[0]);
+		var editDescId  = 'edit-answer-description-'+answerId.toString();
+		var elem = document.getElementById(editDescId);
+		elem.style.display = "none";
+		var descId = '#answer-description-'+answerId.toString();
+		$(descId).show();
+		var editButtonId = '#edit-answer-'+answerId.toString();
+		$(editButtonId).show();
+  	})
 
 });
 

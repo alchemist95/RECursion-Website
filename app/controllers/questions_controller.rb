@@ -37,8 +37,9 @@ class QuestionsController < ApplicationController
     else
       @tags = @question.tags
       @answer = Answer.new
-      @answers = @question.answers
-      @users = @answers.group(:user_id).pluck(:user_id)
+      @unsorted_answers = @question.answers
+      @answers = @unsorted_answers.sort_by {|x| [-x.upvote_count, x.created_at] }
+      @users = @unsorted_answers.group(:user_id).pluck(:user_id)
       @comments = @question.comments.order(created_at: :desc)
     end
   end
@@ -49,11 +50,10 @@ class QuestionsController < ApplicationController
 
     if sort_column == 'Answers'
       @questions = Question.tagged_with(@tag).sort_by(&:answer_count)
-    elsif sort_column == 'Follows'
-      @questions = Question.tagged_with(@tag).sort_by(&:follow_count)
-    else
+    elsif sort_column == 'Date'
       @questions = Question.tagged_with(@tag).order('created_at')
-      
+    else
+      @questions = Question.tagged_with(@tag).sort_by(&:follow_count)
     end
 
     if sort_direction == 'desc'
@@ -71,6 +71,14 @@ class QuestionsController < ApplicationController
     answer.question_id = params[:id]
     answer.save!
     redirect_to question_path
+
+  end
+
+  def edit_answer
+
+    answer = Answer.find(params['id'])
+    answer.update(description: params['description'])
+    answer.save!
 
   end
 
