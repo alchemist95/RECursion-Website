@@ -1,28 +1,135 @@
-<% content_for :heading do %>
-	<a style="text-decoration:none;" href="/">RECursion</a>
-<% end %>
-<style>
-.card-title{
-	font-size: 14px !important; 
-}
-</style>
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">  
+    <title>Recursion</title>
+    <meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="6EzCc5asggryc+ciQNqIr14ycckwdqYdJo3h1cybfbW6uW5PjeTu0DcAphIOMwLW+lVWhaQOa8sB3SG/WbfMlA==">
+    <meta name="viewport" content="width=device-width, initial-scale=0.41, maximum-scale=1">
+    <link rel="stylesheet" media="all" href="Recursion_team_files/bootstrap-md.css">
+<link rel="stylesheet" media="all" href="Recursion_team_files/events.css">
+<link rel="stylesheet" media="all" href="Recursion_team_files/font-awesome.css">
+<link rel="stylesheet" media="all" href="Recursion_team_files/landing-page.css">
+<link rel="stylesheet" media="all" href="Recursion_team_files/materialize_002.css">
+<link rel="stylesheet" media="all" href="Recursion_team_files/materialize.css">
+<link rel="stylesheet" media="all" href="Recursion_team_files/owl.css">
+<link rel="stylesheet" media="all" href="Recursion_team_files/owl_002.css">
+<link rel="stylesheet" media="all" href="Recursion_team_files/posts.css">
+<link rel="stylesheet" media="all" href="Recursion_team_files/questions.css">
+<link rel="stylesheet" media="all" href="Recursion_team_files/scaffolds.css">
+<link rel="stylesheet" media="all" href="Recursion_team_files/style.css">
+<link rel="stylesheet" media="all" href="Recursion_team_files/application.css">
+<link rel="stylesheet" media="all" href="Recursion_team_files/social-share-button.css">
+<link rel="stylesheet" media="all" href="Recursion_team_files/fullcalendar.css">
+    <script src="Recursion_team_files/jquery.js"></script>
+<script src="Recursion_team_files/gritter.js"></script>
+<script src="Recursion_team_files/jquery_ujs.js"></script>
+<script src="Recursion_team_files/init.js"></script>
+<script src="Recursion_team_files/ckeditor.js"></script><style>.cke{visibility:hidden;}</style>
+<script src="Recursion_team_files/social-share-button.js"></script>
+<script src="Recursion_team_files/moment.js"></script>
+<script src="Recursion_team_files/fullcalendar.js"></script>
+<script src="Recursion_team_files/application.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="http://localhost:3000/images/log.png">
+    <link href="Recursion_team_files/icon.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="Recursion_team_files/css.css">
+  </head>
+   
+  <body>
+  <header>
+    <div class="navbar-fixed">
+      <nav class="cyan darken-2">
+        <div class="nav-wrapper">
+          <span class="brand-logo" style="margin-left: 20px;">	<a style="text-decoration:none;" href="http://localhost:3000/">RECursion</a>
+</span>
+          <ul class="right hide-on-med-and-down">
+
+            <li class=""><a class="tooltipped" href="http://localhost:3000/" data-tooltip="Home" data-tooltip-id="6df073b7-20f4-0b05-d944-8a4668bd5414"><i class="material-icons">home</i></a></li>
+            <li class=""><a class="tooltipped" href="http://localhost:3000/events" data-tooltip="Events" data-tooltip-id="060293b2-c758-6656-8c25-214ee8f46e82"><i class="material-icons">event</i></a></li>
+            <li class=""><a class="tooltipped" href="http://localhost:3000/askrec" data-tooltip="AskREC" data-tooltip-id="910b590a-b5e5-ba40-35bd-26c433ad5039"><i class="material-icons">forum</i></a></li>
+            <li class=""><a class="tooltipped" href="http://localhost:3000/getstarted" data-tooltip="Getting Started" data-tooltip-id="36363b2f-a17e-e871-bac6-820af4d99709"><i class="material-icons">flight_takeoff</i></a></li>
+               <li><a class="modal-trigger" data-toggle="modal" href="#modal1" style="z-index: 1005;"><i class="material-icons">vpn_key</i></a></li>
+            
+          </ul>
+          <ul id="slide-out" class="side-nav" style="transform: translateX(-100%);">
+
+            <li class=""><a href="http://localhost:3000/"><i class="material-icons">home</i>Home</a></li>
+            <li class=""><a href="http://localhost:3000/events"><i class="material-icons">event</i>Events</a></li>
+            <li class=""><a href="http://localhost:3000/askrec"><i class="material-icons">forum</i>AskREC</a></li>
+            <li class=""><a href="http://localhost:3000/getstarted"><i class="material-icons">flight_takeoff</i>Getting Started</a></li>
+                <li><a class="modal-trigger" data-toggle="modal" href="#modal1" style="z-index: 1007;"><i class="material-icons">vpn_key</i>Login</a></li>
+            
+          </ul>
+          <a data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <script>
+//<![CDATA[
+
+//]]>
+</script>
+
+  <!-- Modal Structure -->
+<div id="modal1" class="modal card" style="z-index: 1003;">
+    <div class="row" style="padding-top: 10 10 10 0; margin-bottom: 0px">
+      
+        <div class="col s6 m6">
+        <div class="text center">
+           <img style="width:100%; margin-top: 2em" src="Recursion_team_files/log.png">
+        </div>
+        </div>
+
+        <div class="col s6 m6">
+
+          <ul id="social_button">
+            
+            <li>
+            <a href="http://localhost:3000/auth/google_oauth2" class="waves-effect waves-light btn red tooltipped" data-tooltip="Google" data-position="right" style="width: 5em; background-color: #dd4b39 !important" data-tooltip-id="88975f1f-3305-6216-c0d9-4f0ee83bce5a">
+              <i class="fa fa-google-plus"></i>
+            </a>
+            </li>
+            <br>
+            <li>
+            <a href="http://localhost:3000/auth/github" class="waves-effect waves-light btn tooltipped" data-tooltip="Github" data-position="right" style="width: 5em; background-color: #444444 !important" data-tooltip-id="6285eb1e-81d8-25af-02c1-3c4d6aa1098d">
+              <i class="fa fa-github"></i>
+            </a>
+            </li>
+            <br>
+            <li>
+            <a href="http://localhost:3000/auth/facebook" class="waves-effect waves-light btn tooltipped" data-tooltip="Facebook" data-position="right" style="width: 5em; background-color: #3b5998 !important" data-tooltip-id="9f1c38af-63fa-d83b-5b09-30eeeff1027b">
+              <i class="fa fa-facebook"></i>
+            </a>
+            </li>
+            <br>
+          </ul>
+        </div>
+
+    </div>
+    <h6 class="center"><i>Sign in and contribute to ASKRecursion</i></h6>
+</div>
+
+  <div class="row" style="height:100%;">
+
+    
 <div class="section scrollspy wow fadeInUp" data-wow-duration="4s" id="team">
 	<h2 class="header text_b" style="color: #212121;" align="center"> Our Team </h2>
 	<div class="container">
 		<div class="row">
 			<div class="col s12 m4">
 			<div class="card card-avatar">
-			<img class="activator" src="/icons/chetan.jpg">
+			<img class="activator" src="Recursion_team_files/chetan.jpg">
 			<div class="card-content">
-				<span class="card-title activator grey-text text-darken-4">Chetan Garg <br/>
+				<span class="card-title activator grey-text text-darken-4">Chetan Garg <br>
 					<small><em><h6 class="red-text text-darken-1">President</h6></em></small></span>
 				   <a href="https://www.facebook.com/chetan.garg.927" target="_blank">
 					 <i class="fa fa-facebook"></i>
 				   </a>
-								  <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="9883591346">
+								  <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="9883591346" data-tooltip-id="ed4618b9-5cbb-bf2b-dacb-ff37893786a4">
 						   <i class="material-icons">phone</i>
 					</a>
-					<a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="chetangarg1102@gmail.com">
+					<a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="garg96.sid@gmail.com" data-tooltip-id="5608be26-c332-8f11-7a57-2c473f5ebae1">
 						   <i class="material-icons">email</i>
 					</a>
 			</div>
@@ -30,17 +137,17 @@
 			</div>
 			<div class="col s12 m4">
 			<div class="card card-avatar">
-			<img class=" activator" src="/icons/sourav.jpg">
+			<img class=" activator" src="Recursion_team_files/sourav.jpg">
 			 <div class="card-content">
-				 <span class="card-title activator grey-text text-darken-4">Sourav Agarwal <br/>
+				 <span class="card-title activator grey-text text-darken-4">Sourav Agarwal <br>
 					 <small><em><h6 class="red-text text-darken-1">Treasurer</h6></em></small></span>
 					<a href="https://www.facebook.com/sourav.agarwal.56829" target="_blank">
 						 <i class="fa fa-facebook"></i>
 					 </a>
-					  <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="7063494551">
+					  <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="7063494551" data-tooltip-id="b30aa26c-db60-5b1a-8fe9-9c9a145e54db">
 							<i class="material-icons">phone</i>
 					 </a>
-					 <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="souravagarwal5377@gmail.com">
+					 <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="agrawalanjali996@gmail.com" data-tooltip-id="ea682ed8-5c2a-004a-e725-91b318f36799">
 							<i class="material-icons">email</i>
 					 </a>
 			 </div>
@@ -49,18 +156,18 @@
 			<div class="col s12 m4">
 				<div class="card card-avatar">
 					<div class="card card-avatar">
-                      <img class=" activator" src="/icons/vishvanath.jpg">
+                      <img class=" activator" src="Recursion_team_files/shreya.jpg">
                        <div class="card-content">
-                           <span class="card-title activator grey-text text-darken-4">Vishvanath Dutt Sharma<br/>
-                               <small><em><h6 class="red-text text-darken-1">Convener</h6></em></small>
+                           <span class="card-title activator grey-text text-darken-4">Shreya Saha<br>
+                               <small><em><h6 class="red-text text-darken-1">Convenor</h6></em></small>
                            </span>
-                               <a href="https://www.facebook.com/vishvanath.duttsharma" target="_blank">
+                               <a href="https://www.facebook.com/shreya.saha.754" target="_blank">
                                    <i class="fa fa-facebook"></i>
                                </a>
-					     	   <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="9453244178">
+					     	   <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="9453244178" data-tooltip-id="ed252120-c160-90d9-e489-03639abd1e56">
                                	   <i class="material-icons">phone</i>
                                </a>
-                               <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="visitdutt@gmail.com">
+                               <a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="shrey.coderclan@gmail.com" data-tooltip-id="a70aab4e-7eaa-2839-401f-5007d71dbcb4">
                                	   <i class="material-icons">email</i>
                                </a>
                        </div>
@@ -75,195 +182,183 @@
 			<br>
 			<div class="col s12 m4 l2" style="text-align: center;">
 				<div class="card-avatar2">
-					<div class="block" style="padding-bottom : 16px;">
-						<img class="activator" src="icons/anand.jpg">
+					<div class="block">
+						<img class="activator" src="Recursion_team_files/anand.jpg">
 						<div class="card-content">
 							<span class="card-title activator grey-text text-darken-4"><h6><b>Anand Jhunjhunwala</b></h6>
-							<em><h7 class="red-text text-darken-1">Tech and Publicity Head</h7></em></span>
+							<em><h7 class="red-text text-darken-1">Technical Head</h7></em></span>
 						</div>
 					</div>
-				</div><br />
-			<div class="card-avatar2">
+				</div><br>
+				<div class="card-avatar2">
 			<div class="block">
-				<img class=" activator" src="icons/gyani.jpg">
+				<img class=" activator" src="Recursion_team_files/gyani.jpg">
 				<div class="card-content">
 					<span class="card-title activator grey-text text-darken-4"><h6><b>Gyanesha Prajjwal</b></h6>
 					<em><h7 class="red-text text-darken-1">Senior Coordinator</h7></em></span>
 				</div>
 			</div>
-		</div><br />
+		</div><br>
 		<div class="card-avatar2">
 			<div class="block">
-				<img class=" activator" src="icons/SG.jpg">
+				<img class=" activator" src="Recursion_team_files/SG.jpg">
 				<div class="card-content">
 					<span class="card-title activator grey-text text-darken-4"><h6><b>Shubham Gupta</b></h6>
 					<em><h7 class="red-text text-darken-1">Senior Coordinator</h7></em></span>
 				</div>
 			</div>
-		</div><br />
+		</div><br>
 			</div>
 
 			<div class="col s12 m4 l2" style="text-align: center;">
 				<div class="card-avatar2">
-				<div class="block" style="padding-bottom : 16px;">
-				<img class=" activator" src="icons/narendra.jpg">
+					<div class="block">
+						<img class=" activator" src="Recursion_team_files/narendra.jpg">
 						<div class="card-content">
 							<span class="card-title activator grey-text text-darken-4"><h6><b>Narendra Yadav</b></h6>
 							<em><h7 class="red-text text-darken-1">Vice President</h7></em></span>
 						</div>
 					</div>
-				</div><br />
+				</div><br>
 				<div class="card-avatar2">
 			<div class="block">
-				<img class=" activator" src="icons/mantri.jpg">
+				<img class=" activator" src="Recursion_team_files/mantri.jpg">
 				<div class="card-content">
 					<span class="card-title activator grey-text text-darken-4"><h6><b>Piyush Mantri</b></h6>
 					<em><h7 class="red-text text-darken-1">Senior Coordinator</h7></em></span>
 				</div>
 			</div>
-		</div><br />
+		</div><br>
 		<div class="card-avatar2">
 			<div class="block">
-				<img class=" activator" src="icons/saurabh_kumar.jpg">
+				<img class=" activator" src="Recursion_team_files/saurabh_kumar.jpg">
 				<div class="card-content">
 					<span class="card-title activator grey-text text-darken-4"><h6><b>Saurabh Kumar</b></h6>
 					<em><h7 class="red-text text-darken-1">Senior Coordinator</h7></em></span>
 				</div>
 			</div>
-		</div><br />
+		</div><br>
 		
 			</div>
 
 			<div class="col s12 m4 l2" style="text-align: center;">
 				<div class="card-avatar2">
-				<div class="block" style="padding-bottom : 16px;">
-				<img class=" activator" src="icons/saptarshi.jpg">
+					<div class="block">
+						<img class=" activator" src="Recursion_team_files/saptarshi.jpg">
 						<div class="card-content">
 							<span class="card-title activator grey-text text-darken-4"><h6><b>Saptarshi Dey</b></h6>
 							<em><h7 class="red-text text-darken-1">Vice President</h7></em></span>
 						</div>
 					</div>
-				</div><br />
+				</div><br>
 				<div class="card-avatar2">
 			<div class="block">
-				<img class=" activator" src="icons/shivansh.jpg">
+				<img class=" activator" src="Recursion_team_files/shivansh.jpg">
 				<div class="card-content">
 					<span class="card-title activator grey-text text-darken-4"><h6><b>Shivansh Agarwal</b></h6>
 					<em><h7 class="red-text text-darken-1">Senior Coordinator</h7></em></span>
 				</div>
 			</div>
-		</div><br />
+		</div><br>
 		<div class="card-avatar2">
 		<div class="block">
-				<img class=" activator" src="icons/jeyasurya.jpg">
+				<img class=" activator" src="Recursion_team_files/jeyasurya.jpg">
 				<div class="card-content">
 					<span class="card-title activator grey-text text-darken-4"><h6><b>Jeyasurya V</b></h6>
 					<em><h7 class="red-text text-darken-1">Senior Coordinator</h7></em></span>
 				</div>
 			</div>
-		</div><br />
+		</div><br>
 			</div>
 
 			<div class="col s12 m4 l2" style="text-align: center;">
 			<div class="card-avatar2">
-			<div class="block" style="padding-bottom : 16px;">
-			<img class=" activator" src="icons/vikas.jpg">
+			<div class="block">
+				<img class=" activator" src="Recursion_team_files/vikas.jpg">
 				<div class="card-content">
 					<span class="card-title activator grey-text text-darken-4"><h6><b>Vikas Kumar Patel</b></h6>
-					<em><h7 class="red-text text-darken-1">Classes and Contests Head</h7></em></span>
+					<em><h7 class="red-text text-darken-1">Classes Coordinator</h7></em></span>
 				</div>
 			</div>
-		</div><br />
+		</div><br>
 		<div class="card-avatar2">
 			<div class="block">
-				<img class=" activator" src="icons/romit.jpg">
+				<img class=" activator" src="Recursion_team_files/romit.jpg">
 				<div class="card-content">
 					<span class="card-title activator grey-text text-darken-4"><h6><b>Romit Kumar</b></h6>
 					<em><h7 class="red-text text-darken-1">Senior Coordinator</h7></em></span>
 				</div>
 			</div>
-		</div><br />
+		</div><br>
 		<div class="card-avatar2">
 		<div class="block">
-			<img class=" activator" src="icons/grover.jpg">
+			<img class=" activator" src="Recursion_team_files/grover.jpg">
 			<div class="card-content">
 				<span class="card-title activator grey-text text-darken-4"><h6><b>Raghav Grover</b></h6>
 				<em><h7 class="red-text text-darken-1">Senior Coordinator</h7></em></span>
 			</div>
 		</div>
-	</div><br />
+	</div><br>
 		</div>
-		<div class="col s12 m4 l2" style="text-align: center;">
-				<div class="card-avatar2">
-					<div class="block">
-						<img class=" activator" src="icons/shreya.jpg">
-						<div class="card-content">
-							<span class="card-title activator grey-text text-darken-4"><h6><b>Shreya Saha</b></h6>
-							<em><h7 class="red-text text-darken-1">General Secretary, Social Media Head, Creative Head</h7></em></span>
-						</div>
-					</div>
-				</div><br />
-		<div class="card-avatar2">
-			<div class="block">
-				<img class=" activator" src="icons/SKG.jpg">
-				<div class="card-content">
-					<span class="card-title activator grey-text text-darken-4"><h6><b>Shubham Kumar Gupta</b></h6>
-					<em><h7 class="red-text text-darken-1">Senior Coordinator</h7></em></span>
-				</div>
-			</div>
-		</div><br />
-		<div class="card-avatar2">
-			<div class="block">
-				<img class=" activator" src="icons/ashutosh.jpg">
-				<div class="card-content">
-					<span class="card-title activator grey-text text-darken-4"><h6><b>Ashutosh Agarwal</b></h6>
-					<em><h7 class="red-text text-darken-1">Senior Coordinator</h7></em></span>
-				</div>
-			</div>
-		</div><br />
-			</div>
 
 			<div class="col s12 m4 l2" style="text-align: center;">
 			<div class="card-avatar2">
-					<div class="block" style="padding-bottom : 16px;">
-				<img class=" activator" src="icons/abhishek2.jpg">
-				<div class="card-content">
-					<span class="card-title activator grey-text text-darken-4"><h6><b>Abhishek Karan</b></h6>
-					<em><h7 class="red-text text-darken-1">Events and Sponsorship Head</h7></em></span>
-				</div>
-			</div>
-		</div><br />
-				<div class="card-avatar2">
 			<div class="block">
-				<img class=" activator" src="icons/ritesh.jpg">
-				<div class="card-content">
-					<span class="card-title activator grey-text text-darken-4"><h6><b>Ritesh Gupta</b></h6>
-					<em><h7 class="red-text text-darken-1">Senior Coordinator</h7></em></span>
-				</div>
-			</div>
-		</div><br />
-		<div class="card-avatar2">
-			<div class="block">
-				<img class=" activator" src="icons/ruchi.jpg">
-				<div class="card-content">
-					<span class="card-title activator grey-text text-darken-4"><h6><b>Ruchi Singh</b></h6>
-					<em><h7 class="red-text text-darken-1">Senior Coordinator</h7></em></span>
-				</div>
-			</div>
-		</div><br />
-		</div>
-		</div>
-		<div class = "row">
-		<div class="col s12 m4 l2" style="text-align: center;">
-		<div class="card-avatar2">
-			<div class="block">
-				<img class=" activator" src="icons/Rishabh.jpg">
+				<img class=" activator" src="Recursion_team_files/Rishabh.jpg">
 				<div class="card-content">
 					<span class="card-title activator grey-text text-darken-4"><h6><b>Rishabh Sethi</b></h6>
 					<em><h7 class="red-text text-darken-1">Senior Coordinator</h7></em></span>
 				</div>
 			</div>
-		</div><br />
+		</div><br>
+		<div class="card-avatar2">
+			<div class="block">
+				<img class=" activator" src="Recursion_team_files/SKG.jpg">
+				<div class="card-content">
+					<span class="card-title activator grey-text text-darken-4"><h6><b>Shubham Kumar Gupta</b></h6>
+					<em><h7 class="red-text text-darken-1">Senior Coordinator</h7></em></span>
+				</div>
+			</div>
+		</div><br>
+		<div class="card-avatar2">
+			<div class="block">
+				<img class=" activator" src="Recursion_team_files/ashutosh.jpg">
+				<div class="card-content">
+					<span class="card-title activator grey-text text-darken-4"><h6><b>Ashutosh Agarwal</b></h6>
+					<em><h7 class="red-text text-darken-1">Senior Coordinator</h7></em></span>
+				</div>
+			</div>
+		</div><br>
+			</div>
+
+			<div class="col s12 m4 l2" style="text-align: center;">
+				<div class="card-avatar2">
+					<div class="block">
+						<img class=" activator" src="Recursion_team_files/vishvanath.jpg">
+						<div class="card-content">
+							<span class="card-title activator grey-text text-darken-4"><h6><b>Vishvanath Dutt Sharma</b></h6>
+							<em><h7 class="red-text text-darken-1">Social Media &amp; Publicity Head</h7></em></span>
+						</div>
+					</div>
+				</div><br>
+				<div class="card-avatar2">
+			<div class="block">
+				<img class=" activator" src="Recursion_team_files/ritesh.jpg">
+				<div class="card-content">
+					<span class="card-title activator grey-text text-darken-4"><h6><b>Ritesh Gupta</b></h6>
+					<em><h7 class="red-text text-darken-1">Senior Coordinator</h7></em></span>
+				</div>
+			</div>
+		</div><br>
+		<div class="card-avatar2">
+			<div class="block">
+				<img class=" activator" src="Recursion_team_files/ruchi.jpg">
+				<div class="card-content">
+					<span class="card-title activator grey-text text-darken-4"><h6><b>Ruchi Singh</b></h6>
+					<em><h7 class="red-text text-darken-1">Senior Coordinator</h7></em></span>
+				</div>
+			</div>
+		</div><br>
 		</div>
 		</div>
 		<h2 class="header text_b" style="color: #212121;" align="center"> Alumni </h2>
@@ -274,12 +369,12 @@
 			<div class="col s12 m10 offset-m1 l6">
 				<div class="card horizontal">
 					<div class="block">
-						<img class="activator" src="icons/siddharth.jpg"></img>
+						<img class="activator" src="Recursion_team_files/siddharth.jpg">
 						<br>
 						<div class="links">
-							<a target="_blank" href="www.linkedin.com/in/siddharth-garg/"><i class="fa fa-linkedin-square fa-lg" style="color: #0e76a8;"></i></a>
-							<a target="_blank" href="github.com/sggarg"><i class="fa fa-github-square fa-lg" style="color: #000;"></i></a>
-							<a target="_blank" href="www.facebook.com/siddharth.garg09"><i class="fa fa-facebook-square fa-lg" style="color: #3B5998;"></i></a>
+							<a target="_blank" href="http://localhost:3000/www.linkedin.com/in/siddharth-garg/"><i class="fa fa-linkedin-square fa-lg" style="color: #0e76a8;"></i></a>
+							<a target="_blank" href="http://localhost:3000/github.com/sggarg"><i class="fa fa-github-square fa-lg" style="color: #000;"></i></a>
+							<a target="_blank" href="http://localhost:3000/www.facebook.com/siddharth.garg09"><i class="fa fa-facebook-square fa-lg" style="color: #3B5998;"></i></a>
 						</div>
 					</div>
 					<div class="text">
@@ -297,11 +392,11 @@
 			<div class="col s12 m10 offset-m1 l6">
 				<div class="card horizontal">
 					<div class="block">
-						<img class="activator" src="icons/abhishek.jpg"></img>
+						<img class="activator" src="Recursion_team_files/abhishek.jpg">
 						<br>
 						<div class="links">
 							<a target="_blank" href="https://www.linkedin.com/in/ab1hi2shek"><i class="fa fa-linkedin-square fa-lg" style="color: #0e76a8;"></i></a>
-							<a target="_blank" href="github.com/ab1hi2shek"><i class="fa fa-github-square fa-lg" style="color: #000;"></i></a>
+							<a target="_blank" href="http://localhost:3000/github.com/ab1hi2shek"><i class="fa fa-github-square fa-lg" style="color: #000;"></i></a>
 							<a target="_blank" href="https://www.facebook.com/ab1hi2shek"><i class="fa fa-facebook-square fa-lg" style="color: #3B5998;"></i></a>
 						</div>
 					</div>
@@ -309,22 +404,20 @@
 						Abhishek Kumar<br>
 						B.Tech. in Computer Science and Engineering<br>
 						Experience: <br>
-						<p>Software Engineer at Playsimple(Jul 2018 -Present) <br>
+						<p>Software Engineer at Toppr(Jul 2018 -Present) <br>
 							Intern at IIT Bombay<br>
 							Intern at D E Shaw India as a software developer<br>
-					</div>
+					</p></div>
 				</div>
 			</div>
-		</div>
-		<div class="row">	
 			<div class="col s12 m10 offset-m1 l6">
 				<div class="card horizontal">
 					<div class="block">
-						<img class="activator" src="icons/adarsh.jpg"></img>
+						<img class="activator" src="Recursion_team_files/adarsh.jpg">
 						<br>
 						<div class="links">
 							<a target="_blank" href="https://www.linkedin.com/in/nxtbig"><i class="fa fa-linkedin-square fa-lg" style="color: #0e76a8;"></i></a>
-							<a target="_blank" href="github.com/nxtbig"><i class="fa fa-github-square fa-lg" style="color: #000;"></i></a>
+							<a target="_blank" href="http://localhost:3000/github.com/nxtbig"><i class="fa fa-github-square fa-lg" style="color: #000;"></i></a>
 							<a target="_blank" href="https://www.facebook.com/nxtbig"><i class="fa fa-facebook-square fa-lg" style="color: #3B5998;"></i></a>
 						</div>
 					</div>
@@ -341,11 +434,11 @@
 			<div class="col s12 m10 offset-m1 l6">
 				<div class="card horizontal">
 					<div class="block">
-						<img class="activator" src="icons/shashank.jpg"></img>
+						<img class="activator" src="Recursion_team_files/shashank.jpg">
 						<br>
 						<div class="links">
 							<a target="_blank" href="https://www.linkedin.com/in/shashank9163"><i class="fa fa-linkedin-square fa-lg" style="color: #0e76a8;"></i></a>
-							<a target="_blank" href="github.com/alchemist95"><i class="fa fa-github-square fa-lg" style="color: #000;"></i></a>
+							<a target="_blank" href="http://localhost:3000/github.com/alchemist95"><i class="fa fa-github-square fa-lg" style="color: #000;"></i></a>
 							<a target="_blank" href="https://www.facebook.com/shashank.jha.395"><i class="fa fa-facebook-square fa-lg" style="color: #3B5998;"></i></a>
 						</div>
 					</div>
@@ -354,7 +447,7 @@
 						B.Tech. in Computer Science and Engineering<br>
 						Experience: <br>
 						<p>Software Engineer, Microsoft IDC(Jul 2018 -Present) <br>
-						SDE Intern at D.E.Shaw India Pvt Ltd (May 2017-July 2017)</br>
+						SDE Intern at D.E.Shaw India Pvt Ltd (May 2017-July 2017)<br>
 						SDE Intern at IIT Bombay (May 2016-July 2016)</p>
 					</div>
 				</div>
@@ -362,7 +455,7 @@
 			<div class="col s12 m10 offset-m1 l6">
 				<div class="card horizontal">
 					<div class="block">
-						<img class="activator" src="icons/richa.jpg"></img>
+						<img class="activator" src="Recursion_team_files/richa.jpg">
 						<br>
 						<div class="links">
 							<a target="_blank" href="https://www.linkedin.com/in/richa-agarwal"><i class="fa fa-linkedin-square fa-lg" style="color: #0e76a8;"></i></a>
@@ -383,7 +476,7 @@
 			<div class="col s12 m10 offset-m1 l6">
 				<div class="card horizontal">
 					<div class="block">
-						<img class="activator" src="icons/sandeep.jpg"></img>
+						<img class="activator" src="Recursion_team_files/sandeep.jpg">
 						<br>
 						<div class="links">
 							<a target="_blank" href="https://www.linkedin.com/in/sandeep-kumar-prajapati-2a585b109"><i class="fa fa-linkedin-square fa-lg" style="color: #0e76a8;"></i></a>
@@ -396,7 +489,7 @@
 						B.Tech. in Information Technology <br>
 						Experience: <br>
 						B.Tech. in Information Technology <br>
-						<p>Samsung R&D (Jul 2018 -Present) <br>
+						<p>Qualcomm (Jul 2018 -Present) <br>
 						</p>
 					</div>
 				</div>
@@ -404,7 +497,7 @@
 			<div class="col s12 m10 offset-m1 l6">
 				<div class="card horizontal">
 					<div class="block">
-						<img class="activator" src="icons/anjali.jpg"></img>
+						<img class="activator" src="Recursion_team_files/anjali.jpg">
 						<br>
 						<div class="links">
 							<a target="_blank" href="https://www.linkedin.com/in/agrawalanjali"><i class="fa fa-linkedin-square fa-lg" style="color: #0e76a8;"></i></a>
@@ -424,11 +517,11 @@
 			<div class="col s12 m10 offset-m1 l6">
 				<div class="card horizontal">
 					<div class="block">
-						<img class="activator" src="icons/shrey.jpg"></img>
+						<img class="activator" src="Recursion_team_files/shrey.jpg">
 						<br>
 						<div class="links">
 							<a target="_blank" href="https://www.linkedin.com/in/shrey-sharma-nitdgp/"><i class="fa fa-linkedin-square fa-lg" style="color: #0e76a8;"></i></a>
-							<a target="_blank" href="https://github.com"><i class="fa fa-github-square fa-lg" style="color: #000;"></i></a>
+							<a target="_blank" href="https://github.com/"><i class="fa fa-github-square fa-lg" style="color: #000;"></i></a>
 							<a target="_blank" href="https://www.facebook.com/shreyy.sharma"><i class="fa fa-facebook-square fa-lg" style="color: #3B5998;"></i></a>
 						</div>
 					</div>
@@ -436,25 +529,7 @@
 					Shreyy Sharma<br>
 						B.Tech. in Computer Science and Engineering<br>
 						Experience: <br>
-						<p>Software Engineer at Playsimple(Jul 2018 -Present) <br>
-						Turbo Intern at Product and Services Wipro (May 2017 - Jul 2017)</p>
-					</div>
-				</div>
-			</div>
-			<div class="col s12 m10 offset-m1 l6">
-				<div class="card horizontal">
-					<div class="block">
-						<img class="activator" src="icons/shiris.jpg"></img>
-						<br>
-						<div class="links">
-							<a target="_blank" href="https://www.linkedin.com/in/shrey-sharma-nitdgp/"><i class="fa fa-linkedin-square fa-lg" style="color: #0e76a8;"></i></a>
-							<a target="_blank" href="https://github.com"><i class="fa fa-github-square fa-lg" style="color: #000;"></i></a>
-							<a target="_blank" href="https://www.facebook.com/shreyy.sharma"><i class="fa fa-facebook-square fa-lg" style="color: #3B5998;"></i></a>
-						</div>
-					</div>
-					<div class="text">
-					Shirish Celes<br>
-						B.Tech. in Computer Science and Engineering<br>
+						<p>Turbo Intern at Product and Services Wipro (Jul 2017 -Present)</p>
 					</div>
 				</div>
 			</div>
@@ -468,7 +543,7 @@
 			<div class="col s12 m10 offset-m1 l6">
 				<div class="card horizontal">
 					<div class="block">
-						<img class="activator" src="icons/aman.jpg"></img>
+						<img class="activator" src="Recursion_team_files/aman.jpg">
 						<br>
 						<div class="links">
 							<a target="_blank" href="https://www.linkedin.com/in/aman-agarwal-033b47ba/"><i class="fa fa-linkedin-square fa-lg" style="color: #0e76a8;"></i></a>
@@ -478,7 +553,7 @@
 					</div>
 					<div class="text">
 						Aman Agarwal <br>
-						B.Tech. in Electronics & Communication Engineering <br>
+						B.Tech. in Electronics &amp; Communication Engineering <br>
 						Experience: <br>
 						<p>Application Developer at Oracle (Jul 2017 - Present)<br>
 						Intern at IIT Bombay (May 2016 - Jul 2016) </p>
@@ -488,7 +563,7 @@
 			<div class="col s12 m10 offset-m1 l6">
 				<div class="card horizontal">
 					<div class="block">
-						<img src="icons/shrija.jpg"></img>
+						<img src="Recursion_team_files/shrija.jpg">
 						<br>
 						<div class="links">
 							<a target="_blank" href="https://www.linkedin.com/in/shrija-mishra-baa4baa4/"><i class="fa fa-linkedin-square fa-lg" style="color: #0e76a8;"></i></a>
@@ -498,7 +573,7 @@
 					</div>
 					<div class="text">
 						Shrija Mishra <br>
-						B.Tech. in Computer Science & Engineering <br>
+						B.Tech. in Computer Science &amp; Engineering <br>
 						Experience: <br>
 						<p>SDE at Microsoft (Jul 2017 - Present) <br>
 						SDE Intern at Microsoft (May 2016 -  Jul 2016)</p>
@@ -510,7 +585,7 @@
 			<div class="col s12 m10 offset-m1 l6">
 				<div class="card horizontal">
 					<div class="block">
-						<img class="activator" src="icons/parakh.jpg"></img>
+						<img class="activator" src="Recursion_team_files/parakh.jpg">
 						<br>
 						<div class="links">
 							<a target="_blank" href="https://www.linkedin.com/in/parakh-bansal-360679102/"><i class="fa fa-linkedin-square fa-lg" style="color: #0e76a8;"></i></a>
@@ -520,7 +595,7 @@
 					</div>
 					<div class="text">
 						Parakh Bansal <br>
-						B.Tech. in Computer Science & Engineering <br>
+						B.Tech. in Computer Science &amp; Engineering <br>
 						Experience: <br>
 						<p>SDE at ZS Associates (Jul 2017 - Present) <br>
 						Intern at IIT Kharagpur (May 2016 - Jun 2016)</p>
@@ -530,7 +605,7 @@
 			<div class="col s12 m10 offset-m1 l6">
 				<div class="card horizontal">
 					<div class="block">
-						<img src="icons/satrap.jpg"></img>
+						<img src="Recursion_team_files/satrap.jpg">
 						<br>
 						<div class="links">
 							<a target="_blank" href="https://www.linkedin.com/in/satrap-rathore-27883710a/"><i class="fa fa-linkedin-square fa-lg" style="color: #0e76a8;"></i></a>
@@ -540,7 +615,7 @@
 					</div>
 					<div class="text">
 						Satrap Rathore <br>
-						B.Tech. in Computer Science & Engineering <br>
+						B.Tech. in Computer Science &amp; Engineering <br>
 						Experience: <br>
 						<p>Software Engineer at FactSet (Jun 2017 - Present) <br>
 						Data Engineer Intern at Suphalaam Technologies (May 2016 - Jul 2016) <br>
@@ -554,7 +629,7 @@
 			<div class="col s12 m10 offset-m1 l6">
 				<div class="card horizontal">
 					<div class="block">
-						<img class="activator" src="icons/saurabh.jpg"></img>
+						<img class="activator" src="Recursion_team_files/saurabh.jpg">
 						<br>
 						<div class="links">
 							<a target="_blank" href="https://www.linkedin.com/in/saurabh-srivastava-bbaba2a3/"><i class="fa fa-linkedin-square fa-lg" style="color: #0e76a8;"></i></a>
@@ -574,7 +649,7 @@
 			<div class="col s12 m10 offset-m1 l6">
 				<div class="card horizontal">
 					<div class="block">
-						<img src="icons/rashmi.jpg"></img>
+						<img src="Recursion_team_files/rashmi.jpg">
 						<br>
 						<div class="links">
 							<a target="_blank" href="#"><i class="fa fa-linkedin-square fa-lg" style="color: #0e76a8;"></i></a>
@@ -595,7 +670,7 @@
 			<div class="col s12 m10 offset-m1 l6">
 				<div class="card horizontal">
 					<div class="block">
-						<img class="activator" src="icons/sakshi.jpg"></img>
+						<img class="activator" src="Recursion_team_files/sakshi.jpg">
 						<br>
 						<div class="links">
 							<a target="_blank" href="https://www.linkedin.com/in/sakshi-saraogi-634968104/"><i class="fa fa-linkedin-square fa-lg" style="color: #0e76a8;"></i></a>
@@ -616,7 +691,7 @@
 			<div class="col s12 m10 offset-m1 l6">
 				<div class="card horizontal">
 					<div class="block">
-						<img src="icons/neetesh.jpg"></img>
+						<img src="Recursion_team_files/neetesh.jpg">
 						<br>
 						<div class="links">
 							<a target="_blank" href="https://www.linkedin.com/in/neetesh-kumar-06947889/"><i class="fa fa-linkedin-square fa-lg" style="color: #0e76a8;"></i></a>
@@ -626,7 +701,7 @@
 					</div>
 					<div class="text">
 						Neetesh Kumar <br>
-						B.Tech. in Computer Science & Engineering <br>
+						B.Tech. in Computer Science &amp; Engineering <br>
 						Experience: <br>
 						<p>Application Engineer at Media.net (Sep 2017 - Present) <br>
 						Intern at MobStac (May 2016 - Jul 2016)</p>
@@ -638,12 +713,12 @@
 			<div class="col s12 m10 offset-m1 l6">
 				<div class="card horizontal">
 					<div class="block">
-						<img class="activator" src="icons/surya.jpg"></img>
+						<img class="activator" src="Recursion_team_files/surya.jpg">
 						<br>
 						<div class="links">
 							<a target="_blank" href="https://www.linkedin.com/in/surya-kant-singh-64b355103/"><i class="fa fa-linkedin-square fa-lg" style="color: #0e76a8;"></i></a>
 							<a target="_blank" href="https://www.github.com/surya545"><i class="fa fa-github-square fa-lg" style="color: #000;"></i></a>
-							<a target="_blank" href="https://www.facebook.com"><i class="fa fa-facebook-square fa-lg" style="color: #3B5998;"></i></a>
+							<a target="_blank" href="https://www.facebook.com/"><i class="fa fa-facebook-square fa-lg" style="color: #3B5998;"></i></a>
 						</div>
 					</div>
 					<div class="text">
@@ -659,7 +734,7 @@
 			<div class="col s12 m10 offset-m1 l6">
 				<div class="card horizontal">
 					<div class="block">
-						<img src="icons/tanushree.jpg"></img>
+						<img src="Recursion_team_files/tanushree.jpg">
 						<br>
 						<div class="links">
 							<a target="_blank" href="https://www.linkedin.com/in/tanushree-chakravarty-06458370/"><i class="fa fa-linkedin-square fa-lg" style="color: #0e76a8;"></i></a>
@@ -681,7 +756,7 @@
 			<div class="col s12 m10 offset-m1 l6">
 				<div class="card horizontal">
 					<div class="block">
-						<img src="icons/mizan.jpg"></img>
+						<img src="Recursion_team_files/mizan.jpg">
 						<br>
 						<div class="links">
 							<a target="_blank" href="https://www.linkedin.com/in/mizan-rehman-28bb70125/"><i class="fa fa-linkedin-square fa-lg" style="color: #0e76a8;"></i></a>
@@ -706,7 +781,7 @@
 			<div class="col s12 m10 offset-m1 l6">
 				<div class="card horizontal">
 					<div class="block">
-						<img class="activator" src="icons/gaurav.jpg"></img>
+						<img class="activator" src="Recursion_team_files/gaurav.jpg">
 						<br>
 						<div class="links">
 							<a target="_blank" href="https://www.linkedin.com/in/gcnit/"><i class="fa fa-linkedin-square fa-lg" style="color: #0e76a8;"></i></a>
@@ -728,7 +803,7 @@
 			<div class="col s12 m10 offset-m1 l6">
 				<div class="card horizontal">
 					<div class="block">
-						<img src="icons/archit.jpg"></img>
+						<img src="Recursion_team_files/archit.jpg">
 						<br>
 						<div class="links">
 							<a target="_blank" href="https://www.linkedin.com/in/architsrivastava/"><i class="fa fa-linkedin-square fa-lg" style="color: #0e76a8;"></i></a>
@@ -744,7 +819,7 @@
 						Intern at Facebook, California (2017) <br>
 						SDE Intern at Microsoft (May 2015 - Jul 2015) <br>
 						Columnist at The Zine (Nov 2013 - 2014) <br>
-						Co-Founder & Creative Investigator at FindAWay (Oct 2013 - 2014)</p>
+						Co-Founder &amp; Creative Investigator at FindAWay (Oct 2013 - 2014)</p>
 					</div>
 				</div>
 			</div>
@@ -753,7 +828,7 @@
 			<div class="col s12 m10 offset-m1 l6">
 				<div class="card horizontal">
 					<div class="block">
-						<img class="activator" src="icons/dharmesh.jpg"></img>
+						<img class="activator" src="Recursion_team_files/dharmesh.jpg">
 						<br>
 						<div class="links">
 							<a target="_blank" href="https://www.linkedin.com/in/dkrdharmesh/"><i class="fa fa-linkedin-square fa-lg" style="color: #0e76a8;"></i></a>
@@ -774,7 +849,7 @@
 			<div class="col s12 m10 offset-m1 l6">
 				<div class="card horizontal">
 					<div class="block">
-						<img src="icons/piyush.jpg"></img>
+						<img src="Recursion_team_files/piyush.jpg">
 						<br>
 						<div class="links">
 							<a target="_blank" href="https://www.linkedin.com/in/piyush-agarwal-a3a39a84/"><i class="fa fa-linkedin-square fa-lg" style="color: #0e76a8;"></i></a>
@@ -797,7 +872,7 @@
 			<div class="col s12 m10 offset-m1 l6">
 				<div class="card horizontal">
 					<div class="block">
-						<img class="activator" src="icons/sagar.jpg"></img>
+						<img class="activator" src="Recursion_team_files/sagar.jpg">
 						<br>
 						<div class="links">
 							<a target="_blank" href="https://www.linkedin.com/in/sagar0907/"><i class="fa fa-linkedin-square fa-lg" style="color: #0e76a8;"></i></a>
@@ -807,7 +882,7 @@
 					</div>
 					<div class="text">
 						Sagar Jain <br>
-						B.Tech. in Electronics & Communication Engineering <br>
+						B.Tech. in Electronics &amp; Communication Engineering <br>
 						Experience: <br>
 						<p>Platform Engineer at Directi (Jul 2016 - Present) </p>
 					</div>
@@ -816,7 +891,7 @@
 			<div class="col s12 m10 offset-m1 l6">
 				<div class="card horizontal">
 					<div class="block">
-						<img src="icons/sanu.jpg"></img>
+						<img src="Recursion_team_files/sanu.jpg">
 						<br>
 						<div class="links">
 							<a target="_blank" href="https://www.linkedin.com/in/saanc/"><i class="fa fa-linkedin-square fa-lg" style="color: #0e76a8;"></i></a>
@@ -836,3 +911,47 @@
 		</div>
 	</div>
 </div>
+
+    <footer class="page-footer cyan darken-2 ">
+      <div class="container">
+        <span class="wow bounceInUp" data-wow-delay="1.5s">Designed by RECursion | 2017</span>
+      </div>
+    </footer>
+
+  </div>
+  
+    <style>
+      #gritter-notice-wrapper{
+        top: 70px;
+      }
+    </style>
+    <script>
+      $(document).ready(function(){
+        $(".button-collapse").sideNav();
+        $('.modal').modal();
+        $('.modal-trigger').modal();
+        $('.modal-trigger').click(function(){
+          event.preventDefault();
+          $('.modal').modal('open');      
+        });
+      })
+
+      $.extend($.gritter.options, { 
+          time: 1000
+      });
+
+      $("#gritter").css('top',"120px");
+    </script>
+    
+<script src="Recursion_team_files/materialize_002.js"></script>
+<script src="Recursion_team_files/materialize.js"></script>
+<script src="Recursion_team_files/owl.js"></script>
+
+
+ 
+
+
+  
+
+
+<div class="drag-target" data-sidenav="slide-out" style="left: 0px; touch-action: pan-y;"></div><div class="hiddendiv common"></div><div class="material-tooltip" id="6df073b7-20f4-0b05-d944-8a4668bd5414"><span>Home</span><div class="backdrop"></div></div><div class="material-tooltip" id="060293b2-c758-6656-8c25-214ee8f46e82"><span>Events</span><div class="backdrop"></div></div><div class="material-tooltip" id="910b590a-b5e5-ba40-35bd-26c433ad5039"><span>AskREC</span><div class="backdrop"></div></div><div class="material-tooltip" id="36363b2f-a17e-e871-bac6-820af4d99709"><span>Getting Started</span><div class="backdrop"></div></div><div class="material-tooltip" id="88975f1f-3305-6216-c0d9-4f0ee83bce5a"><span>Google</span><div class="backdrop"></div></div><div class="material-tooltip" id="6285eb1e-81d8-25af-02c1-3c4d6aa1098d"><span>Github</span><div class="backdrop"></div></div><div class="material-tooltip" id="9f1c38af-63fa-d83b-5b09-30eeeff1027b"><span>Facebook</span><div class="backdrop"></div></div><div class="material-tooltip" id="ed4618b9-5cbb-bf2b-dacb-ff37893786a4"><span>9883591346</span><div class="backdrop"></div></div><div class="material-tooltip" id="5608be26-c332-8f11-7a57-2c473f5ebae1"><span>garg96.sid@gmail.com</span><div class="backdrop"></div></div><div class="material-tooltip" id="b30aa26c-db60-5b1a-8fe9-9c9a145e54db"><span>7063494551</span><div class="backdrop"></div></div><div class="material-tooltip" id="ea682ed8-5c2a-004a-e725-91b318f36799"><span>agrawalanjali996@gmail.com</span><div class="backdrop"></div></div><div class="material-tooltip" id="ed252120-c160-90d9-e489-03639abd1e56"><span>9453244178</span><div class="backdrop"></div></div><div class="material-tooltip" id="a70aab4e-7eaa-2839-401f-5007d71dbcb4"><span>shrey.coderclan@gmail.com</span><div class="backdrop"></div></div></body></html>
